@@ -1,9 +1,7 @@
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
-
-<img src="screenshot.gif"
-     alt="unsplash-wallpapers"
-     style="margin: 0 auto;" />
+     
+![screenshot](/screenshot.gif)
 
 ### I've implemented this project using the following technologies:
 * [Electron](https://github.com/electron)
