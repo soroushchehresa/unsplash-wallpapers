@@ -1,0 +1,24 @@
+@import '~font-awesome/css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700');
+
+body {
+  font-family: 'Open Sans', serif;
+  background: #e4e4e4;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
