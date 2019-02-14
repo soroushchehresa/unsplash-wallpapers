@@ -49,31 +49,13 @@ class Main extends Component<Props, State> {
     }
   }
 
-  converUrlToBase64(url) {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.onload = () => {
-        const canvas = document.createElement('CANVAS');
-        const ctx = canvas.getContext('2d');
-        canvas.height = img.height;
-        canvas.width = img.width;
-        ctx.drawImage(img, 0, 0);
-        resolve((canvas.toDataURL('image/png')).replace(/^data:image\/png;base64,/, ''));
-      };
-      img.src = url;
-    });
-  }
-
   handleSetWallpaper() {
     const { photoData } = this.props;
     this.setState({ setWallpaperLoading: true });
-
     storage.get('pictures', (error, pictures) => {
       let hasPicture = false;
       let picturePath = path.join(os.homedir(), '/Pictures', `unsplash-${photoData.get('id')}.png`);
       picturePath = path.normalize(picturePath);
-
       if (pictures.list && pictures.list.length > 0) {
         pictures.list.forEach(picItem => {
           if (picItem.id === photoData.get('id')) {
@@ -81,12 +63,12 @@ class Main extends Component<Props, State> {
           }
         });
       }
-
       if (hasPicture) {
         this.setWallpaper(picturePath, photoData, pictures);
       } else {
-        this.converUrlToBase64(photoData.getIn(['urls', 'full']))
-          .then((base64Image) => {
+        axios.get(photoData.getIn(['urls', 'full']), { responseType: 'arraybuffer' })
+          .then(response => {
+            const base64Image = new Buffer.from(response.data, 'binary').toString('base64');
             fs.writeFile(picturePath, base64Image, 'base64', () => {
               this.setWallpaper(picturePath, photoData, pictures);
             });
