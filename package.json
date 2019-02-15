@@ -60,6 +60,7 @@
     "productName": "Unsplash Wallpapers",
     "appId": "org.soroushchehresa.UnsplashWallpapers",
     "files": [
+      "resources",
       "app/dist/",
       "app/app.html",
       "app/main.prod.js",
@@ -248,7 +249,7 @@
     "electron-debug": "^2.0.0",
     "electron-json-storage": "^4.1.6",
     "electron-log": "^2.2.17",
-    "electron-updater": "^3.2.3",
+    "electron-updater": "^4.0.0",
     "fix-path": "^2.1.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
