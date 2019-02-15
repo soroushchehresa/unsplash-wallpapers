@@ -10,7 +10,7 @@ A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers 
 * [styled-components](https://github.com/styled-components/styled-components)
 * [axios](https://github.com/axios/axios)
 * [wallpaper](https://github.com/sindresorhus/wallpaper)
-
+* [electron-json-storage](https://github.com/electron-userland/electron-json-storage)
 
 ### Features:
 * Get high quality wallpapers from [Unsplash](https://unsplash.com/).
@@ -22,7 +22,7 @@ A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers 
 
 ### Development:
 
-First, place your Unsplash API token in `.env` file instead `your_token`:
+First, place your Unsplash API token in `.env` file instead of `your_token`:
 ```sh
 UNSPLASH_API_TOKEN=your_token
 ```
