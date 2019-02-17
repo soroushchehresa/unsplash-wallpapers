@@ -13,7 +13,7 @@ export default styled.div`
     border-radius: 50%;
     background-color: transparent;
     border: 2px solid ${props => props.color};
-    border-top-color: rgba(255,255,255,.2);
+    border-top-color: rgba(255, 255, 255, 0.2);
     -webkit-animation: 1s spin linear infinite;
     animation: 1s spin linear infinite;
   }

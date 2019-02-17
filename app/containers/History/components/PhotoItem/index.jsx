@@ -9,8 +9,5 @@ type Props = {
 };
 
 export default ({ imageSRC, onClick }: Props) => (
-  <StyledPhotoItem
-    src={imageSRC}
-    onClick={onClick}
-  />
+  <StyledPhotoItem src={imageSRC} onClick={onClick} />
 );

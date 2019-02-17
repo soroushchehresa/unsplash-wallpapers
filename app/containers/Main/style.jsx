@@ -17,7 +17,7 @@ export default styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    background-color: rgba(255,255,255,.4);
+    background-color: rgba(255, 255, 255, 0.4);
     > .buttonWrapper {
       display: flex;
       justify-content: center;
@@ -26,7 +26,7 @@ export default styled.div`
       width: 50px;
       height: 45px;
       border-radius: 5px;
-      background: rgba(0,0,0,.4);
+      background: rgba(0, 0, 0, 0.4);
       > i {
         color: #fff;
         font-size: 20px;

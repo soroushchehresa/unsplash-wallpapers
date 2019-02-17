@@ -34,11 +34,12 @@ type State = {
 )
 @autobind
 class Main extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       setWallpaperLoading: false,
-      downloadLoading: false
+      downloadLoading: false,
+      downloadComplete: false
     };
   }
 
@@ -54,7 +55,11 @@ class Main extends Component<Props, State> {
     this.setState({ setWallpaperLoading: true });
     storage.get('pictures', (error, pictures) => {
       let hasPicture = false;
-      let picturePath = path.join(os.homedir(), '/Pictures', `unsplash-${photoData.get('id')}.png`);
+      let picturePath = path.join(
+        os.homedir(),
+        '/Pictures',
+        `unsplash-${photoData.get('id')}.png`
+      );
       picturePath = path.normalize(picturePath);
       if (pictures.list && pictures.list.length > 0) {
         pictures.list.forEach(picItem => {
@@ -66,9 +71,15 @@ class Main extends Component<Props, State> {
       if (hasPicture) {
         this.setWallpaper(picturePath, photoData, pictures);
       } else {
-        axios.get(photoData.getIn(['urls', 'full']), { responseType: 'arraybuffer' })
+        axios
+          .get(photoData.getIn(['urls', 'full']), {
+            responseType: 'arraybuffer'
+          })
           .then(response => {
-            const base64Image = new Buffer.from(response.data, 'binary').toString('base64');
+            const base64Image = new Buffer.from(
+              response.data,
+              'binary'
+            ).toString('base64');
             fs.writeFile(picturePath, base64Image, 'base64', () => {
               this.setWallpaper(picturePath, photoData, pictures);
             });
@@ -77,34 +88,47 @@ class Main extends Component<Props, State> {
     });
   }
 
-  setWallpaper(picturePath, photoData, pictures) {
-    wallpaper.set(picturePath, { scale: 'stretch' })
+  setWallpaper(picturePath: string, photoData: any, pictures: any) {
+    wallpaper
+      .set(picturePath, { scale: 'stretch' })
       .then(() => {
         if (pictures.list && pictures.list.length > 0) {
-          storage.set('pictures', { list: [...pictures.list, photoData.toJS()] });
+          storage.set('pictures', {
+            list: [...pictures.list, photoData.toJS()]
+          });
         } else {
           storage.set('pictures', { list: [photoData.toJS()] });
         }
         this.setState({ setWallpaperLoading: false });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
 
-  handleDownload(url) {
+  handleDownload(url: string) {
     const { photoData } = this.props;
     this.setState({ downloadLoading: true });
-    axios.get(url, { responseType: 'arraybuffer' })
-      .then(response => {
-        const base64Image = new Buffer.from(response.data, 'binary').toString('base64');
-        let picturePath = path.join(os.homedir(), '/Downloads', `unsplash-${photoData.get('id')}.png`);
-        picturePath = path.normalize(picturePath);
-        fs.writeFile(picturePath, base64Image, 'base64', () => {
-          this.setState({ downloadLoading: false });
-          alert('Download completed!');
+    axios.get(url, { responseType: 'arraybuffer' }).then(response => {
+      const base64Image = new Buffer.from(response.data, 'binary').toString(
+        'base64'
+      );
+      let picturePath = path.join(
+        os.homedir(),
+        '/Downloads',
+        `unsplash-${photoData.get('id')}.png`
+      );
+      picturePath = path.normalize(picturePath);
+      fs.writeFile(picturePath, base64Image, 'base64', () => {
+        this.setState({
+          downloadLoading: false
+        });
+        new Notification('Download Completed!', {
+          body: `Image saved in "${os.homedir()}/Downloads"`,
+          icon: path.join(__dirname, '../resources/icons/64x64.png')
         });
       });
+    });
   }
 
   render() {
@@ -114,7 +138,9 @@ class Main extends Component<Props, State> {
       <Style>
         <Navbar />
         <div
-          className={`photoWrapper${(getPhotoLoading || setWallpaperLoading) ? ' disabled' : ''}`}
+          className={`photoWrapper${
+            getPhotoLoading || setWallpaperLoading ? ' disabled' : ''
+          }`}
           style={{
             backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
             backgroundColor: photoData.get('color')
@@ -122,14 +148,11 @@ class Main extends Component<Props, State> {
           onClick={() => getPhoto(photoData.getIn(['urls', 'small']))}
         >
           <div className="buttonWrapper">
-            {
-              (getPhotoLoading) ?
-                <Loading
-                  color="#fff"
-                  size="16px"
-                /> :
-                <i className="fa fa-refresh" />
-            }
+            {getPhotoLoading ? (
+              <Loading color="#fff" size="16px" />
+            ) : (
+              <i className="fa fa-refresh" />
+            )}
           </div>
         </div>
         <button
@@ -138,30 +161,29 @@ class Main extends Component<Props, State> {
           onClick={this.handleSetWallpaper}
         >
           <span>Set as Wallpaper</span>
-          {
-            setWallpaperLoading &&
-            <Loading
-              color="#666"
-              size="14px"
-            />
-          }
+          {setWallpaperLoading && <Loading color="#666" size="14px" />}
         </button>
         <div className="bottomWrapper">
           <a className="autor" href={photoData.getIn(['links', 'html'])}>
-            By <span>{`${photoData.getIn(['user', 'first_name'])} ${photoData.getIn(['user', 'last_name']) ? photoData.getIn(['user', 'last_name']) : ''}`}</span>
+            By{' '}
+            <span>{`${photoData.getIn(['user', 'first_name'])} ${
+              photoData.getIn(['user', 'last_name'])
+                ? photoData.getIn(['user', 'last_name'])
+                : ''
+            }`}</span>
           </a>
           <button
-            onClick={() => this.handleDownload(photoData.getIn(['links', 'download']))}
-            className={`download${(getPhotoLoading || setWallpaperLoading || downloadLoading) ? ' disabled' : ''}`}
+            onClick={() =>
+              this.handleDownload(photoData.getIn(['links', 'download']))
+            }
+            className={`download${
+              getPhotoLoading || setWallpaperLoading || downloadLoading
+                ? ' disabled'
+                : ''
+            }`}
           >
             Download
-            {
-              downloadLoading &&
-              <Loading
-                color="#666"
-                size="10px"
-              />
-            }
+            {downloadLoading && <Loading color="#666" size="10px" />}
           </button>
         </div>
       </Style>

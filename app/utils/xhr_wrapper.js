@@ -5,7 +5,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del', 'head'];
 
 class Client {
   constructor() {
-    methods.forEach(method => this[method] = this.requestWrapper(method));
+    methods.forEach(method => (this[method] = this.requestWrapper(method)));
   }
 
   requestWrapper(method) {
@@ -18,12 +18,12 @@ class Client {
       });
       return new Promise((resolve, reject) => {
         fetch(requestURL, request)
-          .then((response) => this.checkStatus(response, resolve, reject))
-          .catch((error) => this.checkStatus(error, resolve, reject))
+          .then(response => this.checkStatus(response, resolve, reject))
+          .catch(error => this.checkStatus(error, resolve, reject))
           .catch(reject);
       });
     };
-  };
+  }
 
   checkStatus(response, resolve, reject) {
     if (!_.get(response, ['response']) && !_.get(response, ['data'])) {
@@ -63,7 +63,7 @@ class Client {
         authorization: `Client-ID ${process.env.UNSPLASH_API_TOKEN}`
       }
     };
-  };
+  }
 }
 
 export default new Client();

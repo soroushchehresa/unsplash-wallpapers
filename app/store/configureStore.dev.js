@@ -33,7 +33,11 @@ const configureStore = (initialState?) => {
   middleware.push(router);
 
   // Create Store
-  const store = createStore(rootReducer, initialState, applyMiddleware(...middleware));
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(...middleware)
+  );
 
   if (module.hot) {
     module.hot.accept(
