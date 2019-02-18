@@ -11,6 +11,7 @@ import PhotoItem from './components/PhotoItem';
 import Style from './style';
 
 type Props = {
+  history: any,
   setPhoto: () => void
 };
 
@@ -25,7 +26,7 @@ type State = {
 @withRouter
 @autobind
 class Main extends Component<Props, State> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       pictures: []
@@ -56,15 +57,17 @@ class Main extends Component<Props, State> {
       <Style>
         <Navbar />
         <div className="pictures-wrapper">
-          {
-            pictures.map((picItem) => (
+          {pictures.length > 0 ? (
+            pictures.map(picItem => (
               <PhotoItem
                 key={picItem.id}
                 imageSRC={picItem.urls.small}
                 onClick={() => this.handleSetActivePhoto(picItem)}
               />
             ))
-          }
+          ) : (
+            <span className="empty-history">{`You haven't set any wallpaper yet`}</span>
+          )}
         </div>
       </Style>
     );

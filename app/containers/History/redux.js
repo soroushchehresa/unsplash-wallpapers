@@ -31,7 +31,8 @@ export default (state = initialState, action = {}) => {
 
 export const getPhoto = () => (dispatch, getState, api) => {
   dispatch({ type: GET_PHOTO });
-  api.get('photos/random?collections=1065396')
-    .then((response) => dispatch({ type: GET_PHOTO_SUCCESS, data: response }))
-    .catch((error) => dispatch({ type: GET_PHOTO_FAIL, data: error }));
+  api
+    .get('photos/random?collections=1065396')
+    .then(response => dispatch({ type: GET_PHOTO_SUCCESS, data: response }))
+    .catch(error => dispatch({ type: GET_PHOTO_FAIL, data: error }));
 };
