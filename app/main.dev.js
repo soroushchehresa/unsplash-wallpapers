@@ -37,6 +37,8 @@ app.on('ready', () => {
     }
   };
 
+  tray.on('right-click', toggleWindow);
+  tray.on('double-click', toggleWindow);
   tray.on('click', event => {
     toggleWindow();
 
@@ -51,7 +53,12 @@ app.on('ready', () => {
     show: false,
     frame: false,
     resizable: false,
-    skipTaskbar: true
+    skipTaskbar: true,
+    fullscreenable: false,
+    transparent: true,
+    webPreferences: {
+      backgroundThrottling: false
+    }
   });
 
   window.loadURL(`file://${__dirname}/app.html`);
