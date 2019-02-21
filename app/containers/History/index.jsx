@@ -8,7 +8,7 @@ import { withRouter } from 'react-router';
 import { setPhoto } from 'app/containers/Main/redux';
 import Navbar from 'app/components/Navbar';
 import PhotoItem from './components/PhotoItem';
-import Style from './style';
+import StyledHistory from './style';
 
 type Props = {
   history: any,
@@ -54,7 +54,7 @@ class Main extends Component<Props, State> {
   render() {
     const { pictures } = this.state;
     return (
-      <Style>
+      <StyledHistory>
         <Navbar />
         <div className="pictures-wrapper">
           {pictures.length > 0 ? (
@@ -69,7 +69,7 @@ class Main extends Component<Props, State> {
             <span className="empty-history">{`You haven't set any wallpaper yet`}</span>
           )}
         </div>
-      </Style>
+      </StyledHistory>
     );
   }
 }

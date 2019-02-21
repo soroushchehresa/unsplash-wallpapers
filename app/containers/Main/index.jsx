@@ -11,7 +11,7 @@ import storage from 'electron-json-storage';
 import wallpaper from 'wallpaper';
 import Navbar from 'app/components/Navbar';
 import Loading from 'app/components/Loading';
-import Style from './style';
+import StyledMain from './style';
 import { getPhoto } from './redux';
 
 type Props = {
@@ -135,7 +135,7 @@ class Main extends Component<Props, State> {
     const { getPhotoLoading, getPhoto, photoData } = this.props;
     const { setWallpaperLoading, downloadLoading } = this.state;
     return (
-      <Style>
+      <StyledMain>
         <Navbar />
         <div
           className={`photoWrapper${
@@ -186,7 +186,7 @@ class Main extends Component<Props, State> {
             {downloadLoading && <Loading color="#666" size="10px" />}
           </button>
         </div>
-      </Style>
+      </StyledMain>
     );
   }
 }

@@ -8,7 +8,7 @@ export default styled.div`
     &.disabled {
       pointer-events: none;
     }
-    cursor: pointer;
+    cursor: default;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ export default styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      cursor: pointer;
+      cursor: default;
       width: 50px;
       height: 45px;
       border-radius: 5px;
@@ -60,6 +60,7 @@ export default styled.div`
     height: 40px;
     padding: 0 20px;
     > .autor {
+      cursor: default;
       font-size: 12px;
       color: #333;
       > span {

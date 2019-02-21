@@ -41,7 +41,7 @@ export default styled.div`
         background: #ccc;
       }
       > i {
-        cursor: pointer;
+        cursor: default;
         font-size: 16px;
         color: #666;
       }

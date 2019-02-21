@@ -16,7 +16,7 @@ button {
   background: transparent;
   border: none;
   outline: none;
-  cursor: pointer;
+  cursor: default;
 }
 
 a {

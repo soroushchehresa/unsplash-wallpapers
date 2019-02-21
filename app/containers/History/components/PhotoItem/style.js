@@ -7,5 +7,5 @@ export default styled.img`
   object-fit: cover;
   background-color: rgba(255, 255, 255, 0.4);
   float: left;
-  cursor: pointer;
+  cursor: default;
 `;
