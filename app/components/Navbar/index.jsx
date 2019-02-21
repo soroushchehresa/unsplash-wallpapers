@@ -30,13 +30,13 @@ export default withRouter(({ history, location }) => {
         >
           <i className="fa fa-history" />
         </button>
-        {/*<button
+        <button
           type="button"
-          onClick={() => handleChangePage('/setting')}
-          className={location.pathname === '/setting' ? 'active' : ''}
+          onClick={() => handleChangePage('/settings')}
+          className={location.pathname === '/settings' ? 'active' : ''}
         >
           <i className="fa fa-gear" />
-        </button>*/}
+        </button>
       </div>
     </Styles>
   );
