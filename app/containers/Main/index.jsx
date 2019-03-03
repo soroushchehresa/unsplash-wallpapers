@@ -69,7 +69,7 @@ class Main extends Component<Props, State> {
         });
       }
       if (hasPicture) {
-        this.setWallpaper(picturePath, photoData, pictures);
+        this.setWallpaper(picturePath, photoData, pictures, hasPicture);
       } else {
         axios
           .get(photoData.getIn(['urls', 'full']), {
@@ -81,21 +81,23 @@ class Main extends Component<Props, State> {
               'binary'
             ).toString('base64');
             fs.writeFile(picturePath, base64Image, 'base64', () => {
-              this.setWallpaper(picturePath, photoData, pictures);
+              this.setWallpaper(picturePath, photoData, pictures, hasPicture);
             });
           });
       }
     });
   }
 
-  setWallpaper(picturePath: string, photoData: any, pictures: any) {
+  setWallpaper(picturePath: string, photoData: any, pictures: any, hasPicture: boolean) {
     wallpaper
       .set(picturePath, { scale: 'stretch' })
       .then(() => {
         if (pictures.list && pictures.list.length > 0) {
-          storage.set('pictures', {
-            list: [...pictures.list, photoData.toJS()]
-          });
+          if (!hasPicture) {
+            storage.set('pictures', {
+              list: [photoData.toJS(), ...pictures.list]
+            });
+          }
         } else {
           storage.set('pictures', { list: [photoData.toJS()] });
         }
@@ -109,26 +111,27 @@ class Main extends Component<Props, State> {
   handleDownload(url: string) {
     const { photoData } = this.props;
     this.setState({ downloadLoading: true });
-    axios.get(url, { responseType: 'arraybuffer' }).then(response => {
-      const base64Image = new Buffer.from(response.data, 'binary').toString(
-        'base64'
-      );
-      let picturePath = path.join(
-        os.homedir(),
-        '/Downloads',
-        `unsplash-${photoData.get('id')}.png`
-      );
-      picturePath = path.normalize(picturePath);
-      fs.writeFile(picturePath, base64Image, 'base64', () => {
-        this.setState({
-          downloadLoading: false
-        });
-        new Notification('Download Completed!', {
-          body: `Image saved in "${os.homedir()}/Downloads"`,
-          icon: path.join(__dirname, '../resources/icons/64x64.png')
+    axios.get(url, { responseType: 'arraybuffer' })
+      .then(response => {
+        const base64Image = new Buffer.from(response.data, 'binary').toString(
+          'base64'
+        );
+        let picturePath = path.join(
+          os.homedir(),
+          '/Downloads',
+          `unsplash-${photoData.get('id')}.png`
+        );
+        picturePath = path.normalize(picturePath);
+        fs.writeFile(picturePath, base64Image, 'base64', () => {
+          this.setState({
+            downloadLoading: false
+          });
+          new Notification('Download Completed!', {
+            body: `Image saved in "${os.homedir()}/Downloads"`,
+            icon: path.join(__dirname, '../resources/icons/64x64.png')
+          });
         });
       });
-    });
   }
 
   render() {
@@ -140,7 +143,7 @@ class Main extends Component<Props, State> {
         <div
           className={`photoWrapper${
             getPhotoLoading || setWallpaperLoading ? ' disabled' : ''
-          }`}
+            }`}
           style={{
             backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
             backgroundColor: photoData.get('color')
@@ -170,7 +173,7 @@ class Main extends Component<Props, State> {
               photoData.getIn(['user', 'last_name'])
                 ? photoData.getIn(['user', 'last_name'])
                 : ''
-            }`}</span>
+              }`}</span>
           </a>
           <button
             onClick={() =>
@@ -180,7 +183,7 @@ class Main extends Component<Props, State> {
               getPhotoLoading || setWallpaperLoading || downloadLoading
                 ? ' disabled'
                 : ''
-            }`}
+              }`}
           >
             Download
             {downloadLoading && <Loading color="#666" size="10px" />}
