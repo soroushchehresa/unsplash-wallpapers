@@ -22,7 +22,7 @@ A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers 
 
 ### Development:
 
-First, place your Unsplash API token in `.env` file instead of `your_token`:
+First, replace `your_token` with your [Unsplash API token](https://unsplash.com/developers) in the `.env` file:
 ```sh
 UNSPLASH_API_TOKEN=your_token
 ```
