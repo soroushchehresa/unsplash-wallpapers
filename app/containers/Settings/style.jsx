@@ -6,7 +6,7 @@ export default styled.div`
     justify-content: center;
     .quit {
       position: absolute;
-      top: 60px;
+      top: 100px;
       background: #ccc;
       font-size: 13px;
       padding: 5px 20px;
@@ -22,5 +22,10 @@ export default styled.div`
       color: #999;
       cursor: default;
     }
+  }
+  .run-at-startup {
+    user-select: none;
+    margin: 20px 0;
+    display: block;
   }
 `;

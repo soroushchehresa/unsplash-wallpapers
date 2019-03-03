@@ -2,6 +2,7 @@
 
 const { app, BrowserWindow, Tray, shell } = require('electron');
 const path = require('path');
+const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
 
 app.dock.hide();
@@ -85,19 +86,15 @@ app.on('ready', () => {
   });
 });
 
-const minecraftAutoLauncher = new AutoLaunch({
-  name: 'Unsplash Wallpapers',
-  path: '/Applications/Unsplash Wallpapers.app' // eslint-disable-line
+storage.has('isRunAtStartup', function(error, hasKey) {
+  if (error) throw error;
+
+  if (hasKey) {
+    storage.set('isRunAtStartup', true);
+    const minecraftAutoLauncher = new AutoLaunch({
+      name: 'Unsplash Wallpapers',
+      path: '/Applications/Unsplash Wallpapers.app' // eslint-disable-line
+    });
+    minecraftAutoLauncher.enable();
+  }
 });
-minecraftAutoLauncher.enable();
-minecraftAutoLauncher
-  .isEnabled()
-  .then(isEnabled => {
-    if (!isEnabled) {
-      return minecraftAutoLauncher.enable();
-    }
-    return null;
-  })
-  .catch(err => {
-    console.log(err);
-  });
