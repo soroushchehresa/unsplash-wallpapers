@@ -57,17 +57,13 @@ class Main extends Component<Props, State> {
       <StyledHistory>
         <Navbar />
         <div className="pictures-wrapper">
-          {pictures.length > 0 ? (
-            pictures.map(picItem => (
-              <PhotoItem
-                key={picItem.id}
-                imageSRC={picItem.urls.small}
-                onClick={() => this.handleSetActivePhoto(picItem)}
-              />
-            ))
-          ) : (
-            <span className="empty-history">{`You haven't set any wallpaper yet`}</span>
-          )}
+          {pictures.length > 0 ?
+            pictures.map(picItem => <PhotoItem
+              key={picItem.id}
+              imageSRC={picItem.urls.small}
+              onClick={() => this.handleSetActivePhoto(picItem)}
+            />)
+            : <span className="empty-history">You haven't set any wallpaper yet</span>}
         </div>
       </StyledHistory>
     );

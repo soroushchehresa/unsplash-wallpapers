@@ -13,6 +13,7 @@ export default styled.div`
       height: 320px;
       align-items: center;
       justify-content: center;
+      color: #999;
     }
   }
 `;
