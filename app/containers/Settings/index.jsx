@@ -2,30 +2,30 @@ import React, { Component } from 'react';
 import { remote } from 'electron';
 import storage from 'electron-json-storage';
 import Navbar from 'app/components/Navbar';
-import StyledSettings from './style';
 import AutoLaunch from 'auto-launch';
+import StyledSettings from './style';
 
 export default class Settings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isRunAtStartup: false,
+      isRunAtStartup: false
     };
   }
 
   componentDidMount() {
     storage.get('isRunAtStartup', (error, status) => {
       this.setState({
-        isRunAtStartup: status,
+        isRunAtStartup: status
       });
     });
   }
 
-  handleQuit = () => (remote.getCurrentWindow()).close();
+  handleQuit = () => remote.getCurrentWindow().close();
 
   handleRunInStartup = ({ target: { checked } }) => {
     this.setState({
-      isRunAtStartup: checked,
+      isRunAtStartup: checked
     });
     storage.set('isRunAtStartup', checked);
     const minecraftAutoLauncher = new AutoLaunch({
@@ -37,7 +37,7 @@ export default class Settings extends Component {
     } else {
       minecraftAutoLauncher.disable();
     }
-  }
+  };
 
   render() {
     const { isRunAtStartup } = this.state;
@@ -45,14 +45,22 @@ export default class Settings extends Component {
       <StyledSettings>
         <Navbar />
         <div className="container">
-          <button onClick={this.handleQuit} className="quit">Quit Unsplash Wallpapers</button>
-          <p className="version">verion: {require('../../../package').version}</p>
+          <button onClick={this.handleQuit} className="quit">
+            Quit Unsplash Wallpapers
+          </button>
+          <p className="version">
+            verion: {require('../../../package').version}
+          </p>
           <label className="run-at-startup">
-            <input type="checkbox" onChange={this.handleRunInStartup} checked={isRunAtStartup} />
+            <input
+              type="checkbox"
+              onChange={this.handleRunInStartup}
+              checked={isRunAtStartup}
+            />
             Run at startup
           </label>
         </div>
       </StyledSettings>
     );
   }
-};
+}

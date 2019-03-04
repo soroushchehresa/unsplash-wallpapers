@@ -89,7 +89,7 @@ app.on('ready', () => {
 storage.has('isRunAtStartup', function(error, hasKey) {
   if (error) throw error;
 
-  if (hasKey) {
+  if (!hasKey) {
     storage.set('isRunAtStartup', true);
     const minecraftAutoLauncher = new AutoLaunch({
       name: 'Unsplash Wallpapers',
