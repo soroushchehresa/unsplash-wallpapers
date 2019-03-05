@@ -5,18 +5,20 @@ import storage from 'electron-json-storage';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 import { withRouter } from 'react-router';
+import wallpaper from 'wallpaper';
 import { setPhoto } from 'app/containers/Main/redux';
 import Navbar from 'app/components/Navbar';
 import PhotoItem from './components/PhotoItem';
 import StyledHistory from './style';
 
 type Props = {
-  history: any,
-  setPhoto: () => void
+  history : any,
+  setPhoto : () => void
 };
 
 type State = {
-  pictures: Array
+  pictures : Array,
+  currentWallpaper : string,
 };
 
 @connect(
@@ -26,15 +28,20 @@ type State = {
 @withRouter
 @autobind
 class Main extends Component<Props, State> {
-  constructor(props: any) {
+  constructor(props : any) {
     super(props);
     this.state = {
-      pictures: []
+      pictures: [],
+      currentWallpaper: ''
     };
   }
 
   componentDidMount() {
     this.getLocalPhotos();
+    wallpaper.get()
+      .then((path) => {
+        this.setState({ currentWallpaper: path });
+      });
   }
 
   getLocalPhotos() {
@@ -45,14 +52,14 @@ class Main extends Component<Props, State> {
     });
   }
 
-  handleSetActivePhoto(photoData: any) {
+  handleSetActivePhoto(photoData : any) {
     const { setPhoto, history } = this.props;
     setPhoto(photoData);
     history.push('/');
   }
 
   render() {
-    const { pictures } = this.state;
+    const { pictures, currentWallpaper } = this.state;
     return (
       <StyledHistory>
         <Navbar />
@@ -62,8 +69,9 @@ class Main extends Component<Props, State> {
               key={picItem.id}
               imageSRC={picItem.urls.small}
               onClick={() => this.handleSetActivePhoto(picItem)}
+              active={currentWallpaper === picItem.path}
             />)
-            : <span className="empty-history">You haven't set any wallpaper yet</span>}
+            : <p className="empty-history">You haven't set any wallpaper yet</p>}
         </div>
       </StyledHistory>
     );
