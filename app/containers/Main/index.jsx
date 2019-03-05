@@ -15,14 +15,14 @@ import StyledMain from './style';
 import { getPhoto } from './redux';
 
 type Props = {
-  getPhotoLoading: boolean,
-  photoData: any,
-  getPhoto: () => void
+  getPhoto : () => void,
+  getPhotoLoading : boolean,
+  photoData : any,
 };
 
 type State = {
-  setWallpaperLoading: boolean,
-  downloadLoading: boolean
+  setWallpaperLoading : boolean,
+  downloadLoading : boolean
 };
 
 @connect(
@@ -34,7 +34,7 @@ type State = {
 )
 @autobind
 class Main extends Component<Props, State> {
-  constructor(props: any) {
+  constructor(props : any) {
     super(props);
     this.state = {
       setWallpaperLoading: false,
@@ -88,18 +88,15 @@ class Main extends Component<Props, State> {
     });
   }
 
-  setWallpaper(picturePath: string, photoData: any, pictures: any, hasPicture: boolean) {
-    wallpaper
-      .set(picturePath, { scale: 'stretch' })
+  setWallpaper(picturePath : string, photoData : any, pictures : any, hasPicture : boolean) {
+    wallpaper.set(picturePath, { scale: 'stretch' })
       .then(() => {
         if (pictures.list && pictures.list.length > 0) {
           if (!hasPicture) {
-            storage.set('pictures', {
-              list: [photoData.toJS(), ...pictures.list]
-            });
+            storage.set('pictures', { list: [{ ...photoData.toJS(), path: picturePath }, ...pictures.list] });
           }
         } else {
-          storage.set('pictures', { list: [photoData.toJS()] });
+          storage.set('pictures', { list: [{ ...photoData.toJS(), path: picturePath }] });
         }
         this.setState({ setWallpaperLoading: false });
       })
@@ -108,7 +105,7 @@ class Main extends Component<Props, State> {
       });
   }
 
-  handleDownload(url: string) {
+  handleDownload(url : string) {
     const { photoData } = this.props;
     this.setState({ downloadLoading: true });
     axios.get(url, { responseType: 'arraybuffer' })

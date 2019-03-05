@@ -16,7 +16,7 @@ export default styled.div`
       position: absolute;
       bottom: 50px;
       background: #ccc;
-      font-size: 13px;
+      font-size: 12px;
       padding: 5px 20px;
       margin: auto;
       border-radius: 4px;

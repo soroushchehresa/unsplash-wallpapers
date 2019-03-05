@@ -43,6 +43,4 @@ export const getPhoto = () => (dispatch, getState, api) => {
     .catch(error => dispatch({ type: GET_PHOTO_FAIL, data: error }));
 };
 
-export const setPhoto = data => dispatch => {
-  dispatch({ type: SET_PHOTO, data });
-};
+export const setPhoto = data => dispatch => dispatch({ type: SET_PHOTO, data });
