@@ -4,9 +4,17 @@ export default styled.div`
   .container {
     display: flex;
     justify-content: center;
+    .run-at-startup {
+      user-select: none;
+      margin: 20px 0;
+      display: block;
+      input {
+        margin-left: 5px;
+      }
+    }
     .quit {
       position: absolute;
-      top: 100px;
+      bottom: 50px;
       background: #ccc;
       font-size: 13px;
       padding: 5px 20px;
@@ -22,10 +30,5 @@ export default styled.div`
       color: #999;
       cursor: default;
     }
-  }
-  .run-at-startup {
-    user-select: none;
-    margin: 20px 0;
-    display: block;
   }
 `;

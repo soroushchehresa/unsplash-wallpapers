@@ -21,7 +21,8 @@ export default class Settings extends Component {
     });
   }
 
-  handleQuit = () => remote.getCurrentWindow().close();
+  handleQuit = () => remote.getCurrentWindow()
+    .close();
 
   handleRunInStartup = ({ target: { checked } }) => {
     this.setState({
@@ -45,20 +46,20 @@ export default class Settings extends Component {
       <StyledSettings>
         <Navbar />
         <div className="container">
+          <label className="run-at-startup">
+            Run at startup
+            <input
+              type="checkbox"
+              onChange={this.handleRunInStartup}
+              checked={isRunAtStartup}
+            />
+          </label>
           <button onClick={this.handleQuit} className="quit">
             Quit Unsplash Wallpapers
           </button>
           <p className="version">
             verion: {require('../../../package').version}
           </p>
-          <label className="run-at-startup">
-            <input
-              type="checkbox"
-              onChange={this.handleRunInStartup}
-              checked={isRunAtStartup}
-            />
-            Run at startup
-          </label>
         </div>
       </StyledSettings>
     );
