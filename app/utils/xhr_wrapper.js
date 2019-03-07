@@ -60,7 +60,7 @@ class Client {
   async getHeaderDataDecoration() {
     return {
       headers: {
-        authorization: `Client-ID ${process.env.UNSPLASH_CLIENT_ID}`
+        authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
       }
     };
   }

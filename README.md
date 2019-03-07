@@ -24,9 +24,9 @@ Mac             |  Windows
 
 ### Development:
 
-First, place your [Unsplash client ID](https://unsplash.com/documentation#authorization) in the `.env` file:
+First, place your [Unsplash access key](https://unsplash.com/developers) in the `.env`:
 ```sh
-UNSPLASH_CLIENT_ID=your_client_id
+UNSPLASH_ACCESS_KEY=your_access_key
 ```
 
 Then, run one of the following commands:
