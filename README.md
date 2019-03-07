@@ -3,7 +3,7 @@ A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers 
 
 Mac             |  Windows
 :--------------------------------------:|:------------------------------------------:
-![mac](http://i.imgur.com/9rrYq3J.gif)  |  ![windows](http://i.imgur.com/dx2QhyD.gif)
+<img src="http://i.imgur.com/9rrYq3J.gif" width="500px" />  |  <img src="http://i.imgur.com/dx2QhyD.gif" width="500px" />
 
 ### This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
