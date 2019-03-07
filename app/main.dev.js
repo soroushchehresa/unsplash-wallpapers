@@ -96,6 +96,10 @@ app.on('ready', () => {
   });
 });
 
+app.on('window-all-closed', () => {
+  app.quit();
+});
+
 storage.has('isRunAtStartup', (error, hasKey) => {
   if (error) {
     throw error;

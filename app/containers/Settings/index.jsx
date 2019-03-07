@@ -21,8 +21,7 @@ export default class Settings extends Component {
     });
   }
 
-  handleQuit = () => remote.getCurrentWindow()
-    .close();
+  handleQuit = () => remote.getCurrentWindow().close();
 
   handleRunInStartup = ({ target: { checked } }) => {
     this.setState({
