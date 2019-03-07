@@ -1,11 +1,9 @@
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
+     
+![demo](http://i.imgur.com/9rrYq3J.gif)
 
-Mac             |  Windows
-:--------------------------------------:|:------------------------------------------:
-![mac](http://i.imgur.com/9rrYq3J.gif)  |  ![windows](http://i.imgur.com/dx2QhyD.gif)
-
-### This project implemented by the following technologies:
+### This project implemented using the following technologies:
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
@@ -24,9 +22,9 @@ Mac             |  Windows
 
 ### Development:
 
-First, place your [Unsplash client ID](https://unsplash.com/documentation#authorization) in the `.env` file:
+First, replace `your_token` with your [Unsplash API token](https://unsplash.com/developers) in the `.env` file:
 ```sh
-UNSPLASH_CLIENT_ID=your_client_id
+UNSPLASH_API_TOKEN=your_token
 ```
 
 Then, run one of the following commands:
