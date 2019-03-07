@@ -165,12 +165,17 @@ class Main extends Component<Props, State> {
         </button>
         <div className="bottomWrapper">
           <a className="autor" href={photoData.getIn(['links', 'html'])}>
-            By{' '}
-            <span>{`${photoData.getIn(['user', 'first_name'])} ${
-              photoData.getIn(['user', 'last_name'])
-                ? photoData.getIn(['user', 'last_name'])
-                : ''
-              }`}</span>
+            By
+            <span>
+              {
+                photoData.size > 0 ? `${photoData.getIn(['user', 'first_name'])} ${
+                  photoData.getIn(['user', 'last_name'])
+                    ? photoData.getIn(['user', 'last_name'])
+                    : ''
+                  }` : '.......'
+              }
+            </span>
+
           </a>
           <button
             onClick={() =>

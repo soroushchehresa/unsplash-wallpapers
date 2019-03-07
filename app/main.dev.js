@@ -1,11 +1,16 @@
-// @flow /*
+// @flow
 
 const { app, BrowserWindow, Tray, shell } = require('electron');
 const path = require('path');
 const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
 
-app.dock.hide();
+const width = 375;
+const height = 372;
+
+if (process.platform === 'darwin') {
+  app.dock.hide();
+}
 
 app.on('ready', () => {
   const tray = new Tray(
@@ -20,11 +25,16 @@ app.on('ready', () => {
     if (process.platform === 'darwin') {
       x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
       y = Math.round(trayPos.y + trayPos.height);
+    } else if (process.platform === 'win32') {
+      const { screen } = require('electron'); // eslint-disable-line
+      const primaryDisplay = screen.getPrimaryDisplay();
+      const { width: screenWidth, height: screenHeight } = primaryDisplay.size;
+      x = screenWidth - width - 10;
+      y = screenHeight - height - 40;
     } else {
       x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
       y = Math.round(trayPos.y + trayPos.height * 10);
     }
-
     window.setPosition(x, y, false);
     window.show();
     window.focus();
@@ -49,8 +59,8 @@ app.on('ready', () => {
   });
 
   window = new BrowserWindow({
-    width: 375,
-    height: 372,
+    width,
+    height,
     show: false,
     frame: false,
     resizable: false,
@@ -86,9 +96,10 @@ app.on('ready', () => {
   });
 });
 
-storage.has('isRunAtStartup', function(error, hasKey) {
-  if (error) throw error;
-
+storage.has('isRunAtStartup', (error, hasKey) => {
+  if (error) {
+    throw error;
+  }
   if (!hasKey) {
     storage.set('isRunAtStartup', true);
     const minecraftAutoLauncher = new AutoLaunch({

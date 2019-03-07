@@ -65,6 +65,7 @@ export default styled.div`
       color: #333;
       > span {
         font-weight: bold;
+        margin-left: 3px;
       }
     }
     > .download {
