@@ -47,12 +47,12 @@ export default class Settings extends Component {
         <Navbar />
         <div className="container">
           <label className="run-at-startup">
-            Run at startup
             <input
               type="checkbox"
               onChange={this.handleRunInStartup}
               checked={isRunAtStartup}
             />
+            Run at startup
           </label>
           <button onClick={this.handleQuit} className="quit">
             Quit Unsplash Wallpapers

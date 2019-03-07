@@ -9,7 +9,7 @@ export default styled.div`
       margin: 20px 0;
       display: block;
       input {
-        margin-left: 5px;
+        margin-right: 5px;
       }
     }
     .quit {
