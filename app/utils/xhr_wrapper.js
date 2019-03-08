@@ -5,12 +5,14 @@ const methods = ['get', 'post', 'put', 'patch', 'del', 'head'];
 
 class Client {
   constructor() {
-    methods.forEach(method => (this[method] = this.requestWrapper(method)));
+    methods.forEach(method => {
+      this[method] = Client.requestWrapper(method);
+    });
   }
 
-  requestWrapper(method) {
+  static requestWrapper(method) {
     return async (url, data = null, options = {}) => {
-      const { requestURL, request } = await this.decorateRequest({
+      const { requestURL, request } = await Client.decorateRequest({
         method,
         url,
         data,
@@ -18,35 +20,24 @@ class Client {
       });
       return new Promise((resolve, reject) => {
         fetch(requestURL, request)
-          .then(response => this.checkStatus(response, resolve, reject))
-          .catch(error => this.checkStatus(error, resolve, reject))
+          .then(response => Client.checkStatus(response, resolve, reject))
+          .catch(error => Client.checkStatus(error, resolve, reject))
           .catch(reject);
       });
     };
   }
 
-  checkStatus(response, resolve, reject) {
+  static checkStatus(response, resolve, reject) {
     if (!_.get(response, ['response']) && !_.get(response, ['data'])) {
       return reject(response);
     }
-    const { status, data } = response;
-    if (status >= 200 && status < 300) {
-      return resolve(data);
-    } else if (status >= 300 && status < 400) {
-    } else if (status === 400) {
-      throw new Error('Probably is a validation error');
-    } else if (status === 403 || status === 401) {
-      resolve(data);
-    } else if (status === 404) {
-      throw new Error('Not Found');
-    } else if (status >= 500) {
-      throw new Error('Server error');
-    }
+    const status = response.status || response.response.status;
+    return (status >= 200 && status < 300) ? resolve(response) : resolve(response.response);
   }
 
-  async decorateRequest({ method, url, options }) {
+  static async decorateRequest({ method, url, options }) {
     const requestURL = `https://api.unsplash.com/${url}`;
-    const requestHeadersDataDecoration = await this.getHeaderDataDecoration();
+    const requestHeadersDataDecoration = await Client.getHeaderDataDecoration();
     return {
       request: {
         ...options,
@@ -57,7 +48,7 @@ class Client {
     };
   }
 
-  async getHeaderDataDecoration() {
+  static async getHeaderDataDecoration() {
     return {
       headers: {
         authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`

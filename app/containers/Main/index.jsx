@@ -7,37 +7,36 @@ import axios from 'axios';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
-import storage from 'electron-json-storage';
-import wallpaper from 'wallpaper';
 import Navbar from 'app/components/Navbar';
 import Loading from 'app/components/Loading';
 import StyledMain from './style';
-import { getPhoto } from './redux';
+import { getPhoto, setWallpaper } from './redux';
 
 type Props = {
   getPhoto : () => void,
+  setWallpaper : () => void,
   getPhotoLoading : boolean,
   photoData : any,
+  setWallpaperLoading : boolean,
 };
 
 type State = {
-  setWallpaperLoading : boolean,
   downloadLoading : boolean
 };
 
 @connect(
   state => ({
+    setWallpaperLoading: state.getIn(['Main', 'setWallpaperLoading']),
     getPhotoLoading: state.getIn(['Main', 'getPhotoLoading']),
     photoData: state.getIn(['Main', 'photoData'])
   }),
-  { getPhoto }
+  { getPhoto, setWallpaper }
 )
 @autobind
 class Main extends Component<Props, State> {
   constructor(props : any) {
     super(props);
     this.state = {
-      setWallpaperLoading: false,
       downloadLoading: false,
       downloadComplete: false
     };
@@ -48,61 +47,6 @@ class Main extends Component<Props, State> {
     if (photoData.size === 0) {
       getPhoto();
     }
-  }
-
-  handleSetWallpaper() {
-    const { photoData } = this.props;
-    this.setState({ setWallpaperLoading: true });
-    storage.get('pictures', (error, pictures) => {
-      let hasPicture = false;
-      let picturePath = path.join(
-        os.homedir(),
-        '/Pictures',
-        `unsplash-${photoData.get('id')}.png`
-      );
-      picturePath = path.normalize(picturePath);
-      if (pictures.list && pictures.list.length > 0) {
-        pictures.list.forEach(picItem => {
-          if (picItem.id === photoData.get('id')) {
-            hasPicture = true;
-          }
-        });
-      }
-      if (hasPicture) {
-        this.setWallpaper(picturePath, photoData, pictures, hasPicture);
-      } else {
-        axios
-          .get(photoData.getIn(['urls', 'full']), {
-            responseType: 'arraybuffer'
-          })
-          .then(response => {
-            const base64Image = new Buffer.from(
-              response.data,
-              'binary'
-            ).toString('base64');
-            fs.writeFile(picturePath, base64Image, 'base64', () => {
-              this.setWallpaper(picturePath, photoData, pictures, hasPicture);
-            });
-          });
-      }
-    });
-  }
-
-  setWallpaper(picturePath : string, photoData : any, pictures : any, hasPicture : boolean) {
-    wallpaper.set(picturePath, { scale: 'stretch' })
-      .then(() => {
-        if (pictures.list && pictures.list.length > 0) {
-          if (!hasPicture) {
-            storage.set('pictures', { list: [{ ...photoData.toJS(), path: picturePath }, ...pictures.list] });
-          }
-        } else {
-          storage.set('pictures', { list: [{ ...photoData.toJS(), path: picturePath }] });
-        }
-        this.setState({ setWallpaperLoading: false });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   handleDownload(url : string) {
@@ -132,8 +76,8 @@ class Main extends Component<Props, State> {
   }
 
   render() {
-    const { getPhotoLoading, getPhoto, photoData } = this.props;
-    const { setWallpaperLoading, downloadLoading } = this.state;
+    const { getPhotoLoading, getPhoto, photoData, setWallpaper, setWallpaperLoading } = this.props;
+    const { downloadLoading } = this.state;
     return (
       <StyledMain>
         <Navbar />
@@ -158,7 +102,7 @@ class Main extends Component<Props, State> {
         <button
           className="setWallpaperButton"
           disabled={getPhotoLoading || setWallpaperLoading}
-          onClick={this.handleSetWallpaper}
+          onClick={setWallpaper}
         >
           <span>Set as Wallpaper</span>
           {setWallpaperLoading && <Loading color="#666" size="14px" />}
@@ -172,7 +116,7 @@ class Main extends Component<Props, State> {
                   photoData.getIn(['user', 'last_name'])
                     ? photoData.getIn(['user', 'last_name'])
                     : ''
-                  }` : '.......'
+                  }` : '-------'
               }
             </span>
 
