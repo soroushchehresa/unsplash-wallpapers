@@ -1,4 +1,4 @@
-// @Flow
+// @flow
 
 import { fork, all, put, takeLatest, select } from 'redux-saga/effects';
 import axios from 'axios';
@@ -9,7 +9,7 @@ import os from 'os';
 import util from 'util';
 import path from 'path';
 import API from 'app/utils/xhr_wrapper';
-import { GET_PHOTO, GET_PHOTO_SUCCESS, GET_PHOTO_FAIL, SET_WALLPAPER, SET_WALLPAPER_FAIL, SET_WALLPAPER_SUCCESS } from './redux';
+import { GET_PHOTO, GET_PHOTO_SUCCESS, GET_PHOTO_FAIL, SET_WALLPAPER, SET_WALLPAPER_SUCCESS } from './redux';
 
 function* getPhoto() {
   yield takeLatest(GET_PHOTO, function* () {

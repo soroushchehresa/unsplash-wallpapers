@@ -2,11 +2,17 @@
 
 import React from 'react';
 import { withRouter } from 'react-router';
+import type { history as historyType } from 'history';
 import logo from './assets/logo.png';
 import Styles from './styles';
 
-export default withRouter(({ history, location }) => {
-  const handleChangePage = (path: string) => {
+type Props = {
+  history : historyType,
+  location : Object,
+};
+
+export default withRouter(({ history, location } : Props) => {
+  const handleChangePage = (path : string) => {
     if (location.pathname === path) {
       history.push('/');
     } else {

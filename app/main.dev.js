@@ -1,6 +1,11 @@
 // @flow
 
-const { app, BrowserWindow, Tray, shell } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  shell,
+} = require('electron');
 const path = require('path');
 const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
@@ -14,7 +19,7 @@ if (process.platform === 'darwin') {
 
 app.on('ready', () => {
   const tray = new Tray(
-    path.join(__dirname, '../resources/menu-icons/iconTemplate.png')
+    path.join(__dirname, '../resources/menu-icons/iconTemplate.png'),
   );
   let window = null;
   const showWindow = () => {
@@ -50,7 +55,7 @@ app.on('ready', () => {
 
   tray.on('right-click', toggleWindow);
   tray.on('double-click', toggleWindow);
-  tray.on('click', event => {
+  tray.on('click', (event) => {
     toggleWindow();
 
     if (window.isVisible() && process.defaultApp && event.metaKey) {
@@ -68,8 +73,8 @@ app.on('ready', () => {
     fullscreenable: false,
     transparent: true,
     webPreferences: {
-      backgroundThrottling: false
-    }
+      backgroundThrottling: false,
+    },
   });
 
   window.loadURL(`file://${__dirname}/app.html`);
@@ -108,7 +113,7 @@ storage.has('isRunAtStartup', (error, hasKey) => {
     storage.set('isRunAtStartup', true);
     const minecraftAutoLauncher = new AutoLaunch({
       name: 'Unsplash Wallpapers',
-      path: '/Applications/Unsplash Wallpapers.app' // eslint-disable-line
+      path: '/Applications/Unsplash Wallpapers.app', // eslint-disable-line
     });
     minecraftAutoLauncher.enable();
   }

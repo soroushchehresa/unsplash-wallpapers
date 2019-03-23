@@ -5,7 +5,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del', 'head'];
 
 class Client {
   constructor() {
-    methods.forEach(method => {
+    methods.forEach((method) => {
       this[method] = Client.requestWrapper(method);
     });
   }
@@ -16,7 +16,7 @@ class Client {
         method,
         url,
         data,
-        options
+        options,
       });
       return new Promise((resolve, reject) => {
         fetch(requestURL, request)
@@ -42,17 +42,17 @@ class Client {
       request: {
         ...options,
         ...requestHeadersDataDecoration,
-        method
+        method,
       },
-      requestURL
+      requestURL,
     };
   }
 
   static async getHeaderDataDecoration() {
     return {
       headers: {
-        authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`
-      }
+        authorization: `Client-ID ${process.env.UNSPLASH_ACCESS_KEY}`,
+      },
     };
   }
 }
