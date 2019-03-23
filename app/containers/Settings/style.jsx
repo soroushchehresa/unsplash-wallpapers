@@ -4,12 +4,14 @@ import styled from 'styled-components';
 
 export default styled.div`
   .container {
+    background: #efefef;
     display: flex;
-    justify-content: center;
+    height: 100vh;
     align-items: center;
     flex-direction: column;
     padding: 0 10px;
     box-sizing: border-box;
+    top: 0;
     > h3 {
       margin: 10px 0 20px;
       font-size: 20px;

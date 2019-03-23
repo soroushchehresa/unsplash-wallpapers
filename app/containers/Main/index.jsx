@@ -87,47 +87,49 @@ class Main extends Component<Props, State> {
     return (
       <StyledMain>
         <Navbar />
-        <button
-          className={`photoWrapper${getPhotoLoading || setWallpaperLoading ? ' disabled' : ''}`}
-          style={{
-            backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
-            backgroundColor: photoData.get('color'),
-          }}
-          onClick={() => getPhotoAction(photoData.getIn(['urls', 'small']))}
-        >
-          <div className="buttonWrapper">
-            {getPhotoLoading ? (
-              <Loading color="#fff" size="16px" />
-            ) : (
-              <i className="fa fa-refresh" />
-            )}
-          </div>
-        </button>
-        <button
-          className="setWallpaperButton"
-          disabled={getPhotoLoading || setWallpaperLoading}
-          onClick={setWallpaperAction}
-        >
-          <span>Set as Wallpaper</span>
-          {setWallpaperLoading && <Loading color="#666" size="14px" />}
-        </button>
-        <div className="bottomWrapper">
-          <a className="autor" href={photoData.getIn(['links', 'html'])}>
-            By
-            <span>
-              {
-                (photoData.size > 0) ? `${photoData.getIn(['user', 'first_name'])} ${photoData.getIn(['user', 'last_name']) ? photoData.getIn(['user', 'last_name']) : ''}` : '-------'
-              }
-            </span>
-
-          </a>
+        <div className="container">
           <button
-            onClick={() => this.handleDownload(photoData.getIn(['links', 'download']))}
-            className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading ? ' disabled' : ''}`}
+            className={`photoWrapper${getPhotoLoading || setWallpaperLoading ? ' disabled' : ''}`}
+            style={{
+              backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
+              backgroundColor: photoData.get('color'),
+            }}
+            onClick={() => getPhotoAction(photoData.getIn(['urls', 'small']))}
           >
-            Download
-            {downloadLoading && <Loading color="#666" size="10px" />}
+            <div className="buttonWrapper">
+              {getPhotoLoading ? (
+                <Loading color="#fff" size="16px" />
+              ) : (
+                <i className="fa fa-refresh" />
+              )}
+            </div>
           </button>
+          <button
+            className="setWallpaperButton"
+            disabled={getPhotoLoading || setWallpaperLoading}
+            onClick={setWallpaperAction}
+          >
+            <span>Set as Wallpaper</span>
+            {setWallpaperLoading && <Loading color="#666" size="14px" />}
+          </button>
+          <div className="bottomWrapper">
+            <a className="autor" href={photoData.getIn(['links', 'html'])}>
+              By
+              <span>
+                {
+                  (photoData.size > 0) ? `${photoData.getIn(['user', 'first_name'])} ${photoData.getIn(['user', 'last_name']) ? photoData.getIn(['user', 'last_name']) : ''}` : '-------'
+                }
+              </span>
+
+            </a>
+            <button
+              onClick={() => this.handleDownload(photoData.getIn(['links', 'download']))}
+              className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading ? ' disabled' : ''}`}
+            >
+              Download
+              {downloadLoading && <Loading color="#666" size="10px" />}
+            </button>
+          </div>
         </div>
       </StyledMain>
     );

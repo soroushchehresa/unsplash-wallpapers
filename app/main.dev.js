@@ -11,7 +11,7 @@ const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
 
 const width = 375;
-const height = 372;
+const height = 385;
 
 if (process.platform === 'darwin') {
   app.dock.hide();

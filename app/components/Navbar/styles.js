@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  background: #efefef;
+  border-radius: 5px 5px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 7px 10px;
   position: relative;
+  > .arrow {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -8.5px;
+    width: 17px;
+    height: 18px;
+    background: #efefef;
+    transform: rotate(45deg);
+  }
   .logoWrapper {
     display: flex;
     flex-direction: row;

@@ -21,6 +21,7 @@ export default withRouter(({ history, location } : Props) => {
   };
   return (
     <Styles>
+      <div className="arrow" />
       <div className="logoWrapper">
         <img src={logo} alt="logo" />
         <p>
