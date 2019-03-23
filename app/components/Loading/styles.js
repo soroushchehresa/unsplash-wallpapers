@@ -1,3 +1,5 @@
+// @flow
+
 import styled from 'styled-components';
 
 export default styled.div`
@@ -8,11 +10,11 @@ export default styled.div`
   justify-content: center;
   align-items: center;
   > .spinner {
-    width: ${props => props.size};
-    height: ${props => props.size};
+    width: ${(props : Object) => props.size};
+    height: ${(props : Object) => props.size};
     border-radius: 50%;
     background-color: transparent;
-    border: 2px solid ${props => props.color};
+    border: 2px solid ${(props : Object) => props.color};
     border-top-color: rgba(255, 255, 255, 0.2);
     -webkit-animation: 1s spin linear infinite;
     animation: 1s spin linear infinite;

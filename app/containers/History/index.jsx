@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import storage from 'electron-json-storage';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
+import type { history as historyType } from 'history';
+import type { Map as MapType } from 'immutable';
 import { withRouter } from 'react-router';
 import wallpaper from 'wallpaper';
 import { setPhoto } from 'app/containers/Main/redux';
@@ -12,8 +14,8 @@ import PhotoItem from './components/PhotoItem';
 import StyledHistory from './style';
 
 type Props = {
-  history : any,
-  setPhoto : () => void
+  history : historyType,
+  setPhotoAction : () => void
 };
 
 type State = {
@@ -23,16 +25,16 @@ type State = {
 
 @connect(
   null,
-  { setPhoto }
+  { setPhotoAction: setPhoto },
 )
 @withRouter
 @autobind
 class Main extends Component<Props, State> {
-  constructor(props : any) {
+  constructor(props : Props) {
     super(props);
     this.state = {
       pictures: [],
-      currentWallpaper: ''
+      currentWallpaper: '',
     };
   }
 
@@ -52,9 +54,9 @@ class Main extends Component<Props, State> {
     });
   }
 
-  handleSetActivePhoto(photoData : any) {
-    const { setPhoto, history } = this.props;
-    setPhoto(photoData);
+  handleSetActivePhoto(photoData : MapType) {
+    const { setPhotoAction, history } = this.props;
+    setPhotoAction(photoData);
     history.push('/');
   }
 
@@ -64,18 +66,22 @@ class Main extends Component<Props, State> {
       <StyledHistory>
         <Navbar />
         {
-          pictures.length > 0 ?
-            <div className="pictures-wrapper">
-              {
-                pictures.map(picItem => <PhotoItem
-                  key={picItem.id}
-                  imageSRC={picItem.urls.small}
-                  onClick={() => this.handleSetActivePhoto(picItem)}
-                  active={currentWallpaper === picItem.path}
-                />)
-              }
-            </div> :
-            <p className="empty-history">You haven't set any wallpaper yet</p>
+          (pictures.length > 0)
+            ? (
+              <div className="pictures-wrapper">
+                {
+                  pictures.map(picItem => (
+                    <PhotoItem
+                      key={picItem.id}
+                      imageSRC={picItem.urls.small}
+                      onClick={() => this.handleSetActivePhoto(picItem)}
+                      active={currentWallpaper === picItem.path}
+                    />
+                  ))
+                }
+              </div>
+            )
+            : <p className="empty-history">You haven’t set any wallpaper yet</p>
         }
       </StyledHistory>
     );

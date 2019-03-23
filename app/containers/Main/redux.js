@@ -1,18 +1,28 @@
+// @flow
+
 import { fromJS } from 'immutable';
+import type { fromJS as fromJSType } from 'immutable';
 
-export const GET_PHOTO = 'unsplash-wallpapers/Main/GET_PHOTO';
-export const GET_PHOTO_SUCCESS = 'unsplash-wallpapers/Main/GET_PHOTO_SUCCESS';
-export const GET_PHOTO_FAIL = 'unsplash-wallpapers/Main/GET_PHOTO_FAIL';
-export const SET_PHOTO = 'unsplash-wallpapers/Main/SET_PHOTO';
-export const SET_WALLPAPER = 'unsplash-wallpapers/Main/SET_WALLPAPER';
-export const SET_WALLPAPER_SUCCESS = 'unsplash-wallpapers/Main/SET_WALLPAPER_SUCCESS';
-export const SET_WALLPAPER_FAIL = 'unsplash-wallpapers/Main/SET_WALLPAPER_FAIL';
+type InitialState = {
+  getPhotoLoading : boolean,
+  photoData : Object,
+  getPhotoFail : Object | null,
+  setWallpaperLoading : boolean,
+}
 
-const initialState = fromJS({
+export const GET_PHOTO : string = 'unsplash-wallpapers/Main/GET_PHOTO';
+export const GET_PHOTO_SUCCESS : string = 'unsplash-wallpapers/Main/GET_PHOTO_SUCCESS';
+export const GET_PHOTO_FAIL : string = 'unsplash-wallpapers/Main/GET_PHOTO_FAIL';
+export const SET_PHOTO : string = 'unsplash-wallpapers/Main/SET_PHOTO';
+export const SET_WALLPAPER : string = 'unsplash-wallpapers/Main/SET_WALLPAPER';
+export const SET_WALLPAPER_SUCCESS : string = 'unsplash-wallpapers/Main/SET_WALLPAPER_SUCCESS';
+export const SET_WALLPAPER_FAIL : string = 'unsplash-wallpapers/Main/SET_WALLPAPER_FAIL';
+
+const initialState : fromJSType<InitialState> = fromJS({
   getPhotoLoading: false,
   photoData: {},
   getPhotoFail: null,
-  setWallpaperLoading: false
+  setWallpaperLoading: false,
 });
 
 export default (state = initialState, action = {}) => {
@@ -22,16 +32,16 @@ export default (state = initialState, action = {}) => {
     case GET_PHOTO_SUCCESS:
       return state.merge({
         getPhotoLoading: false,
-        photoData: fromJS(action.data)
+        photoData: fromJS(action.data),
       });
     case GET_PHOTO_FAIL:
       return state.merge({
         getPhotoLoading: false,
-        getPhotoFail: fromJS(action.data)
+        getPhotoFail: fromJS(action.data),
       });
     case SET_PHOTO:
       return state.merge({
-        photoData: fromJS(action.data)
+        photoData: fromJS(action.data),
       });
     case SET_WALLPAPER:
       return state.set('setWallpaperLoading', true);
@@ -44,6 +54,6 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const getPhoto = () => (dispatch) => dispatch({ type: GET_PHOTO });
-export const setPhoto = data => dispatch => dispatch({ type: SET_PHOTO, data });
-export const setWallpaper = () => (dispatch) => dispatch({ type: SET_WALLPAPER });
+export const getPhoto = () => dispatch => dispatch({ type: GET_PHOTO });
+export const setPhoto = (data : Object) => dispatch => dispatch({ type: SET_PHOTO, data });
+export const setWallpaper = () => dispatch => dispatch({ type: SET_WALLPAPER });
