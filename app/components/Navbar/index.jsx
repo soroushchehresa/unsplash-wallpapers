@@ -3,6 +3,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import type { history as historyType } from 'history';
+import os from 'os';
 import logo from './assets/logo.png';
 import Styles from './styles';
 
@@ -21,7 +22,7 @@ export default withRouter(({ history, location } : Props) => {
   };
   return (
     <Styles>
-      <div className="arrow" />
+      {os.type() === 'Darwin' && <div className="arrow" />}
       <div className="logoWrapper">
         <img src={logo} alt="logo" />
         <p>
