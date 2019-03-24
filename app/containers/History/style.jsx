@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export default styled.div`
   .container {
     background: #efefef;
-    height: 100vh;
+    height: calc(100vh - 50px);
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -15,8 +15,8 @@ export default styled.div`
       top: 0;
       right: -17px;
       overflow-y: scroll;
-      height: calc(100vh - 50px);
       width: 100%;
+      height: 100%;
       text-align: center;
       padding: 0 8px;
     }
