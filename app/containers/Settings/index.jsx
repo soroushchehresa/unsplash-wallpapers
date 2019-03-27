@@ -7,20 +7,17 @@ import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 import type { Map as MapType } from 'immutable';
 import storage from 'electron-json-storage';
+import moment from 'moment';
 import Navbar from 'app/components/Navbar';
 import AutoLaunch from 'auto-launch';
 import appPackage from '../../../package';
 import StyledSettings from './style';
-import { setUpdateSchedule } from './redux';
+import { setUpdateWallpaperSchedule, setUpdateWallpaperTime } from './redux';
 
 type Props = {
-  setUpdateScheduleAction : (
-    data : {
-      pattern : string,
-      method : string,
-    },
-  ) => void,
-  updateScheduleMethod : MapType,
+  setUpdateWallpaperScheduleAction : (data : string) => void,
+  setUpdateWallpaperTimeAction : (data : string) => void,
+  updateWallpaperSchedule : MapType,
 };
 
 type State = {
@@ -29,9 +26,12 @@ type State = {
 
 @connect(
   state => ({
-    updateScheduleMethod: state.getIn(['Settings', 'updateScheduleMethod']),
+    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
   }),
-  { setUpdateScheduleAction: setUpdateSchedule },
+  {
+    setUpdateWallpaperScheduleAction: setUpdateWallpaperSchedule,
+    setUpdateWallpaperTimeAction: setUpdateWallpaperTime,
+  },
 )
 @autobind
 class Settings extends Component<Props, State> {
@@ -72,13 +72,14 @@ class Settings extends Component<Props, State> {
     }
   };
 
-  handleChangeUpdateScadule(e : SyntheticEvent<HTMLButtonElement>) {
-    const { setUpdateScheduleAction } = this.props;
-    setUpdateScheduleAction({ method: e.target.value, pattern: '' });
+  handleChangeUpdateWallpaperScadule(e : SyntheticEvent<HTMLButtonElement>) {
+    const { setUpdateWallpaperScheduleAction, setUpdateWallpaperTimeAction } = this.props;
+    setUpdateWallpaperScheduleAction(e.target.value);
+    setUpdateWallpaperTimeAction(moment());
   }
 
   render() {
-    const { updateScheduleMethod } = this.props;
+    const { updateWallpaperSchedule } = this.props;
     const { isRunAtStartup } = this.state;
     return (
       <StyledSettings>
@@ -105,8 +106,8 @@ class Settings extends Component<Props, State> {
             Update
             <select
               id="update-method"
-              onChange={this.handleChangeUpdateScadule}
-              defaultValue={updateScheduleMethod}
+              onChange={this.handleChangeUpdateWallpaperScadule}
+              defaultValue={updateWallpaperSchedule}
             >
               {
                 this.updateMethods.map((updateMethod : string) => (
