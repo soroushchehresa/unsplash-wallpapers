@@ -8,7 +8,7 @@ import type { history as historyType } from 'history';
 import type { Map as MapType } from 'immutable';
 import { withRouter } from 'react-router';
 import wallpaper from 'wallpaper';
-import { setPhoto } from 'app/containers/Main/redux';
+import { setPhoto } from 'app/containers/Home/redux';
 import Navbar from 'app/components/Navbar';
 import PhotoItem from './components/PhotoItem';
 import StyledHistory from './style';
@@ -29,7 +29,7 @@ type State = {
 )
 @withRouter
 @autobind
-class Main extends Component<Props, State> {
+class History extends Component<Props, State> {
   constructor(props : Props) {
     super(props);
     this.state = {
@@ -90,4 +90,4 @@ class Main extends Component<Props, State> {
   }
 }
 
-export default Main;
+export default History;
