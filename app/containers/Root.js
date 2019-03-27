@@ -7,7 +7,7 @@ import Routes from '../Routes';
 
 type Props = {
   store : any,
-  history : {}
+  history : {},
 };
 
 export default ({ store, history } : Props) => (

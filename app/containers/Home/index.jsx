@@ -27,14 +27,14 @@ type State = {
 
 @connect(
   state => ({
-    setWallpaperLoading: state.getIn(['Main', 'setWallpaperLoading']),
-    getPhotoLoading: state.getIn(['Main', 'getPhotoLoading']),
-    photoData: state.getIn(['Main', 'photoData']),
+    setWallpaperLoading: state.getIn(['Home', 'setWallpaperLoading']),
+    getPhotoLoading: state.getIn(['Home', 'getPhotoLoading']),
+    photoData: state.getIn(['Home', 'photoData']),
   }),
   { getPhotoAction: getPhoto, setWallpaperAction: setWallpaper },
 )
 @autobind
-class Main extends Component<Props, State> {
+class Home extends Component<Props, State> {
   constructor(props : Props) {
     super(props);
     this.state = {
@@ -136,4 +136,4 @@ class Main extends Component<Props, State> {
   }
 }
 
-export default Main;
+export default Home;

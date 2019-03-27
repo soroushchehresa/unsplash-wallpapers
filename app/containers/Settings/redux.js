@@ -4,29 +4,32 @@ import { fromJS } from 'immutable';
 import type { fromJS as fromJSType } from 'immutable';
 
 type InitialState = {
-  updateSchedulePattern : string,
-  updateScheduleMethod : string,
+  updateWallpaperDate : string,
+  updateWallpaperSchedule : string,
 };
 
-export const SET_UPDATE_SCHEDULE = 'unsplash-wallpapers/Settings/SET_UPDATE_SCHEDULE';
+export const SET_UPDATE_WALLPAPER_SCHEDULE = 'unsplash-wallpapers/Settings/SET_UPDATE_WALLPAPER_SCHEDULE';
+export const SET_UPDATE_WALLPAPER_TIME = 'unsplash-wallpapers/Settings/SET_UPDATE_WALLPAPER_TIME';
 
 const initialState : fromJSType<InitialState> = fromJS({
-  updateSchedulePattern: '',
-  updateScheduleMethod: 'Daily',
+  updateWallpaperDate: '',
+  updateWallpaperSchedule: 'Manually',
 });
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_UPDATE_SCHEDULE:
-      return state.merge({
-        updateSchedulePattern: action.data.pattern,
-        updateScheduleMethod: action.data.method,
-      });
+    case SET_UPDATE_WALLPAPER_SCHEDULE:
+      return state.set('updateWallpaperSchedule', action.data);
+    case SET_UPDATE_WALLPAPER_TIME:
+      return state.set('updateWallpaperDate', action.data);
     default:
       return state;
   }
 };
 
-export const setUpdateSchedule = (data : string) => (
-  dispatch => dispatch({ type: SET_UPDATE_SCHEDULE, data })
-);
+export const setUpdateWallpaperSchedule = (data : string) => {
+  return dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_SCHEDULE, data });
+};
+export const setUpdateWallpaperTime = (data : string) => {
+  return dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_TIME, data });
+};

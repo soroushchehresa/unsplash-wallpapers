@@ -10,13 +10,13 @@ type InitialState = {
   setWallpaperLoading : boolean,
 }
 
-export const GET_PHOTO : string = 'unsplash-wallpapers/Main/GET_PHOTO';
-export const GET_PHOTO_SUCCESS : string = 'unsplash-wallpapers/Main/GET_PHOTO_SUCCESS';
-export const GET_PHOTO_FAIL : string = 'unsplash-wallpapers/Main/GET_PHOTO_FAIL';
-export const SET_PHOTO : string = 'unsplash-wallpapers/Main/SET_PHOTO';
-export const SET_WALLPAPER : string = 'unsplash-wallpapers/Main/SET_WALLPAPER';
-export const SET_WALLPAPER_SUCCESS : string = 'unsplash-wallpapers/Main/SET_WALLPAPER_SUCCESS';
-export const SET_WALLPAPER_FAIL : string = 'unsplash-wallpapers/Main/SET_WALLPAPER_FAIL';
+export const GET_PHOTO : string = 'unsplash-wallpapers/Home/GET_PHOTO';
+export const GET_PHOTO_SUCCESS : string = 'unsplash-wallpapers/Home/GET_PHOTO_SUCCESS';
+export const GET_PHOTO_FAIL : string = 'unsplash-wallpapers/Home/GET_PHOTO_FAIL';
+export const SET_PHOTO : string = 'unsplash-wallpapers/Home/SET_PHOTO';
+export const SET_WALLPAPER : string = 'unsplash-wallpapers/Home/SET_WALLPAPER';
+export const SET_WALLPAPER_SUCCESS : string = 'unsplash-wallpapers/Home/SET_WALLPAPER_SUCCESS';
+export const SET_WALLPAPER_FAIL : string = 'unsplash-wallpapers/Home/SET_WALLPAPER_FAIL';
 
 const initialState : fromJSType<InitialState> = fromJS({
   getPhotoLoading: false,
@@ -54,6 +54,10 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const getPhoto = () => dispatch => dispatch({ type: GET_PHOTO });
+export const getPhoto = (
+  data : { setAutomaticWallpaper : boolean } = { setAutomaticWallpaper: false },
+) => (
+  dispatch => dispatch({ type: GET_PHOTO, data })
+);
 export const setPhoto = (data : Object) => dispatch => dispatch({ type: SET_PHOTO, data });
 export const setWallpaper = () => dispatch => dispatch({ type: SET_WALLPAPER });
