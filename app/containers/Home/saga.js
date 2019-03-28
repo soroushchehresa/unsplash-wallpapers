@@ -16,7 +16,7 @@ import util from 'util';
 import path from 'path';
 import moment from 'moment';
 import API from 'app/utils/xhr_wrapper';
-import { SET_UPDATE_WALLPAPER_TIME } from 'app/containers/Settings/redux';
+import { setUpdateWallpaperTime } from 'app/containers/Settings/redux';
 import {
   GET_PHOTO,
   GET_PHOTO_SUCCESS,
@@ -37,25 +37,6 @@ function* getPhoto() {
       yield put({ type: GET_PHOTO_FAIL, data: request });
     }
   });
-}
-
-function* handleSetAndStoreWallpaper(
-  picturePath : string,
-  photoData : any,
-  storedPictures : any,
-  hasPicture : boolean,
-) {
-  yield wallpaper.set(picturePath, { scale: 'stretch' });
-  yield put({ type: SET_WALLPAPER_SUCCESS });
-  yield put({ type: SET_UPDATE_WALLPAPER_TIME, data: moment() });
-  if (!hasPicture) {
-    storage.set('pictures', {
-      list: [
-        { ...photoData.toJS(), path: picturePath },
-        ...((storedPictures.list && storedPictures.list.length > 0) ? storedPictures.list : []),
-      ],
-    });
-  }
 }
 
 function* setWallpaper() {
@@ -80,9 +61,7 @@ function* setWallpaper() {
         });
       }
     });
-    if (hasPicture) {
-      yield handleSetAndStoreWallpaper(picturePath, photoData, storedPictures, hasPicture);
-    } else {
+    if (!hasPicture) {
       let base64Image = yield axios
         .get(photoData.getIn(['urls', 'full']), {
           responseType: 'arraybuffer',
@@ -92,7 +71,17 @@ function* setWallpaper() {
         'binary',
       ).toString('base64');
       yield util.promisify(fs.writeFile)(picturePath, base64Image, 'base64');
-      yield handleSetAndStoreWallpaper(picturePath, photoData, storedPictures, hasPicture);
+    }
+    yield wallpaper.set(picturePath, { scale: 'stretch' });
+    yield put({ type: SET_WALLPAPER_SUCCESS });
+    yield put(setUpdateWallpaperTime(moment().format('DD.MM.YYYY HH:mm')));
+    if (!hasPicture) {
+      storage.set('pictures', {
+        list: [
+          { ...photoData.toJS(), path: picturePath },
+          ...((storedPictures.list && storedPictures.list.length > 0) ? storedPictures.list : []),
+        ],
+      });
     }
   });
 }

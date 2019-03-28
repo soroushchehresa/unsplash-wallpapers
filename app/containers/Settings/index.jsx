@@ -75,7 +75,7 @@ class Settings extends Component<Props, State> {
   handleChangeUpdateWallpaperScadule(e : SyntheticEvent<HTMLButtonElement>) {
     const { setUpdateWallpaperScheduleAction, setUpdateWallpaperTimeAction } = this.props;
     setUpdateWallpaperScheduleAction(e.target.value);
-    setUpdateWallpaperTimeAction(moment());
+    setUpdateWallpaperTimeAction(moment().format('DD.MM.YYYY HH:mm'));
   }
 
   render() {
