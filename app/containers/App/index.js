@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { autobind } from 'core-decorators';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { getPhoto } from 'app/containers/Home/redux';
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
   getPhotoAction : (data : { data : boolean }) => void,
 };
 
+@withRouter
 @connect(
   state => ({
     updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
