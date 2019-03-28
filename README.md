@@ -9,6 +9,8 @@ Mac             |  Windows
 :--------------------------------------:|:------------------------------------------:
 <img src="http://i.imgur.com/mZRbP8P.gif" width="500px" />  |  <img src="http://i.imgur.com/dx2QhyD.gif" width="500px" />
 
+<br />
+
 ### This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
