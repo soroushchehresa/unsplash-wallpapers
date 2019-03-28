@@ -59,3 +59,7 @@ or
 ```bash
 npm run package
 ```
+
+### TODO:
+
+* Write tests.
