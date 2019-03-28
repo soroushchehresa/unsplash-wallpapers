@@ -1,9 +1,11 @@
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 
+This project is an unofficial cross-platform version of [Unsplash Wallpapers](https://unsplash.com/wallpaper#mac-app) official application for Mac.
+
 Mac             |  Windows
 :--------------------------------------:|:------------------------------------------:
-<img src="http://i.imgur.com/9rrYq3J.gif" width="500px" />  |  <img src="http://i.imgur.com/dx2QhyD.gif" width="500px" />
+<img src="http://i.imgur.com/mZRbP8P.gif" width="500px" />  |  <img src="http://i.imgur.com/dx2QhyD.gif" width="500px" />
 
 ### This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
@@ -13,14 +15,20 @@ Mac             |  Windows
 * [axios](https://github.com/axios/axios)
 * [wallpaper](https://github.com/sindresorhus/wallpaper)
 * [electron-json-storage](https://github.com/electron-userland/electron-json-storage)
+* [immutable-js](https://github.com/immutable-js/immutable-js)
+* [Flow](https://github.com/facebook/flow)
+* [ESLint](https://github.com/eslint/eslint)
+
+And so on...
 
 ### Features:
+* Work on any popular operating systems like Mac, Windows, and Linux.
 * Get high quality wallpapers from [Unsplash](https://unsplash.com/).
-* Work in any popular operating systems like Mac, Windows, and Linux.
 * Save history of set wallpapers.
-* Direct download every wallpaper.
-* Run at startup system.
-* and so on...
+* Automatic set wallpapers daily or weekly (optional).
+* Run at startup system (optional).
+* Download directly every wallpaper.
+* Link to photographer profile on Unsplash.
 
 ### Development:
 
