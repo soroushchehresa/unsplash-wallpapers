@@ -2,7 +2,6 @@
 
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { createHashHistory } from 'history';
 import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -10,12 +9,12 @@ import * as Promise from 'bluebird';
 import isEqual from 'lodash/isEqual';
 import electronJsonStorage from 'electron-json-storage';
 import { Iterable, fromJS } from 'immutable';
+import history from 'app/utils/history';
 import API from 'app/utils/xhr_wrapper';
 import createRootReducer from '../reducers';
 import sagas from '../sagas';
 
 const storage = Promise.promisifyAll(electronJsonStorage);
-const history = createHashHistory();
 const rootReducer = createRootReducer(history);
 const sagaMiddleware = createSagaMiddleware();
 const configureStore = async () => {
