@@ -223,6 +223,7 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.3",
     "core-decorators": "^0.20.0",
+    "core-js": "3",
     "devtron": "^1.4.0",
     "dotenv-webpack": "^1.7.0",
     "electron-debug": "^2.0.0",

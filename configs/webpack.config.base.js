@@ -1,7 +1,3 @@
-/**
- * Base webpack config used across other specific configs
- */
-
 import path from 'path';
 import webpack from 'webpack';
 import Dotenv from 'dotenv-webpack';
@@ -12,7 +8,7 @@ export default {
   target: 'electron-main',
   node: {
     __dirname: false,
-    __filename: false
+    __filename: false,
   },
   module: {
     rules: [
@@ -22,34 +18,27 @@ export default {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: true
-          }
-        }
-      }
-    ]
+            cacheDirectory: true,
+          },
+        },
+      },
+    ],
   },
-
   output: {
     path: path.join(__dirname, '..', 'app'),
-    // https://github.com/webpack/webpack/issues/1114
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
-
-  /**
-   * Determine the array of extensions that should be used to resolve modules.
-   */
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
-      app: path.resolve(__dirname, '../app')
-    }
+      app: path.resolve(__dirname, '../app'),
+    },
   },
-
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production'
+      NODE_ENV: 'production',
     }),
     new Dotenv(),
-    new webpack.NamedModulesPlugin()
-  ]
+    new webpack.NamedModulesPlugin(),
+  ],
 };

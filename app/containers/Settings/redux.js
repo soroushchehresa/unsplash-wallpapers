@@ -27,9 +27,9 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-export const setUpdateWallpaperSchedule = (data : string) => {
-  return dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_SCHEDULE, data });
-};
-export const setUpdateWallpaperTime = (data : string) => {
-  return dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_TIME, data });
-};
+export const setUpdateWallpaperSchedule = (data : string) => (
+  dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_SCHEDULE, data })
+);
+export const setUpdateWallpaperTime = (data : string) => (
+  dispatch => dispatch({ type: SET_UPDATE_WALLPAPER_TIME, data })
+);

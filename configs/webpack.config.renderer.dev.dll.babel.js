@@ -1,9 +1,3 @@
-/* eslint global-require: off, import/no-dynamic-require: off */
-
-/**
- * Builds the DLL for development electron renderer process
- */
-
 import webpack from 'webpack';
 import path from 'path';
 import merge from 'webpack-merge';
@@ -17,58 +11,36 @@ const dist = path.join(__dirname, '..', 'dll');
 
 export default merge.smart(baseConfig, {
   context: path.join(__dirname, '..'),
-
   devtool: 'source-map',
-
   mode: 'development',
-
   target: 'electron-main',
-
   externals: ['fsevents', 'crypto-browserify'],
-
-  /**
-   * Use `module` from `webpack.config.renderer.dev.js`
-   */
-  module: require('./webpack.config.renderer.dev.babel').default.module,
-
+  module: require('./webpack.config.renderer.dev.babel').default.module, // eslint-disable-line
   entry: {
-    renderer: Object.keys(dependencies || {})
+    renderer: Object.keys(dependencies || {}),
   },
-
   output: {
     library: 'renderer',
     path: dist,
     filename: '[name].dev.dll.js',
-    libraryTarget: 'var'
+    libraryTarget: 'var',
   },
-
   plugins: [
     new webpack.DllPlugin({
       path: path.join(dist, '[name].json'),
-      name: '[name]'
+      name: '[name]',
     }),
-
-    /**
-     * Create global constants which can be configured at compile time.
-     *
-     * Useful for allowing different behaviour between development builds and
-     * release builds
-     *
-     * NODE_ENV should be production so that modules do not perform certain
-     * development checks
-     */
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development'
+      NODE_ENV: 'development',
     }),
-
     new webpack.LoaderOptionsPlugin({
       debug: true,
       options: {
         context: path.join(__dirname, '..', 'app'),
         output: {
-          path: path.join(__dirname, '..', 'dll')
-        }
-      }
-    })
-  ]
+          path: path.join(__dirname, '..', 'dll'),
+        },
+      },
+    }),
+  ],
 });
