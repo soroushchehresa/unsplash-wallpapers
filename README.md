@@ -25,6 +25,7 @@ Mac             |  Windows
 
 And so on...
 
+
 ### Features:
 * Work on any popular operating systems like Mac, Windows, and Linux.
 * Get high quality wallpapers from [Unsplash](https://unsplash.com/).
@@ -34,7 +35,8 @@ And so on...
 * Download directly every wallpaper.
 * Link to photographer profile on Unsplash.
 
-### Development:
+
+### Starting Development:
 
 First, place your [Unsplash access key](https://unsplash.com/developers) in the `.env`:
 ```sh
@@ -50,7 +52,9 @@ or
 npm i && npm run dev
 ```
 
-### Production:
+
+### Packaging for Production:
+
 Run one of the following commands:
 ```bash
 yarn package
@@ -59,6 +63,8 @@ or
 ```bash
 npm run package
 ```
+
+<br />
 
 ### TODO:
 
