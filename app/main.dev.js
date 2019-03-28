@@ -85,13 +85,13 @@ app.on('ready', () => {
     }
   });
 
-  window.on('show', () => {
-    tray.setHighlightMode('always');
-  });
-
-  window.on('hide', () => {
-    tray.setHighlightMode('never');
-  });
+  // window.on('show', () => {
+  //   tray.setHighlightMode('always');
+  // });
+  //
+  // window.on('hide', () => {
+  //   tray.setHighlightMode('never');
+  // });
 
   window.webContents.on('will-navigate', (event, url) => {
     event.preventDefault();
