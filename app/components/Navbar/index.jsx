@@ -28,6 +28,13 @@ export default withRouter(({ location } : Props) => {
       <div className="buttonsWrapper">
         <button
           type="button"
+          onClick={() => handleChangePage('/categories')}
+          className={location.pathname === '/categories' ? 'active' : ''}
+        >
+          <i className="fa fa-th-large" />
+        </button>
+        <button
+          type="button"
           onClick={() => handleChangePage('/history')}
           className={location.pathname === '/history' ? 'active' : ''}
         >
