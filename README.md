@@ -68,4 +68,6 @@ npm run package
 
 ### TODO:
 
+* Handle network connection errors.
+* Place active wallpaper in home page at startup.
 * Write tests.
