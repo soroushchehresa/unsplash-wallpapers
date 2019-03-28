@@ -15,6 +15,15 @@ export default ({ imageSRC, onClick, active } : Props) => (
     onClick={onClick}
     active={active}
   >
-    {active && <i className="active fa fa-check-circle-o" />}
+    {
+      active
+      && (
+        <div className="activeWrapper">
+          <div className="circle">
+            <i className="active fa fa-check" />
+          </div>
+        </div>
+      )
+    }
   </StyledPhotoItem>
 );

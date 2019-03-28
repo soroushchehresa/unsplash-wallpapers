@@ -28,9 +28,28 @@ export default styled.div`
       top: 0;
     }
   `}
-  > .active {
-    font-size: 28px;
-    color: white;
+  > .activeWrapper {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > .circle {
+      width: 35px;
+      height: 35px;
+      border-radius: 100px;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > i {
+        font-size: 20px;
+        color: #fff;
+      }
+    }
   }
 `;
