@@ -3,6 +3,8 @@ A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers 
 
 This project is an unofficial cross-platform version of [Unsplash Wallpapers](https://unsplash.com/wallpaper#mac-app) official application for Mac.
 
+<br />
+
 Mac             |  Windows
 :--------------------------------------:|:------------------------------------------:
 <img src="http://i.imgur.com/mZRbP8P.gif" width="500px" />  |  <img src="http://i.imgur.com/dx2QhyD.gif" width="500px" />
