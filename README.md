@@ -68,6 +68,8 @@ npm run package
 
 ### TODO:
 
+* Add select category page.
 * Handle network connection errors.
+* Add animation to router.
 * Place active wallpaper in home page at startup.
 * Write tests.
