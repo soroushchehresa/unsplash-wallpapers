@@ -18,21 +18,18 @@ class Client {
         data,
         options,
       });
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         fetch(requestURL, request)
-          .then(response => Client.checkStatus(response, resolve, reject))
-          .catch(error => Client.checkStatus(error, resolve, reject))
-          .catch(reject);
+          .then(response => Client.checkStatus(response, resolve))
+          .catch(error => Client.checkStatus(error, resolve));
       });
     };
   }
 
-  static checkStatus(response, resolve, reject) {
-    if (!_.get(response, ['response']) && !_.get(response, ['data'])) {
-      return reject(response);
-    }
-    const status = response.status || response.response.status;
-    return (status >= 200 && status < 300) ? resolve(response) : resolve(response.response);
+  static checkStatus(response, resolve) {
+    const status = _.get(response, ['status']) || _.get(response, ['response', 'status']);
+    return (status && status >= 200 && status < 300)
+      ? resolve(response) : resolve(response.response);
   }
 
   static async decorateRequest({ method, url, options }) {
