@@ -44,12 +44,17 @@ const configureStore = async () => {
   );
   sagaMiddleware.run(sagas);
   store.subscribe(() => {
-    const SettingsState = store.getState()
-      .get('Settings')
-      .toJS();
+    const reduxState = (store.getState()).toJS();
     storage.get('redux', (error, data) => {
-      if (!isEqual(data, SettingsState)) {
-        storage.set('redux', { Settings: SettingsState });
+      if (!isEqual(data, reduxState)) {
+        const { Settings, Categories, Home } = reduxState;
+        storage.set('redux', {
+          Settings,
+          Categories,
+          Home: {
+            photoData: Home.photoData,
+          },
+        });
       }
     });
   });
