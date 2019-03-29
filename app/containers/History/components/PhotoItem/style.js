@@ -42,13 +42,13 @@ export default styled.div`
       width: 35px;
       height: 35px;
       border-radius: 100px;
-      border: 2px solid #fff;
+      border: 2px solid #f0b838;
       display: flex;
       align-items: center;
       justify-content: center;
       > i {
         font-size: 20px;
-        color: #fff;
+        color: #f0b838;
       }
     }
   }
