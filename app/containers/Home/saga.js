@@ -27,8 +27,8 @@ import {
 
 function* getPhoto() {
   yield takeLatest(GET_PHOTO, function* cb(action) {
-    const request = yield API.get('photos/random?collections=1065396');
-    if (request.status === 200) {
+    const request = yield API.get(`photos/random?collections=${action.data.activeCategory}`);
+    if (request && request.status === 200) {
       yield put({ type: GET_PHOTO_SUCCESS, data: request.data });
       if (action.data.setAutomaticWallpaper) {
         yield put({ type: SET_WALLPAPER });
@@ -72,9 +72,10 @@ function* setWallpaper() {
       ).toString('base64');
       yield util.promisify(fs.writeFile)(picturePath, base64Image, 'base64');
     }
-    yield wallpaper.set(picturePath, { scale: 'stretch' });
+    yield wallpaper.set(picturePath, { scale: 'auto' });
     yield put({ type: SET_WALLPAPER_SUCCESS });
-    yield put(setUpdateWallpaperTime(moment().format('DD.MM.YYYY HH:mm')));
+    yield put(setUpdateWallpaperTime(moment()
+      .format('DD.MM.YYYY HH:mm')));
     if (!hasPicture) {
       storage.set('pictures', {
         list: [

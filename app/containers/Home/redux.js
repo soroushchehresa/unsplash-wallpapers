@@ -55,7 +55,12 @@ export default (state = initialState, action = {}) => {
 };
 
 export const getPhoto = (
-  data : { setAutomaticWallpaper : boolean } = { setAutomaticWallpaper: false },
+  data : {
+    setAutomaticWallpaper : boolean,
+    activeCategory : number,
+  } = {
+    setAutomaticWallpaper: false,
+  },
 ) => (
   dispatch => dispatch({ type: GET_PHOTO, data })
 );

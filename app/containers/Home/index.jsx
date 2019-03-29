@@ -19,6 +19,7 @@ type Props = {
   getPhotoLoading : boolean,
   photoData : MapType,
   setWallpaperLoading : boolean,
+  activeCategory : number,
 };
 
 type State = {
@@ -30,8 +31,12 @@ type State = {
     setWallpaperLoading: state.getIn(['Home', 'setWallpaperLoading']),
     getPhotoLoading: state.getIn(['Home', 'getPhotoLoading']),
     photoData: state.getIn(['Home', 'photoData']),
+    activeCategory: state.getIn(['Categories', 'activeCategory']),
   }),
-  { getPhotoAction: getPhoto, setWallpaperAction: setWallpaper },
+  {
+    getPhotoAction: getPhoto,
+    setWallpaperAction: setWallpaper,
+  },
 )
 @autobind
 class Home extends Component<Props, State> {
@@ -43,9 +48,9 @@ class Home extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const { photoData, getPhotoAction } = this.props;
+    const { photoData, getPhotoAction, activeCategory } = this.props;
     if (photoData.size === 0) {
-      getPhotoAction();
+      getPhotoAction({ activeCategory });
     }
   }
 
@@ -82,6 +87,7 @@ class Home extends Component<Props, State> {
       photoData,
       setWallpaperAction,
       setWallpaperLoading,
+      activeCategory,
     } = this.props;
     const { downloadLoading } = this.state;
     return (
@@ -94,7 +100,7 @@ class Home extends Component<Props, State> {
               backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
               backgroundColor: photoData.get('color'),
             }}
-            onClick={() => getPhotoAction(photoData.getIn(['urls', 'small']))}
+            onClick={() => getPhotoAction({ activeCategory })}
           >
             <div className="buttonWrapper">
               {getPhotoLoading ? (
