@@ -22,7 +22,7 @@ export default styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.6);
     left: 0;
     top: 0;
   }
@@ -37,6 +37,7 @@ export default styled.div`
     position: absolute;
     top: 18px;
     object-fit: cover;
+    ${props => props.active && 'display: none;'}
   }
   > h3 {
     color: #fff;
@@ -50,7 +51,6 @@ export default styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.8);
     left: 0;
     top: 0;
     z-index: 9;
@@ -58,16 +58,17 @@ export default styled.div`
     align-items: center;
     justify-content: center;
     > .circle {
-      width: 50px;
-      height: 50px;
+      margin-top: -20px;
+      width: 40px;
+      height: 40px;
       border-radius: 100px;
-      border: 2px solid #fff;
+      border: 2px solid #f0b838;
       display: flex;
       align-items: center;
       justify-content: center;
       > i {
-        font-size: 26px;
-        color: #fff;
+        font-size: 20px;
+        color: #f0b838;
       }
     }
   }

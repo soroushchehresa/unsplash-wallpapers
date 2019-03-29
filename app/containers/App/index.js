@@ -19,6 +19,7 @@ type Props = {
   state => ({
     updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
     updateWallpaperDate: state.getIn(['Settings', 'updateWallpaperDate']),
+    activeCategory: state.getIn(['Categories', 'activeCategory']),
   }),
   {
     getPhotoAction: getPhoto,
@@ -32,16 +33,17 @@ class App extends Component<Props> {
         updateWallpaperSchedule,
         updateWallpaperDate,
         getPhotoAction,
+        activeCategory,
       } = this.props;
       switch (updateWallpaperSchedule) {
         case 'Daily':
           if ((moment.duration(updateWallpaperDate)).asHours() >= 24) {
-            getPhotoAction({ setAutomaticWallpaper: true });
+            getPhotoAction({ setAutomaticWallpaper: true, activeCategory });
           }
           break;
         case 'Weekly':
           if ((moment.duration(updateWallpaperDate)).asHours() >= 168) {
-            getPhotoAction({ setAutomaticWallpaper: true });
+            getPhotoAction({ setAutomaticWallpaper: true, activeCategory });
           }
           break;
         default:

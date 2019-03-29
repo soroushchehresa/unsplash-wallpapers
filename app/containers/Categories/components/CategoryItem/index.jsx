@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import StyledPhotoItem from './style';
+import StyledCategoryItem from './style';
 
 type Props = {
   title : string,
@@ -18,7 +18,7 @@ export default ({
   onClick,
   active,
 } : Props) => (
-  <StyledPhotoItem
+  <StyledCategoryItem
     background={background}
     onClick={onClick}
     active={active}
@@ -35,5 +35,5 @@ export default ({
         </div>
       )
     }
-  </StyledPhotoItem>
+  </StyledCategoryItem>
 );

@@ -9,7 +9,7 @@ export default styled.div`
     width: 100%;
     overflow: hidden;
     position: relative;
-    > .pictures-wrapper {
+    > .categories-wrapper {
       position: absolute;
       left: 0;
       top: 0;
@@ -19,18 +19,6 @@ export default styled.div`
       height: 100%;
       text-align: center;
       padding: 0 8px;
-    }
-    .empty-history {
-      color: #999;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: -30px;
-      bottom: 0;
-      margin: auto;
-      display: table;
-      text-align: center;
-      width: 100%;
     }
   }
 `;
