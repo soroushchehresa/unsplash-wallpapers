@@ -36,6 +36,9 @@ app.on('ready', () => {
         window.setPosition(x, y, false);
         break;
       case 'win32':
+        x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
+        y = Math.round(trayPos.y - height);
+        window.setPosition(x, y, false);
       case 'freebsd':
       case 'linux':
       case 'sunos':
@@ -76,7 +79,6 @@ app.on('ready', () => {
     webPreferences: {
       backgroundThrottling: false,
     },
-    center: process.platform !== 'darwin',
   });
 
   window.loadURL(`file://${__dirname}/app.html`);
