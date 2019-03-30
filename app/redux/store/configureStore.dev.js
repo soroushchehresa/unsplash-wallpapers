@@ -6,11 +6,11 @@ import { routerMiddleware } from 'connected-react-router';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import * as Promise from 'bluebird';
-import isEqual from 'lodash/isEqual';
 import electronJsonStorage from 'electron-json-storage';
 import { Iterable, fromJS } from 'immutable';
 import history from 'app/utils/history';
-import API from 'app/utils/xhr_wrapper';
+import API from 'app/utils/xhrWrapper';
+import persistReduxState from 'app/utils/persistReduxState';
 import createRootReducer from '../reducers';
 import sagas from '../sagas';
 
@@ -44,19 +44,7 @@ const configureStore = async () => {
   );
   sagaMiddleware.run(sagas);
   store.subscribe(() => {
-    const reduxState = (store.getState()).toJS();
-    storage.get('redux', (error, data) => {
-      if (!isEqual(data, reduxState)) {
-        const { Settings, Categories, Home } = reduxState;
-        storage.set('redux', {
-          Settings,
-          Categories,
-          Home: {
-            photoData: Home.photoData,
-          },
-        });
-      }
-    });
+    persistReduxState(store);
   });
   if (module.hot) {
     module.hot.accept(

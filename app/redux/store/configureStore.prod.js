@@ -4,12 +4,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
-import isEqual from 'lodash/isEqual';
 import * as Promise from 'bluebird';
 import electronJsonStorage from 'electron-json-storage';
 import { fromJS } from 'immutable';
-import API from 'app/utils/xhr_wrapper';
+import API from 'app/utils/xhrWrapper';
 import history from 'app/utils/history';
+import persistReduxState from 'app/utils/persistReduxState';
 import createRootReducer from '../reducers';
 import sagas from '../sagas';
 
@@ -31,19 +31,7 @@ const configureStore = async () => {
   );
   sagaMiddleware.run(sagas);
   store.subscribe(() => {
-    const reduxState = (store.getState()).toJS();
-    storage.get('redux', (error, data) => {
-      if (!isEqual(data, reduxState)) {
-        const { Settings, Categories, Home } = reduxState;
-        storage.set('redux', {
-          Settings,
-          Categories,
-          Home: {
-            photoData: Home.photoData,
-          },
-        });
-      }
-    });
+    persistReduxState(store);
   });
   return store;
 };
