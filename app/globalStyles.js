@@ -10,9 +10,9 @@ export default createGlobalStyle`
     font-family: 'Open Sans', serif;
     font-size: 14px;
     position: relative;
-    height: calc(100vh - 10px);
+    height: ${process.platform === 'darwin' ? 'calc(100vh - 10px)' : '100vh'};
     margin: 0;
-    padding: 11px 0 0 0;
+    padding: ${process.platform === 'darwin' ? '11px 0 0 0' : '0'};
     overflow: hidden;
   }
   

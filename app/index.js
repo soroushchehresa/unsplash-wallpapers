@@ -8,7 +8,7 @@ import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import { configureStore, history } from './redux/store/configureStore';
-import GlobalStyle from './styles';
+import GlobalStyle from './globalStyles';
 
 storage.setDataPath(os.tmpdir());
 
