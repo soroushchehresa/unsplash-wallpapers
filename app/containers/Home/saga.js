@@ -15,7 +15,7 @@ import os from 'os';
 import util from 'util';
 import path from 'path';
 import moment from 'moment';
-import API from 'app/utils/xhr_wrapper';
+import API from 'app/utils/xhrWrapper';
 import { setUpdateWallpaperTime } from 'app/containers/Settings/redux';
 import {
   GET_PHOTO,
