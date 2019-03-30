@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export default styled.div`
   background: #efefef;
-  border-radius: 5px 5px 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 7px 10px;
   position: relative;
+  ${process.platform === 'darwin' && css`border-radius: 5px 5px 0 0;`}
   > .arrow {
     position: absolute;
     left: 0;

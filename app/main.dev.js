@@ -25,22 +25,23 @@ app.on('ready', () => {
   const showWindow = () => {
     const trayPos = tray.getBounds();
     const windowPos = window.getBounds();
-    let x = null;
+    let x = 0;
     let y = 0;
-    if (process.platform === 'darwin') {
-      x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
-      y = Math.round(trayPos.y + trayPos.height);
-    } else if (process.platform === 'win32') {
-      const { screen } = require('electron'); // eslint-disable-line
-      const primaryDisplay = screen.getPrimaryDisplay();
-      const { width: screenWidth, height: screenHeight } = primaryDisplay.size;
-      x = screenWidth - width - 10;
-      y = screenHeight - height - 40;
-    } else {
-      x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
-      y = Math.round(trayPos.y + trayPos.height * 10);
+
+
+    switch(process.platform){
+      case 'darwin':
+        x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
+        y = Math.round(trayPos.y + trayPos.height);
+        window.setPosition(x, y, false);
+        break;
+      case 'win32':
+      case 'freebsd':
+      case 'linux':
+      case 'sunos':
+      default:
+      break;
     }
-    window.setPosition(x, y, false);
     window.show();
     window.focus();
   };
@@ -75,6 +76,7 @@ app.on('ready', () => {
     webPreferences: {
       backgroundThrottling: false,
     },
+    center: process.platform !== 'darwin',
   });
 
   window.loadURL(`file://${__dirname}/app.html`);
