@@ -18,91 +18,86 @@ if (process.platform === 'darwin') {
 }
 
 app.on('ready', () => {
-  const tray = new Tray(
-    path.join(__dirname, '../resources/menu-icons/iconTemplate.png'),
-  );
-  let window = null;
-  const showWindow = () => {
-    const trayPos = tray.getBounds();
-    const windowPos = window.getBounds();
-    let x = 0;
-    let y = 0;
+  setTimeout(() => {
+    const tray = new Tray(
+      path.join(__dirname, '../resources/menu-icons/iconTemplate.png'),
+    );
+    let window = null;
+    const showWindow = () => {
+      const trayPos = tray.getBounds();
+      const windowPos = window.getBounds();
+      let x = 0;
+      let y = 0;
 
-    switch (process.platform) {
-      case 'darwin':
-        x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
-        y = Math.round(trayPos.y + trayPos.height);
-        window.setPosition(x, y, false);
-        break;
-      case 'win32':
-        x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
-        y = Math.round(trayPos.y - height);
-        window.setPosition(x, y, false);
-        break;
-      case 'freebsd':
-      case 'linux':
-      case 'sunos':
-      default:
-        break;
-    }
-    window.show();
-    window.focus();
-  };
+      switch(process.platform){
+        case 'win32':
+          x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
+          y = Math.round(trayPos.y - height);
+          break;
+        case 'darwin':
+          x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
+          y = Math.round(trayPos.y + trayPos.height);
+          break;
+        case 'freebsd':
+        case 'linux':
+        case 'sunos':
+        default:
+          const { screen } = require('electron'); // eslint-disable-line
+          const primaryDisplay = screen.getPrimaryDisplay();
+          const { width: screenWidth } = primaryDisplay.size;
+          x = screenWidth - width - 10;
+          y = 10;
+          break;
+      }
+      window.setPosition(x, y, false);
+      window.show();
+      window.focus();
+    };
 
-  const toggleWindow = () => {
-    if (window.isVisible()) {
-      window.hide();
-    } else {
-      showWindow();
-    }
-  };
+    const toggleWindow = () => {
+      if (window.isVisible()) {
+        window.hide();
+      } else {
+        showWindow();
+      }
+    };
 
-  tray.on('right-click', toggleWindow);
-  tray.on('double-click', toggleWindow);
-  tray.on('click', (event) => {
-    toggleWindow();
+    tray.on('right-click', toggleWindow);
+    tray.on('double-click', toggleWindow);
+    tray.on('click', (event) => {
+      toggleWindow();
 
-    if (window.isVisible() && process.defaultApp && event.metaKey) {
-      window.openDevTools({ mode: 'detach' });
-    }
-  });
+      if (window.isVisible() && process.defaultApp && event.metaKey) {
+        window.openDevTools({ mode: 'detach' });
+      }
+    });
 
-  window = new BrowserWindow({
-    width,
-    height,
-    show: false,
-    frame: false,
-    resizable: false,
-    skipTaskbar: true,
-    fullscreenable: false,
-    transparent: true,
-    webPreferences: {
-      backgroundThrottling: false,
-    },
-  });
+    window = new BrowserWindow({
+      width,
+      height,
+      show: false,
+      frame: false,
+      resizable: false,
+      skipTaskbar: true,
+      fullscreenable: false,
+      transparent: true,
+    });
 
-  window.loadURL(`file://${__dirname}/app.html`);
+    window.loadURL(`file://${__dirname}/app.html`);
 
-  window.on('blur', () => {
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide();
-    }
-  });
+    window.on('blur', () => {
+      if (!window.webContents.isDevToolsOpened()) {
+        window.hide();
+      }
+    });
 
-  // window.on('show', () => {
-  //   tray.setHighlightMode('always');
-  // });
-  //
-  // window.on('hide', () => {
-  //   tray.setHighlightMode('never');
-  // });
-
-  window.webContents.on('will-navigate', (event, url) => {
-    event.preventDefault();
-    if (url.startsWith('http:') || url.startsWith('https:')) {
-      shell.openExternal(url);
-    }
-  });
+    window.webContents.on('will-navigate', (event, url) => {
+      event.preventDefault();
+      if (url.startsWith('http:') || url.startsWith('https:')) {
+        shell.openExternal(url);
+      }
+    });
+  }, 300);
 });
 
 app.on('window-all-closed', () => {
