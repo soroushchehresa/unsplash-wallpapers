@@ -29,7 +29,7 @@ app.on('ready', () => {
       let x = 0;
       let y = 0;
 
-      switch(process.platform){
+      switch (process.platform) {
         case 'win32':
           x = Math.round(trayPos.x + trayPos.width / 2 - windowPos.width / 2);
           y = Math.round(trayPos.y - height);

@@ -1,14 +1,14 @@
 // @flow
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import storage from 'electron-json-storage';
+import { ThemeProvider } from 'styled-components';
 import os from 'os';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import 'font-awesome/css/font-awesome.min.css';
 import Root from './containers/Root';
 import { configureStore, history } from './redux/store/configureStore';
-import './app.global.css';
+import GlobalStyle from './styles';
 
 storage.setDataPath(os.tmpdir());
 
@@ -16,7 +16,12 @@ configureStore()
   .then((store) => {
     render(
       <AppContainer>
-        <Root store={store} history={history} />
+        <ThemeProvider theme={{}}>
+          <Fragment>
+            <Root store={store} history={history} />
+            <GlobalStyle />
+          </Fragment>
+        </ThemeProvider>
       </AppContainer>,
       document.getElementById('root'),
     );
