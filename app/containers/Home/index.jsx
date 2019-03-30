@@ -121,16 +121,20 @@ class Home extends Component<Props, State> {
           <div className="bottomWrapper">
             <a className="autor" href={photoData.getIn(['links', 'html'])}>
               By
-              <span>
-                {
-                  (photoData.size > 0) ? `${photoData.getIn(['user', 'first_name'])} ${photoData.getIn(['user', 'last_name']) ? photoData.getIn(['user', 'last_name']) : ''}` : '-------'
-                }
-              </span>
-
+              {
+                (photoData.size > 0)
+                  ? (
+                    <span>
+                      {photoData.getIn(['user', 'first_name'])}
+                      {photoData.getIn(['user', 'last_name']) || ''}
+                    </span>
+                  )
+                  : <span className="empty">-------</span>
+              }
             </a>
             <button
               onClick={() => this.handleDownload(photoData.getIn(['links', 'download']))}
-              className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading ? ' disabled' : ''}`}
+              className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading || photoData.size === 0 ? ' disabled' : ''}`}
             >
               Download
               {downloadLoading && <Loading color="#666" size="10px" />}

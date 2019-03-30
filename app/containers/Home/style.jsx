@@ -71,6 +71,9 @@ export default styled.div`
         > span {
           font-weight: bold;
           margin-left: 3px;
+          &.empty {
+            color: #cccccc;
+          }
         }
       }
       > .download {
