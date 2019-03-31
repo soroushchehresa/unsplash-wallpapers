@@ -16,7 +16,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" />
 
 
-### This project implemented by the following technologies:
+## This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
@@ -31,7 +31,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 And so on...
 
 
-### Features:
+## Features:
 * Work on any popular operating systems like Mac, Windows, and Linux.
 * Get high quality wallpapers from [Unsplash](https://unsplash.com/).
 * Save history of set wallpapers.
@@ -41,7 +41,9 @@ And so on...
 * Link to photographer profile on Unsplash.
 
 
-### Starting Development:
+## Let's run:
+
+#### Starting Development:
 
 First, place your [Unsplash access key](https://unsplash.com/developers) in the `.env`:
 ```sh
@@ -58,7 +60,7 @@ npm i && npm run dev
 ```
 
 
-### Packaging for Production:
+#### Packaging for Production:
 
 Run one of the following commands:
 ```bash
@@ -68,10 +70,3 @@ or
 ```bash
 npm run package
 ```
-
-<br />
-
-### TODO:
-
-* Add animation to router.
-* Write tests.
