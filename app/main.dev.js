@@ -81,7 +81,6 @@ app.on('ready', () => {
       skipTaskbar: true,
       fullscreenable: false,
       transparent: true,
-      hasShadow: false,
     });
 
     window.loadURL(`file://${__dirname}/app.html`);
