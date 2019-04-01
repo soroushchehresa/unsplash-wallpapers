@@ -54,10 +54,10 @@ class Home extends Component<Props, State> {
     }
   }
 
-  handleDownload(url : string) {
+  handleDownload() {
     const { photoData } = this.props;
     this.setState({ downloadLoading: true });
-    axios.get(url, { responseType: 'arraybuffer' })
+    axios.get(photoData.getIn(['links', 'download']), { responseType: 'arraybuffer' })
       .then(({ data }) => {
         const base64Image = new Buffer.from(data, 'binary').toString(
           'base64',
@@ -76,6 +76,13 @@ class Home extends Component<Props, State> {
             body: `Image saved in "${os.homedir()}/Downloads"`,
             icon: path.join(__dirname, '../resources/icons/64x64.png'),
           });
+        });
+      })
+      .catch(() => {
+        this.setState({ downloadLoading: false });
+        new Notification('Download Failed!', {
+          body: 'network connection error...',
+          icon: path.join(__dirname, '../resources/icons/64x64.png'),
         });
       });
   }
@@ -133,7 +140,7 @@ class Home extends Component<Props, State> {
               }
             </a>
             <button
-              onClick={() => this.handleDownload(photoData.getIn(['links', 'download']))}
+              onClick={this.handleDownload}
               className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading || photoData.size === 0 ? ' disabled' : ''}`}
             >
               Download
