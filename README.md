@@ -6,13 +6,13 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 
 ## Demo:
 
-#### Mac: 
+#### Mac
 <img src="http://i.imgur.com/GXMBuLn.gif" width="500px" />
 
-#### Windows: 
+#### Windows
 <img src="http://i.imgur.com/5FAB6d8.gif" width="500px" />
 
-#### Linux: 
+#### Linux
 <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" />
 
 
@@ -33,12 +33,12 @@ And so on...
 
 ## Features:
 * Work on any popular operating systems like Mac, Windows, and Linux.
-* Get high quality wallpapers from [Unsplash](https://unsplash.com/).
+* Get high quality wallpapers from [Unsplash](https://unsplash.com).
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
 * Run at startup system (optional).
 * Download directly every wallpaper.
-* Link to photographer profile on Unsplash.
+* Link to photographer profile on [Unsplash website](https://unsplash.com).
 
 
 ## Let's run:
