@@ -20,6 +20,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
+* [redux-saga](https://github.com/redux-saga/redux-saga)
 * [styled-components](https://github.com/styled-components/styled-components)
 * [axios](https://github.com/axios/axios)
 * [wallpaper](https://github.com/sindresorhus/wallpaper)
