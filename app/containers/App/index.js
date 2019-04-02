@@ -1,17 +1,21 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { autobind } from 'core-decorators';
+import { ThemeProvider } from 'styled-components';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { getPhoto } from 'app/containers/Home/redux';
+import GlobalStyle from 'app/styles/globalStyles';
 
 type Props = {
   children : React.Node,
   updateWallpaperSchedule : string,
   updateWallpaperDate : string,
   getPhotoAction : (data : { data : boolean }) => void,
+  activeCategory : string,
+  activeTheme : string,
 };
 
 @withRouter
@@ -20,6 +24,7 @@ type Props = {
     updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
     updateWallpaperDate: state.getIn(['Settings', 'updateWallpaperDate']),
     activeCategory: state.getIn(['Categories', 'activeCategory']),
+    activeTheme: state.getIn(['Settings', 'activeTheme']),
   }),
   {
     getPhotoAction: getPhoto,
@@ -55,8 +60,15 @@ class App extends Component<Props> {
   }
 
   render() {
-    const { children } = this.props;
-    return children;
+    const { children, activeTheme } = this.props;
+    return (
+      <ThemeProvider theme={{ mode: activeTheme }}>
+        <Fragment>
+          {children}
+          <GlobalStyle />
+        </Fragment>
+      </ThemeProvider>
+    );
   }
 }
 

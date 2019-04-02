@@ -8,6 +8,7 @@ import * as Promise from 'bluebird';
 import electronJsonStorage from 'electron-json-storage';
 import { fromJS } from 'immutable';
 import API from 'app/utils/xhrWrapper';
+import setTheme from 'app/utils/setTheme';
 import history from 'app/utils/history';
 import persistReduxState from 'app/utils/persistReduxState';
 import createRootReducer from '../reducers';
@@ -33,6 +34,7 @@ const configureStore = async () => {
   store.subscribe(() => {
     persistReduxState(store);
   });
+  setTheme(store);
   return store;
 };
 

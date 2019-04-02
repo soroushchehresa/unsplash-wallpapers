@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import type { SyntheticEvent } from 'react';
 import { remote } from 'electron';
 import { autobind } from 'core-decorators';
@@ -12,12 +12,21 @@ import Navbar from 'app/components/Navbar';
 import AutoLaunch from 'auto-launch';
 import appPackage from '../../../package';
 import StyledSettings from './style';
-import { setUpdateWallpaperSchedule, setUpdateWallpaperTime } from './redux';
+import {
+  setUpdateWallpaperSchedule,
+  setUpdateWallpaperTime,
+  setActiveTheme,
+  setAutomaticChangeActiveTheme,
+} from './redux';
 
 type Props = {
   setUpdateWallpaperScheduleAction : (data : string) => void,
   setUpdateWallpaperTimeAction : (data : string) => void,
+  setActiveThemeAction : (data : string) => void,
+  setAutomaticChangeActiveThemeAction : (data : boolean) => void,
   updateWallpaperSchedule : MapType,
+  activeTheme : string,
+  isChangeAutomaticActiveTheme : boolean,
 };
 
 type State = {
@@ -27,10 +36,14 @@ type State = {
 @connect(
   state => ({
     updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
+    activeTheme: state.getIn(['Settings', 'activeTheme']),
+    isChangeAutomaticActiveTheme: state.getIn(['Settings', 'isChangeAutomaticActiveTheme']),
   }),
   {
     setUpdateWallpaperScheduleAction: setUpdateWallpaperSchedule,
     setUpdateWallpaperTimeAction: setUpdateWallpaperTime,
+    setActiveThemeAction: setActiveTheme,
+    setAutomaticChangeActiveThemeAction: setAutomaticChangeActiveTheme,
   },
 )
 @autobind
@@ -75,11 +88,22 @@ class Settings extends Component<Props, State> {
   handleChangeUpdateWallpaperScadule(e : SyntheticEvent<HTMLButtonElement>) {
     const { setUpdateWallpaperScheduleAction, setUpdateWallpaperTimeAction } = this.props;
     setUpdateWallpaperScheduleAction(e.target.value);
-    setUpdateWallpaperTimeAction(moment().format('DD.MM.YYYY HH:mm'));
+    setUpdateWallpaperTimeAction(moment()
+      .format('DD.MM.YYYY HH:mm'));
+  }
+
+  handleChangeTheme(e : SyntheticEvent<HTMLInputElement>) {
+    const { setActiveThemeAction } = this.props;
+    setActiveThemeAction(e.target.value);
+  }
+
+  handleSetAutoChangeTheme(e : SyntheticEvent<HTMLInputElement>) {
+    const { setAutomaticChangeActiveThemeAction } = this.props;
+    setAutomaticChangeActiveThemeAction(e.target.checked);
   }
 
   render() {
-    const { updateWallpaperSchedule } = this.props;
+    const { updateWallpaperSchedule, activeTheme, isChangeAutomaticActiveTheme } = this.props;
     const { isRunAtStartup } = this.state;
     return (
       <StyledSettings>
@@ -118,6 +142,52 @@ class Settings extends Component<Props, State> {
               }
             </select>
           </label>
+          <div className="choose-theme">
+            <p>
+              Theme:
+              {
+                (process.platform === 'darwin')
+                && (
+                  <Fragment>
+                    <span>change auto by OS</span>
+                    <input
+                      className="changeAutoSetTheme"
+                      type="checkbox"
+                      onChange={this.handleSetAutoChangeTheme}
+                      checked={isChangeAutomaticActiveTheme}
+                    />
+                  </Fragment>
+                )
+              }
+            </p>
+            {
+              !isChangeAutomaticActiveTheme
+              && (
+                <Fragment>
+                  <label htmlFor="light">
+                    Light
+                    <input
+                      id="light"
+                      type="radio"
+                      onChange={this.handleChangeTheme}
+                      value="Light"
+                      checked={activeTheme === 'Light'}
+                    />
+                  </label>
+                  <label htmlFor="dark">
+                    Dark
+                    <input
+                      id="dark"
+                      type="radio"
+                      onChange={this.handleChangeTheme}
+                      value="Dark"
+                      checked={activeTheme === 'Dark'}
+                    />
+                  </label>
+                </Fragment>
+              )
+            }
+          </div>
           <button onClick={Settings.handleQuit} className="quit">
             Quit Unsplash Wallpapers
           </button>

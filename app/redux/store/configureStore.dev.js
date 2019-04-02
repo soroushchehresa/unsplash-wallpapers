@@ -10,6 +10,7 @@ import electronJsonStorage from 'electron-json-storage';
 import { Iterable, fromJS } from 'immutable';
 import history from 'app/utils/history';
 import API from 'app/utils/xhrWrapper';
+import setTheme from 'app/utils/setTheme';
 import persistReduxState from 'app/utils/persistReduxState';
 import createRootReducer from '../reducers';
 import sagas from '../sagas';
@@ -52,6 +53,7 @@ const configureStore = async () => {
       () => store.replaceReducer(require('../reducers').default), // eslint-disable-line
     );
   }
+  setTheme(store);
   return store;
 };
 

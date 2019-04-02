@@ -1,10 +1,11 @@
 // @flow
 
 import styled from 'styled-components';
+import { boxsBackgroundColor } from 'app/styles/theme';
 
 export default styled.div`
   .container {
-    background: #efefef;
+    background: ${boxsBackgroundColor};
     height: calc(100vh - 50px);
     width: 100%;
     overflow: hidden;

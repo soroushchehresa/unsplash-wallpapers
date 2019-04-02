@@ -1,10 +1,22 @@
 // @flow
 
 import styled from 'styled-components';
+import theme from 'styled-theming';
+import { boxsBackgroundColor, textsColor } from 'app/styles/theme';
+
+const quitButtonColor = theme('mode', {
+  Light: '#fff',
+  Dark: '#4e5252',
+});
+
+const quitButtonTextColor = theme('mode', {
+  Light: '#222',
+  Dark: '#b4b3b7',
+});
 
 export default styled.div`
   .container {
-    background: #efefef;
+    background: ${boxsBackgroundColor};
     display: flex;
     height: 100vh;
     align-items: center;
@@ -16,8 +28,14 @@ export default styled.div`
       margin: 10px 0 20px;
       font-size: 20px;
       text-align: center;
+      color: ${textsColor};
+    }
+    > * {
+      margin: 10px 0;
     }
     > label {
+      font-weight: bold;
+      color: ${textsColor};
       text-align: center;
       margin-bottom: 10px;
       &.run-at-startup {
@@ -34,10 +52,40 @@ export default styled.div`
         }
       }
     }
+    > .choose-theme {
+        text-align: center;
+        > p {
+          font-weight: bold;
+          margin: 0 0 5px;
+          display: flex;
+          align-items: center;
+          color: ${textsColor};
+          > span {
+            margin-left: 10px;
+            font-weight: normal;
+          }
+          > .changeAutoSetTheme {
+            margin-left: 5px;
+          }
+        }
+        > label {
+          color: ${textsColor};
+          display: inline-block;
+          user-select: none;
+          &:last-child {
+            margin-right: 0;
+          }
+          margin-right: 10px;
+          > input {
+            margin-left: 5px;
+          }
+        }
+      }
     .quit {
       position: absolute;
       bottom: 35px;
-      background: #fff;
+      background: ${quitButtonColor};
+      color: ${quitButtonTextColor}
       font-size: 12px;
       padding: 5px 10px;
       margin: auto;

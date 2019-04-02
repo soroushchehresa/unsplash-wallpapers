@@ -1,10 +1,32 @@
 // @flow
 
 import styled from 'styled-components';
+import { boxsBackgroundColor, textsColor } from 'app/styles/theme';
+import theme from 'styled-theming';
+
+const setWallpaperButtonColor = theme('mode', {
+  Light: '#fff',
+  Dark: '#4e5252',
+});
+
+const setWallpaperButtonTextColor = theme('mode', {
+  Light: '#222',
+  Dark: '#b4b3b7',
+});
+
+const setWallpaperButtonBorderColor = theme('mode', {
+  Light: '#ccc',
+  Dark: '#4e5252',
+});
+
+const downloadButtonTextColor = theme('mode', {
+  Light: '#666',
+  Dark: '#ccc',
+});
 
 export default styled.div`
   .container {
-    background: #efefef;
+    background: ${boxsBackgroundColor};
     position: relative;
     display: flex;
     justify-content: stretch;
@@ -41,8 +63,8 @@ export default styled.div`
     > .setWallpaperButton {
       padding: 13px 0;
       margin: 12px 12px 0;
-      background: #fff;
-      border: 1px solid #ccc;
+      background: ${setWallpaperButtonColor};
+      border: 1px solid ${setWallpaperButtonBorderColor};
       border-radius: 5px;
       font-size: 13px;
       display: flex;
@@ -50,6 +72,8 @@ export default styled.div`
       align-items: center;
       justify-content: center;
       height: 48px;
+      color: ${setWallpaperButtonTextColor};
+      font-weight: 400;
       &:disabled {
         pointer-events: none;
       }
@@ -67,7 +91,7 @@ export default styled.div`
       > .autor {
         cursor: default;
         font-size: 12px;
-        color: #333;
+        color: ${textsColor};
         > span {
           font-weight: bold;
           margin-left: 3px;
@@ -78,7 +102,7 @@ export default styled.div`
       }
       > .download {
         font-size: 12px;
-        color: #666;
+        color: ${downloadButtonTextColor};
         display: flex;
         align-items: center;
         justify-content: center;

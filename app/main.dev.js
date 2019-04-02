@@ -26,6 +26,9 @@ app.on('ready', () => {
     const showWindow = () => {
       const trayPos = tray.getBounds();
       const windowPos = window.getBounds();
+      const { screen } = require('electron'); // eslint-disable-line
+      const primaryDisplay = screen.getPrimaryDisplay();
+      const { width: screenWidth } = primaryDisplay.size;
       let x = 0;
       let y = 0;
 
@@ -42,9 +45,6 @@ app.on('ready', () => {
         case 'linux':
         case 'sunos':
         default:
-          const { screen } = require('electron'); // eslint-disable-line
-          const primaryDisplay = screen.getPrimaryDisplay();
-          const { width: screenWidth } = primaryDisplay.size;
           x = screenWidth - width - 10;
           y = 10;
           break;

@@ -2,16 +2,23 @@
 
 import React from 'react';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 import os from 'os';
 import history from 'app/utils/history';
 import logo from './assets/logo.png';
+import lightLogo from './assets/light-logo.png';
 import Styles from './styles';
 
 type Props = {
   location : Object,
+  activeTheme : string,
 };
 
-export default withRouter(({ location } : Props) => {
+const mapStateToProps = state => ({
+  activeTheme: state.getIn(['Settings', 'activeTheme']),
+});
+
+export default connect(mapStateToProps, null)(withRouter(({ location, activeTheme } : Props) => {
   const handleChangePage = (path : string) => {
     history.push(location.pathname === path ? '/' : path);
   };
@@ -19,7 +26,7 @@ export default withRouter(({ location } : Props) => {
     <Styles>
       {os.type() === 'Darwin' && <div className="arrow" />}
       <div className="logoWrapper">
-        <img src={logo} alt="logo" />
+        <img src={activeTheme === 'Dark' ? lightLogo : logo} alt="logo" />
         <p>
           <span>Unsplash</span>
           Wallpapers
@@ -50,4 +57,4 @@ export default withRouter(({ location } : Props) => {
       </div>
     </Styles>
   );
-});
+}));

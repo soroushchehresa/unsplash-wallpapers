@@ -32,6 +32,7 @@ type State = {
     getPhotoLoading: state.getIn(['Home', 'getPhotoLoading']),
     photoData: state.getIn(['Home', 'photoData']),
     activeCategory: state.getIn(['Categories', 'activeCategory']),
+    activeTheme: state.getIn(['Settings', 'activeTheme']),
   }),
   {
     getPhotoAction: getPhoto,
@@ -95,6 +96,7 @@ class Home extends Component<Props, State> {
       setWallpaperAction,
       setWallpaperLoading,
       activeCategory,
+      activeTheme,
     } = this.props;
     const { downloadLoading } = this.state;
     return (
@@ -123,7 +125,7 @@ class Home extends Component<Props, State> {
             onClick={setWallpaperAction}
           >
             <span>Set as Wallpaper</span>
-            {setWallpaperLoading && <Loading color="#666" size="14px" />}
+            {setWallpaperLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="14px" />}
           </button>
           <div className="bottomWrapper">
             <a className="autor" href={photoData.getIn(['links', 'html'])}>
@@ -144,7 +146,7 @@ class Home extends Component<Props, State> {
               className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading || photoData.size === 0 ? ' disabled' : ''}`}
             >
               Download
-              {downloadLoading && <Loading color="#666" size="10px" />}
+              {downloadLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="10px" />}
             </button>
           </div>
         </div>

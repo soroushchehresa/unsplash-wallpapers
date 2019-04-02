@@ -1,7 +1,16 @@
+// @flow
+
 import styled, { css } from 'styled-components';
+import theme from 'styled-theming';
+import { boxsBackgroundColor, textsColor } from 'app/styles/theme';
+
+const buttonIconColor = theme('mode', {
+  Light: '#666',
+  Dark: '#fff',
+});
 
 export default styled.div`
-  background: #efefef;
+  background: ${boxsBackgroundColor};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +25,7 @@ export default styled.div`
     top: -8.5px;
     width: 17px;
     height: 18px;
-    background: #efefef;
+    background: ${boxsBackgroundColor};
     transform: rotate(45deg);
   }
   .logoWrapper {
@@ -30,6 +39,7 @@ export default styled.div`
       margin-right: 10px;
     }
     > p {
+      color: ${textsColor};
       margin: 0;
       font-size: 12px;
       > span {
@@ -43,7 +53,6 @@ export default styled.div`
     flex-direction: row;
     > button {
       margin-left: 5px;
-      color: #666;
       width: 25px;
       height: 25px;
       display: flex;
@@ -51,12 +60,12 @@ export default styled.div`
       justify-content: center;
       border-radius: 4px;
       &.active {
-        background: #ccc;
+        background: rgba(159,159,159,.4);
       }
       > i {
         cursor: default;
         font-size: 16px;
-        color: #666;
+        color: ${buttonIconColor};
       }
     }
   }
