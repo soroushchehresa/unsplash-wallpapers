@@ -38,6 +38,7 @@ And so on...
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
 * Run at startup system (optional).
+* Dark mode (optional or auto by Mojave appearance).
 * Download directly every wallpaper.
 * Link to photographer profile on [Unsplash website](https://unsplash.com).
 
