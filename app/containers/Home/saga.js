@@ -23,6 +23,7 @@ import {
   GET_PHOTO_FAIL,
   SET_WALLPAPER,
   SET_WALLPAPER_SUCCESS,
+  SET_WALLPAPER_FAIL,
 } from './redux';
 
 function* getPhoto() {
@@ -41,48 +42,57 @@ function* getPhoto() {
 
 function* setWallpaper() {
   yield takeLatest(SET_WALLPAPER, function* cb() {
-    const reduxState = yield select();
-    const photoData = reduxState.getIn(['Home', 'photoData']);
-    let hasPicture = false;
-    let storedPictures = null;
-    let picturePath = path.join(
-      os.homedir(),
-      '/Pictures',
-      `unsplash-${photoData.get('id')}.png`,
-    );
-    picturePath = path.normalize(picturePath);
-    storage.get('pictures', (error, pictures) => {
-      storedPictures = pictures;
-      if (pictures.list && pictures.list.length > 0) {
-        pictures.list.forEach((pictureItem) => {
-          if (pictureItem.id === photoData.get('id')) {
-            hasPicture = true;
-          }
+    if (window.navigator.onLine) {
+      const reduxState = yield select();
+      const photoData = reduxState.getIn(['Home', 'photoData']);
+      let hasPicture = false;
+      let storedPictures = null;
+      let picturePath = path.join(
+        os.homedir(),
+        '/Pictures',
+        `unsplash-${photoData.get('id')}.png`,
+      );
+      picturePath = path.normalize(picturePath);
+      storage.get('pictures', (error, pictures) => {
+        storedPictures = pictures;
+        if (pictures.list && pictures.list.length > 0) {
+          pictures.list.forEach((pictureItem) => {
+            if (pictureItem.id === photoData.get('id')) {
+              hasPicture = true;
+            }
+          });
+        }
+      });
+      if (!hasPicture) {
+        let base64Image = yield axios
+          .get(photoData.getIn(['urls', 'full']), {
+            responseType: 'arraybuffer',
+          });
+        if (base64Image && (base64Image.status === 200)) {
+          base64Image = new Buffer.from(
+            base64Image.data,
+            'binary',
+          ).toString('base64');
+          yield util.promisify(fs.writeFile)(picturePath, base64Image, 'base64');
+        } else {
+          yield put({ type: SET_WALLPAPER_FAIL, data: base64Image });
+          return;
+        }
+      }
+      yield wallpaper.set(picturePath, { scale: 'auto' });
+      yield put({ type: SET_WALLPAPER_SUCCESS });
+      yield put(setUpdateWallpaperTime(moment()
+        .format('DD.MM.YYYY HH:mm')));
+      if (!hasPicture) {
+        storage.set('pictures', {
+          list: [
+            { ...photoData.toJS(), path: picturePath },
+            ...((storedPictures.list && storedPictures.list.length > 0) ? storedPictures.list : []),
+          ],
         });
       }
-    });
-    if (!hasPicture) {
-      let base64Image = yield axios
-        .get(photoData.getIn(['urls', 'full']), {
-          responseType: 'arraybuffer',
-        });
-      base64Image = new Buffer.from(
-        base64Image.data,
-        'binary',
-      ).toString('base64');
-      yield util.promisify(fs.writeFile)(picturePath, base64Image, 'base64');
-    }
-    yield wallpaper.set(picturePath, { scale: 'auto' });
-    yield put({ type: SET_WALLPAPER_SUCCESS });
-    yield put(setUpdateWallpaperTime(moment()
-      .format('DD.MM.YYYY HH:mm')));
-    if (!hasPicture) {
-      storage.set('pictures', {
-        list: [
-          { ...photoData.toJS(), path: picturePath },
-          ...((storedPictures.list && storedPictures.list.length > 0) ? storedPictures.list : []),
-        ],
-      });
+    } else {
+      yield put({ type: SET_WALLPAPER_FAIL, data: {} });
     }
   });
 }
