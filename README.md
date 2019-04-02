@@ -7,7 +7,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 ## Demo:
 
 #### Mac
-<img src="http://i.imgur.com/GXMBuLn.gif" width="500px" />
+<img src="http://i.imgur.com/KLhJfqZ.gif" width="500px" />
 
 #### Windows
 <img src="http://i.imgur.com/5FAB6d8.gif" width="500px" />
