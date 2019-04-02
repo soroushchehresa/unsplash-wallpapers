@@ -11,9 +11,9 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 
 
 #### Other platforms demo:
-<a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows Demo</a>
+<a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows demo</a>
 <br />
-<a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux Demo</a>
+<a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux demo</a>
 
 
 ## This project implemented by the following technologies:
