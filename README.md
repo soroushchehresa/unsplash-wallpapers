@@ -7,7 +7,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 ## Demo:
 
 #### Mac
-<img src="http://i.imgur.com/GXMBuLn.gif" width="500px" />
+<img src="http://i.imgur.com/KLhJfqZ.gif" width="500px" />
 
 #### Windows
 <img src="http://i.imgur.com/5FAB6d8.gif" width="500px" />
@@ -20,6 +20,7 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
+* [redux-saga](https://github.com/redux-saga/redux-saga)
 * [styled-components](https://github.com/styled-components/styled-components)
 * [axios](https://github.com/axios/axios)
 * [wallpaper](https://github.com/sindresorhus/wallpaper)
@@ -37,6 +38,7 @@ And so on...
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
 * Run at startup system (optional).
+* Dark mode (optional or auto by Mojave appearance on Mac).
 * Download directly every wallpaper.
 * Link to photographer profile on [Unsplash website](https://unsplash.com).
 
