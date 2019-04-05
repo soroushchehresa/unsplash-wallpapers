@@ -17,12 +17,14 @@ const quitButtonTextColor = theme('mode', {
 export default styled.div`
   background: ${boxsBackgroundColor};
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 50px);
   align-items: center;
   flex-direction: column;
   padding: 0 10px;
   box-sizing: border-box;
-  top: 0;
+  width: 100%;
+  position: relative;
+  justify-content: stretch;
   > h3 {
     margin: 10px 0 20px;
     font-size: 20px;

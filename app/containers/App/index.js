@@ -3,6 +3,8 @@
 import React, { Component, Fragment } from 'react';
 import { autobind } from 'core-decorators';
 import { ThemeProvider } from 'styled-components';
+import { Route } from 'react-router';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -67,8 +69,22 @@ class App extends Component<Props> {
       <ThemeProvider theme={{ mode: activeTheme }}>
         <Fragment>
           <Navbar location={location} />
-          {children}
-          <GlobalStyle />
+          <div className="app-container">
+            <Route
+              render={() => (
+                <TransitionGroup>
+                  <CSSTransition
+                    key={location.pathname}
+                    classNames="fade"
+                    timeout={700}
+                  >
+                    {children}
+                  </CSSTransition>
+                </TransitionGroup>
+              )}
+            />
+            <GlobalStyle />
+          </div>
         </Fragment>
       </ThemeProvider>
     );

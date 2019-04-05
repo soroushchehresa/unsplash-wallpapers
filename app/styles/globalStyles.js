@@ -38,4 +38,26 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
   }
+
+  .fade-enter,
+  .fade-exit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 700ms ease opacity;
+  }
+  
+  .fade-enter,
+  .fade-exit-active {
+    opacity: 0;
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  .app-container {
+    background: #3a3e3f;
+  }
 `;
