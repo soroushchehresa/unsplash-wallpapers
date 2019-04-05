@@ -12,7 +12,7 @@ CheckNodeEnv('production');
 export default merge.smart(baseConfig, {
   devtool: 'source-map',
   mode: 'production',
-  target: 'electron-main',
+  target: 'electron-renderer',
   entry: path.join(__dirname, '..', 'app/index'),
   output: {
     path: path.join(__dirname, '..', 'app/dist'),
