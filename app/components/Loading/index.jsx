@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import React, { PureComponent } from 'react';
 import Styles from './styles';
 
 type Props = {
@@ -8,11 +8,16 @@ type Props = {
   color : string,
 }
 
-export default ({ size, color } : Props) => (
-  <Styles
-    size={size}
-    color={color}
-  >
-    <div className="spinner" />
-  </Styles>
-);
+export default class Loading extends PureComponent<Props> {
+  render() {
+    const { size, color } = this.props;
+    return (
+      <Styles
+        size={size}
+        color={color}
+      >
+        <div className="spinner" />
+      </Styles>
+    );
+  }
+}
