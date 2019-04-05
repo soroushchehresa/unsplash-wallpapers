@@ -1,6 +1,7 @@
 // @flow
 
 import { createGlobalStyle } from 'styled-components';
+import {boxsBackgroundColor} from './theme';
 
 export default createGlobalStyle`
   @import '../node_modules/font-awesome/css/font-awesome.min.css';
@@ -47,6 +48,6 @@ export default createGlobalStyle`
   }
   
   .app-container {
-    background: #3a3e3f;
+    background: ${boxsBackgroundColor};
   }
 `;
