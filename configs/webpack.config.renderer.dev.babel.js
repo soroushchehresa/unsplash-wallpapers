@@ -30,7 +30,7 @@ if (!requiredByDLLConfig && !(fs.existsSync(dll) && fs.existsSync(manifest))) {
 export default merge.smart(baseConfig, {
   devtool: 'source-map',
   mode: 'development',
-  target: 'electron-main',
+  target: 'electron-renderer',
   entry: [
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://localhost:${port}/`,
