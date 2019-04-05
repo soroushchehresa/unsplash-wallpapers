@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Navbar from 'app/components/Navbar';
 import { getPhoto } from 'app/containers/Home/redux';
 import GlobalStyle from 'app/styles/globalStyles';
 
@@ -16,6 +17,7 @@ type Props = {
   getPhotoAction : (data : { data : boolean }) => void,
   activeCategory : string,
   activeTheme : string,
+  location : Object,
 };
 
 @withRouter
@@ -60,10 +62,11 @@ class App extends Component<Props> {
   }
 
   render() {
-    const { children, activeTheme } = this.props;
+    const { children, activeTheme, location } = this.props;
     return (
       <ThemeProvider theme={{ mode: activeTheme }}>
         <Fragment>
+          <Navbar location={location} />
           {children}
           <GlobalStyle />
         </Fragment>

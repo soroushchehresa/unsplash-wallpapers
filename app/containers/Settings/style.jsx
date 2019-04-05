@@ -15,90 +15,88 @@ const quitButtonTextColor = theme('mode', {
 });
 
 export default styled.div`
-  .container {
-    background: ${boxsBackgroundColor};
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 10px;
-    box-sizing: border-box;
-    top: 0;
-    > h3 {
-      margin: 10px 0 20px;
-      font-size: 20px;
-      text-align: center;
-      color: ${textsColor};
+  background: ${boxsBackgroundColor};
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 10px;
+  box-sizing: border-box;
+  top: 0;
+  > h3 {
+    margin: 10px 0 20px;
+    font-size: 20px;
+    text-align: center;
+    color: ${textsColor};
+  }
+  > * {
+    margin: 10px 0;
+  }
+  > label {
+    font-weight: bold;
+    color: ${textsColor};
+    text-align: center;
+    margin-bottom: 10px;
+    &.run-at-startup {
+      user-select: none;
+      display: block;
+      input {
+        margin-left: 5px;
+      }
     }
-    > * {
-      margin: 10px 0;
+    &.auto-update {
+      > select {
+        margin-left: 5px;
+        outline: none;
+      }
     }
-    > label {
-      font-weight: bold;
-      color: ${textsColor};
+  }
+  > .choose-theme {
       text-align: center;
-      margin-bottom: 10px;
-      &.run-at-startup {
+      > p {
+        font-weight: bold;
+        margin: 0 0 5px;
+        display: flex;
+        align-items: center;
+        color: ${textsColor};
+        > span {
+          margin-left: 10px;
+          font-weight: normal;
+        }
+        > .changeAutoSetTheme {
+          margin-left: 5px;
+        }
+      }
+      > label {
+        color: ${textsColor};
+        display: inline-block;
         user-select: none;
-        display: block;
-        input {
+        &:last-child {
+          margin-right: 0;
+        }
+        margin-right: 10px;
+        > input {
           margin-left: 5px;
         }
       }
-      &.auto-update {
-        > select {
-          margin-left: 5px;
-          outline: none;
-        }
-      }
     }
-    > .choose-theme {
-        text-align: center;
-        > p {
-          font-weight: bold;
-          margin: 0 0 5px;
-          display: flex;
-          align-items: center;
-          color: ${textsColor};
-          > span {
-            margin-left: 10px;
-            font-weight: normal;
-          }
-          > .changeAutoSetTheme {
-            margin-left: 5px;
-          }
-        }
-        > label {
-          color: ${textsColor};
-          display: inline-block;
-          user-select: none;
-          &:last-child {
-            margin-right: 0;
-          }
-          margin-right: 10px;
-          > input {
-            margin-left: 5px;
-          }
-        }
-      }
-    .quit {
-      position: absolute;
-      bottom: 35px;
-      background: ${quitButtonColor};
-      color: ${quitButtonTextColor}
-      font-size: 12px;
-      padding: 5px 10px;
-      margin: auto;
-      border-radius: 4px;
-    }
-    .version {
-      position: absolute;
-      bottom: 7px;
-      margin: auto;
-      text-align: center;
-      font-size: 11px;
-      color: #999;
-      cursor: default;
-    }
+  .quit {
+    position: absolute;
+    bottom: 35px;
+    background: ${quitButtonColor};
+    color: ${quitButtonTextColor}
+    font-size: 12px;
+    padding: 5px 10px;
+    margin: auto;
+    border-radius: 4px;
+  }
+  .version {
+    position: absolute;
+    bottom: 7px;
+    margin: auto;
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    cursor: default;
   }
 `;

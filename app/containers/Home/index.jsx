@@ -8,7 +8,6 @@ import axios from 'axios';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
-import Navbar from 'app/components/Navbar';
 import Loading from 'app/components/Loading';
 import StyledMain from './style';
 import { getPhoto, setWallpaper } from './redux';
@@ -101,54 +100,51 @@ class Home extends Component<Props, State> {
     const { downloadLoading } = this.state;
     return (
       <StyledMain>
-        <Navbar />
-        <div className="container">
-          <button
-            className={`photoWrapper${getPhotoLoading || setWallpaperLoading ? ' disabled' : ''}`}
-            style={{
-              backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
-              backgroundColor: photoData.get('color'),
-            }}
-            onClick={() => getPhotoAction({ activeCategory })}
-          >
-            <div className="buttonWrapper">
-              {getPhotoLoading ? (
-                <Loading color="#fff" size="16px" />
-              ) : (
-                <i className="fa fa-refresh" />
-              )}
-            </div>
-          </button>
-          <button
-            className="setWallpaperButton"
-            disabled={getPhotoLoading || setWallpaperLoading}
-            onClick={setWallpaperAction}
-          >
-            <span>Set as Wallpaper</span>
-            {setWallpaperLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="14px" />}
-          </button>
-          <div className="bottomWrapper">
-            <a className="autor" href={photoData.getIn(['links', 'html'])}>
-              By
-              {
-                (photoData.size > 0)
-                  ? (
-                    <span>
-                      {photoData.getIn(['user', 'first_name'])}
-                      {photoData.getIn(['user', 'last_name']) || ''}
-                    </span>
-                  )
-                  : <span className="empty">-------</span>
-              }
-            </a>
-            <button
-              onClick={this.handleDownload}
-              className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading || photoData.size === 0 ? ' disabled' : ''}`}
-            >
-              Download
-              {downloadLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="10px" />}
-            </button>
+        <button
+          className={`photoWrapper${getPhotoLoading || setWallpaperLoading ? ' disabled' : ''}`}
+          style={{
+            backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
+            backgroundColor: photoData.get('color'),
+          }}
+          onClick={() => getPhotoAction({ activeCategory })}
+        >
+          <div className="buttonWrapper">
+            {getPhotoLoading ? (
+              <Loading color="#fff" size="16px" />
+            ) : (
+              <i className="fa fa-refresh" />
+            )}
           </div>
+        </button>
+        <button
+          className="setWallpaperButton"
+          disabled={getPhotoLoading || setWallpaperLoading}
+          onClick={setWallpaperAction}
+        >
+          <span>Set as Wallpaper</span>
+          {setWallpaperLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="14px" />}
+        </button>
+        <div className="bottomWrapper">
+          <a className="autor" href={photoData.getIn(['links', 'html'])}>
+            By
+            {
+              (photoData.size > 0)
+                ? (
+                  <span>
+                    {photoData.getIn(['user', 'first_name'])}
+                    {photoData.getIn(['user', 'last_name']) || ''}
+                  </span>
+                )
+                : <span className="empty">-------</span>
+            }
+          </a>
+          <button
+            onClick={this.handleDownload}
+            className={`download${getPhotoLoading || setWallpaperLoading || downloadLoading || photoData.size === 0 ? ' disabled' : ''}`}
+          >
+            Download
+            {downloadLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="10px" />}
+          </button>
         </div>
       </StyledMain>
     );

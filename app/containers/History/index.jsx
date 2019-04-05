@@ -9,7 +9,6 @@ import type { Map as MapType } from 'immutable';
 import { withRouter } from 'react-router';
 import wallpaper from 'wallpaper';
 import { setPhoto } from 'app/containers/Home/redux';
-import Navbar from 'app/components/Navbar';
 import PhotoItem from './components/PhotoItem';
 import StyledHistory from './style';
 
@@ -64,27 +63,24 @@ class History extends Component<Props, State> {
     const { pictures, currentWallpaper } = this.state;
     return (
       <StyledHistory>
-        <Navbar />
-        <div className="container">
-          {
-            (pictures.length > 0)
-              ? (
-                <div className="pictures-wrapper">
-                  {
-                    pictures.map(picItem => (
-                      <PhotoItem
-                        key={picItem.id}
-                        imageSRC={picItem.urls.small}
-                        onClick={() => this.handleSetActivePhoto(picItem)}
-                        active={currentWallpaper === picItem.path}
-                      />
-                    ))
-                  }
-                </div>
-              )
-              : <p className="empty-history">You haven’t set any wallpaper yet</p>
-          }
-        </div>
+        {
+          (pictures.length > 0)
+            ? (
+              <div className="pictures-wrapper">
+                {
+                  pictures.map(picItem => (
+                    <PhotoItem
+                      key={picItem.id}
+                      imageSRC={picItem.urls.small}
+                      onClick={() => this.handleSetActivePhoto(picItem)}
+                      active={currentWallpaper === picItem.path}
+                    />
+                  ))
+                }
+              </div>
+            )
+            : <p className="empty-history">You haven’t set any wallpaper yet</p>
+        }
       </StyledHistory>
     );
   }

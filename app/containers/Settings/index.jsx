@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import type { Map as MapType } from 'immutable';
 import storage from 'electron-json-storage';
 import moment from 'moment';
-import Navbar from 'app/components/Navbar';
 import AutoLaunch from 'auto-launch';
 import appPackage from '../../../package';
 import StyledSettings from './style';
@@ -107,95 +106,92 @@ class Settings extends Component<Props, State> {
     const { isRunAtStartup } = this.state;
     return (
       <StyledSettings>
-        <Navbar />
-        <div className="container">
-          <h3>Settings</h3>
-          <label
-            className="run-at-startup"
-            htmlFor="run-at-startup"
+        <h3>Settings</h3>
+        <label
+          className="run-at-startup"
+          htmlFor="run-at-startup"
+        >
+          Run at startup
+          <input
+            id="run-at-startup"
+            type="checkbox"
+            onChange={this.handleRunInStartup}
+            checked={isRunAtStartup}
+          />
+        </label>
+        {/* eslint-disable-next-line */}
+        <label
+          className="auto-update"
+          htmlFor="update-method"
+        >
+          Update
+          <select
+            id="update-method"
+            onChange={this.handleChangeUpdateWallpaperScadule}
+            defaultValue={updateWallpaperSchedule}
           >
-            Run at startup
-            <input
-              id="run-at-startup"
-              type="checkbox"
-              onChange={this.handleRunInStartup}
-              checked={isRunAtStartup}
-            />
-          </label>
-          {/* eslint-disable-next-line */}
-          <label
-            className="auto-update"
-            htmlFor="update-method"
-          >
-            Update
-            <select
-              id="update-method"
-              onChange={this.handleChangeUpdateWallpaperScadule}
-              defaultValue={updateWallpaperSchedule}
-            >
-              {
-                this.updateMethods.map((updateMethod : string) => (
-                  <option key={updateMethod} value={updateMethod}>
-                    {updateMethod}
-                  </option>
-                ))
-              }
-            </select>
-          </label>
-          <div className="choose-theme">
-            <p>
-              Theme:
-              {
-                (process.platform === 'darwin')
-                && (
-                  <Fragment>
-                    <span>change auto by OS</span>
-                    <input
-                      className="changeAutoSetTheme"
-                      type="checkbox"
-                      onChange={this.handleSetAutoChangeTheme}
-                      checked={isChangeAutomaticActiveTheme}
-                    />
-                  </Fragment>
-                )
-              }
-            </p>
             {
-              !isChangeAutomaticActiveTheme
+              this.updateMethods.map((updateMethod : string) => (
+                <option key={updateMethod} value={updateMethod}>
+                  {updateMethod}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <div className="choose-theme">
+          <p>
+            Theme:
+            {
+              (process.platform === 'darwin')
               && (
                 <Fragment>
-                  <label htmlFor="light">
-                    Light
-                    <input
-                      id="light"
-                      type="radio"
-                      onChange={this.handleChangeTheme}
-                      value="Light"
-                      checked={activeTheme === 'Light'}
-                    />
-                  </label>
-                  <label htmlFor="dark">
-                    Dark
-                    <input
-                      id="dark"
-                      type="radio"
-                      onChange={this.handleChangeTheme}
-                      value="Dark"
-                      checked={activeTheme === 'Dark'}
-                    />
-                  </label>
+                  <span>change auto by OS</span>
+                  <input
+                    className="changeAutoSetTheme"
+                    type="checkbox"
+                    onChange={this.handleSetAutoChangeTheme}
+                    checked={isChangeAutomaticActiveTheme}
+                  />
                 </Fragment>
               )
             }
-          </div>
-          <button onClick={Settings.handleQuit} className="quit">
-            Quit Unsplash Wallpapers
-          </button>
-          <p className="version">
-            verion:
-            {appPackage.version}
           </p>
+          {
+            !isChangeAutomaticActiveTheme
+            && (
+              <Fragment>
+                <label htmlFor="light">
+                  Light
+                  <input
+                    id="light"
+                    type="radio"
+                    onChange={this.handleChangeTheme}
+                    value="Light"
+                    checked={activeTheme === 'Light'}
+                  />
+                </label>
+                <label htmlFor="dark">
+                  Dark
+                  <input
+                    id="dark"
+                    type="radio"
+                    onChange={this.handleChangeTheme}
+                    value="Dark"
+                    checked={activeTheme === 'Dark'}
+                  />
+                </label>
+              </Fragment>
+            )
+          }
         </div>
+        <button onClick={Settings.handleQuit} className="quit">
+          Quit Unsplash Wallpapers
+        </button>
+        <p className="version">
+          verion:
+          {appPackage.version}
+        </p>
       </StyledSettings>
     );
   }

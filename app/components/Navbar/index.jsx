@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import os from 'os';
 import history from 'app/utils/history';
@@ -18,7 +17,7 @@ const mapStateToProps = state => ({
   activeTheme: state.getIn(['Settings', 'activeTheme']),
 });
 
-export default connect(mapStateToProps, null)(withRouter(({ location, activeTheme } : Props) => {
+export default connect(mapStateToProps, null)(({ location, activeTheme } : Props) => {
   const handleChangePage = (path : string) => {
     history.push(location.pathname === path ? '/' : path);
   };
@@ -57,4 +56,4 @@ export default connect(mapStateToProps, null)(withRouter(({ location, activeThem
       </div>
     </Styles>
   );
-}));
+});

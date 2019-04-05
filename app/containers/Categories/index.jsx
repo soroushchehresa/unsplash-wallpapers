@@ -44,106 +44,103 @@ export default connect(
   { setActiveCategoryAction: setActiveCategory },
 )(({ activeCategory, setActiveCategoryAction } : Props) => (
   <StyledCategories>
-    <Navbar />
-    <div className="container">
-      <div className="categories-wrapper">
-        <CategoryItem
-          key="1065396"
-          title="Special"
-          background={specialBackground}
-          icon={specialIcon}
-          onClick={() => setActiveCategoryAction(1065396)} // eslint-disable-line
-          active={activeCategory === 1065396}
-        />
-        <CategoryItem
-          key="1065976"
-          title="Wallpapers"
-          background={wallpapersBackground}
-          icon={wallpapersIcon}
-          onClick={() => setActiveCategoryAction(1065976)} // eslint-disable-line
-          active={activeCategory === 1065976}
-        />
-        <CategoryItem
-          key="3330461"
-          title="Arts & Culture"
-          background={artsBackground}
-          icon={artsIcon}
-          onClick={() => setActiveCategoryAction(3330461)} // eslint-disable-line
-          active={activeCategory === 3330461}
-        />
-        <CategoryItem
-          key="3330455"
-          title="Food"
-          background={foodBackground}
-          icon={foodIcon}
-          onClick={() => setActiveCategoryAction(3330455)} // eslint-disable-line
-          active={activeCategory === 3330455}
-        />
-        <CategoryItem
-          key="3356576"
-          title="Fashion"
-          background={fashionBackground}
-          icon={fashionIcon}
-          onClick={() => setActiveCategoryAction(3356576)} // eslint-disable-line
-          active={activeCategory === 3356576}
-        />
-        <CategoryItem
-          key="3330452"
-          title="Animals"
-          background={animalsBackground}
-          icon={animalsIcon}
-          onClick={() => setActiveCategoryAction(3330452)} // eslint-disable-line
-          active={activeCategory === 3330452}
-        />
-        <CategoryItem
-          key="3330448"
-          title="Nature"
-          background={natureBackground}
-          icon={natureIcon}
-          onClick={() => setActiveCategoryAction(3330448)} // eslint-disable-line
-          active={activeCategory === 3330448}
-        />
-        <CategoryItem
-          key="3356581"
-          title="Spirituality"
-          background={spiritualityBackground}
-          icon={spiritualityIcon}
-          onClick={() => setActiveCategoryAction(3356581)} // eslint-disable-line
-          active={activeCategory === 3356581}
-        />
-        <CategoryItem
-          key="3348877"
-          title="Business & Work"
-          background={businessBackground}
-          icon={businessIcon}
-          onClick={() => setActiveCategoryAction(3348877)} // eslint-disable-line
-          active={activeCategory === 3348877}
-        />
-        <CategoryItem
-          key="3348849"
-          title="Architecture"
-          background={architectureBackground}
-          icon={architectureIcon}
-          onClick={() => setActiveCategoryAction(3348849)} // eslint-disable-line
-          active={activeCategory === 3348849}
-        />
-        <CategoryItem
-          key="3330445"
-          title="Textures & Patterns"
-          background={texturesBackground}
-          icon={texturesIcon}
-          onClick={() => setActiveCategoryAction(3330445)} // eslint-disable-line
-          active={activeCategory === 3330445}
-        />
-        <CategoryItem
-          key="3356584"
-          title="Experimental"
-          background={experimentalBackground}
-          icon={experimentalIcon}
-          onClick={() => setActiveCategoryAction(3356584)} // eslint-disable-line
-          active={activeCategory === 3356584}
-        />
-      </div>
+    <div className="categories-wrapper">
+      <CategoryItem
+        key="1065396"
+        title="Special"
+        background={specialBackground}
+        icon={specialIcon}
+        onClick={() => setActiveCategoryAction(1065396)} // eslint-disable-line
+        active={activeCategory === 1065396}
+      />
+      <CategoryItem
+        key="1065976"
+        title="Wallpapers"
+        background={wallpapersBackground}
+        icon={wallpapersIcon}
+        onClick={() => setActiveCategoryAction(1065976)} // eslint-disable-line
+        active={activeCategory === 1065976}
+      />
+      <CategoryItem
+        key="3330461"
+        title="Arts & Culture"
+        background={artsBackground}
+        icon={artsIcon}
+        onClick={() => setActiveCategoryAction(3330461)} // eslint-disable-line
+        active={activeCategory === 3330461}
+      />
+      <CategoryItem
+        key="3330455"
+        title="Food"
+        background={foodBackground}
+        icon={foodIcon}
+        onClick={() => setActiveCategoryAction(3330455)} // eslint-disable-line
+        active={activeCategory === 3330455}
+      />
+      <CategoryItem
+        key="3356576"
+        title="Fashion"
+        background={fashionBackground}
+        icon={fashionIcon}
+        onClick={() => setActiveCategoryAction(3356576)} // eslint-disable-line
+        active={activeCategory === 3356576}
+      />
+      <CategoryItem
+        key="3330452"
+        title="Animals"
+        background={animalsBackground}
+        icon={animalsIcon}
+        onClick={() => setActiveCategoryAction(3330452)} // eslint-disable-line
+        active={activeCategory === 3330452}
+      />
+      <CategoryItem
+        key="3330448"
+        title="Nature"
+        background={natureBackground}
+        icon={natureIcon}
+        onClick={() => setActiveCategoryAction(3330448)} // eslint-disable-line
+        active={activeCategory === 3330448}
+      />
+      <CategoryItem
+        key="3356581"
+        title="Spirituality"
+        background={spiritualityBackground}
+        icon={spiritualityIcon}
+        onClick={() => setActiveCategoryAction(3356581)} // eslint-disable-line
+        active={activeCategory === 3356581}
+      />
+      <CategoryItem
+        key="3348877"
+        title="Business & Work"
+        background={businessBackground}
+        icon={businessIcon}
+        onClick={() => setActiveCategoryAction(3348877)} // eslint-disable-line
+        active={activeCategory === 3348877}
+      />
+      <CategoryItem
+        key="3348849"
+        title="Architecture"
+        background={architectureBackground}
+        icon={architectureIcon}
+        onClick={() => setActiveCategoryAction(3348849)} // eslint-disable-line
+        active={activeCategory === 3348849}
+      />
+      <CategoryItem
+        key="3330445"
+        title="Textures & Patterns"
+        background={texturesBackground}
+        icon={texturesIcon}
+        onClick={() => setActiveCategoryAction(3330445)} // eslint-disable-line
+        active={activeCategory === 3330445}
+      />
+      <CategoryItem
+        key="3356584"
+        title="Experimental"
+        background={experimentalBackground}
+        icon={experimentalIcon}
+        onClick={() => setActiveCategoryAction(3356584)} // eslint-disable-line
+        active={activeCategory === 3356584}
+      />
     </div>
   </StyledCategories>
 ));
