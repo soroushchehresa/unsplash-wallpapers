@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 import type { Map as MapType } from 'immutable';
@@ -39,7 +39,7 @@ type State = {
   },
 )
 @autobind
-class Home extends Component<Props, State> {
+class Home extends PureComponent<Props, State> {
   constructor(props : Props) {
     super(props);
     this.state = {
