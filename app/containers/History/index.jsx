@@ -9,6 +9,7 @@ import type { Map as MapType } from 'immutable';
 import { withRouter } from 'react-router';
 import wallpaper from 'wallpaper';
 import { setPhoto } from 'app/containers/Home/redux';
+import Loading from 'app/components/Loading';
 import PhotoItem from './components/PhotoItem';
 import StyledHistory from './style';
 
@@ -20,6 +21,7 @@ type Props = {
 type State = {
   pictures : Array,
   currentWallpaper : string,
+  getPicturesLoading : boolean,
 };
 
 @connect(
@@ -34,6 +36,7 @@ class History extends Component<Props, State> {
     this.state = {
       pictures: [],
       currentWallpaper: '',
+      getPicturesLoading: false,
     };
   }
 
@@ -46,9 +49,10 @@ class History extends Component<Props, State> {
   }
 
   getLocalPhotos() {
+    this.setState({ getPicturesLoading: true });
     storage.get('pictures', (error, pictures) => {
       if (pictures.list) {
-        this.setState({ pictures: pictures.list });
+        this.setState({ pictures: pictures.list, getPicturesLoading: false });
       }
     });
   }
@@ -60,11 +64,17 @@ class History extends Component<Props, State> {
   }
 
   render() {
-    const { pictures, currentWallpaper } = this.state;
+    const { pictures, currentWallpaper, getPicturesLoading } = this.state;
     return (
       <StyledHistory>
         {
-          (pictures.length > 0)
+          getPicturesLoading &&
+          <div className="loading-wrapper">
+            <Loading color="#ccc" size="22px" />
+          </div>
+        }
+        {
+          (!getPicturesLoading && (pictures.length > 0))
             ? (
               <div className="pictures-wrapper">
                 {
@@ -79,7 +89,7 @@ class History extends Component<Props, State> {
                 }
               </div>
             )
-            : <p className="empty-history">You haven’t set any wallpaper yet</p>
+            : !getPicturesLoading && <p className="empty-history">You haven’t set any wallpaper yet</p>
         }
       </StyledHistory>
     );

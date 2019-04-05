@@ -9,6 +9,12 @@ export default styled.div`
   width: 100%;
   overflow: hidden;
   position: relative;
+  > .loading-wrapper {
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   > .pictures-wrapper {
     position: absolute;
     left: 0;
