@@ -36,7 +36,7 @@ class History extends PureComponent<Props, State> {
     this.state = {
       pictures: [],
       currentWallpaper: '',
-      getPicturesLoading: false,
+      getPicturesLoading: true,
     };
   }
 
@@ -49,7 +49,6 @@ class History extends PureComponent<Props, State> {
   }
 
   getLocalPhotos() {
-    this.setState({ getPicturesLoading: true });
     storage.get('pictures', (error, pictures) => {
       if (pictures.list) {
         this.setState({ pictures: pictures.list, getPicturesLoading: false });
