@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import storage from 'electron-json-storage';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
@@ -30,7 +30,7 @@ type State = {
 )
 @withRouter
 @autobind
-class History extends Component<Props, State> {
+class History extends PureComponent<Props, State> {
   constructor(props : Props) {
     super(props);
     this.state = {
