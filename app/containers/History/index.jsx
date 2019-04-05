@@ -70,7 +70,7 @@ class History extends Component<Props, State> {
         {
           getPicturesLoading &&
           <div className="loading-wrapper">
-            <Loading color="#ccc" size="22px" />
+            <Loading color="#bbb" size="22px" />
           </div>
         }
         {
