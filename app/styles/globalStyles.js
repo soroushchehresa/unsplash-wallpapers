@@ -5,18 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
   @import '../node_modules/font-awesome/css/font-awesome.min.css';
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700');
-  
-  [data-theme^="light"],
-  [data-theme] [data-theme^="light"] {
-    --main-color: #000;
-  }
-  
-  [data-theme^="dark"],
-  [data-theme] [data-theme^="dark"],
-  [data-theme="light-dark-sidebar"] nav {
-    --main-color: #fff;
-  }
-  
+
   body {
     background: var(--main-color);
     font-family: 'Open Sans', serif;
