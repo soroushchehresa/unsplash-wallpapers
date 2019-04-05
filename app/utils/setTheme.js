@@ -6,8 +6,10 @@ export default (store) => {
     const { systemPreferences } = remote;
     const setOSTheme = () => {
       const reduxState = store.getState();
-      if (reduxState.getIn(['Settings', 'isChangeAutomaticActiveTheme'])) {
-        store.dispatch(setActiveTheme(systemPreferences.isDarkMode() ? 'Dark' : 'Light'));
+      const operationSystemTheme = systemPreferences.isDarkMode() ? 'Dark' : 'Light';
+      if (reduxState.getIn(['Settings', 'isChangeAutomaticActiveTheme']) &&
+        (operationSystemTheme !== reduxState.getIn(['Settings', 'activeTheme']))) {
+        store.dispatch(setActiveTheme(operationSystemTheme));
       }
     };
     systemPreferences.subscribeNotification(
