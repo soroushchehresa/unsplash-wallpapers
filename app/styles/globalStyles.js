@@ -34,7 +34,7 @@ export default createGlobalStyle`
     position: absolute;
     top: 0;
     left: 0;
-    transition: 700ms ease opacity;
+    transition: 300ms ease opacity;
   }
   
   .fade-enter,

@@ -76,7 +76,7 @@ class App extends Component<Props> {
                   <CSSTransition
                     key={location.pathname}
                     classNames="fade"
-                    timeout={700}
+                    timeout={300}
                   >
                     {children}
                   </CSSTransition>

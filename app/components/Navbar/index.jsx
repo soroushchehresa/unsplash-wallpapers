@@ -39,7 +39,7 @@ class Navbar extends PureComponent<Props, State> {
         history.push(location.pathname === path ? '/' : path);
         setTimeout(() => {
           this.setState({ disableChangeRoute: false });
-        }, 800);
+        }, 100);
       });
     }
   }
