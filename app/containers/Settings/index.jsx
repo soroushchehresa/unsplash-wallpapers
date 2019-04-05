@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component, Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import type { SyntheticEvent } from 'react';
 import { remote } from 'electron';
 import { autobind } from 'core-decorators';
@@ -46,7 +46,7 @@ type State = {
   },
 )
 @autobind
-class Settings extends Component<Props, State> {
+class Settings extends PureComponent<Props, State> {
   static handleQuit() {
     remote.getCurrentWindow()
       .close();
