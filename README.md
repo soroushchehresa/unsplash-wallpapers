@@ -36,6 +36,7 @@ And so on...
 
 
 ## Features:
+* Automatic update capability (On The Fly)
 * Work on any popular operating systems like Mac, Windows, and Linux.
 * Get high quality wallpapers from [Unsplash](https://unsplash.com).
 * Save history of set wallpapers.
@@ -57,21 +58,27 @@ UNSPLASH_ACCESS_KEY=your_access_key
 
 Then, run one of the following commands:
 ```bash
-yarn && yarn dev
-```
-or
-```bash
-npm i && npm run dev
+$ yarn && yarn dev
+
+# OR
+
+$ npm i && npm run dev
 ```
 
 
 #### Packaging for Production:
 
-Run one of the following commands:
+First, place following variables in the `.env`:
+* `UNSPLASH_ACCESS_KEY` - [Unsplash access key](https://unsplash.com/developers)
+* `GH_TOKEN` - your Github token to publish the release
+* `CSC_LINK` - link to your Apple Mac developer certificates (just for packaging on Mac)
+* `CSC_KEY_PASSWORD` - your Apple Mac developer certificate password (just for packaging on Mac)
+
+Then, run one of the following commands:
 ```bash
-yarn package
-```
-or
-```bash
-npm run package
+$ yarn && yarn package
+
+# OR
+
+$ npm i && npm run package
 ```
