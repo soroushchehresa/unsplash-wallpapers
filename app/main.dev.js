@@ -9,7 +9,7 @@ const {
 const path = require('path');
 const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
-const updater = require('utils/appUpdater');
+const updater = require('./utils/appUpdater');
 
 const width = 375;
 const height = 385;
