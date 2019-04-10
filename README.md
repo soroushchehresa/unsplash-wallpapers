@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="http://i.imgur.com/P61ORdC.png" width="150px" />
+  <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
 </p>
 
 <br />
@@ -31,8 +31,6 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 * [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint](https://github.com/eslint/eslint)
-
-And so on...
 
 
 ## Features:
@@ -69,10 +67,10 @@ $ npm i && npm run dev
 #### Packaging for Production:
 
 First, place following variables in the `.env`:
-* `UNSPLASH_ACCESS_KEY` - [Unsplash access key](https://unsplash.com/developers)
-* `GH_TOKEN` - your Github token to publish the release
-* `CSC_LINK` - link to your Apple Mac developer certificates (just for packaging on Mac)
-* `CSC_KEY_PASSWORD` - your Apple Mac developer certificate password (just for packaging on Mac)
+* `UNSPLASH_ACCESS_KEY` - Your [Unsplash access key](https://unsplash.com/developers)
+* `GH_TOKEN` - Your Github token to publish the release
+* `CSC_LINK` - Path or link to your Apple Mac developer certificates (just for packaging on Mac)
+* `CSC_KEY_PASSWORD` - Your Apple Mac developer certificate password (just for packaging on Mac)
 
 Then, run one of the following commands:
 ```bash
