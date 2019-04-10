@@ -2,8 +2,6 @@
   <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
 </p>
 
-<br />
-
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 
