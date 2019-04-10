@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="http://i.imgur.com/P61ORdC.png" width="150px" />
+</p>
+
+<br />
+
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 
@@ -7,10 +13,10 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 ## Demo
 
 #### Mac:
-<img src="http://i.imgur.com/JeBBOoi.gif" width="500px" />
+<img src="http://i.imgur.com/aGjfvmE.gif" width="500px" />
 
 
-#### Other platforms demo: <a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows</a> - <a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux</a>
+#### Other platforms demo: <a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows</a> | <a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux</a>
 
 
 ## This project implemented by the following technologies:
