@@ -49,3 +49,5 @@ main.js.map
 
 .idea
 npm-debug.log.*
+
+Certificates.p12
