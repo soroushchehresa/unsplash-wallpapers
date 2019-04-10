@@ -10,7 +10,7 @@ type InitialState = {
 export const SET_ACTIVE_CATEGORY : string = 'unsplash-wallpapers/Categories/SET_ACTIVE_CATEGORY';
 
 const initialState : fromJSType<InitialState> = fromJS({
-  activeCategory: 1065396,
+  activeCategory: '1065396',
 });
 
 export default (state = initialState, action = {}) => {
