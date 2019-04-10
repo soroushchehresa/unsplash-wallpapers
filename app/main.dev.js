@@ -9,6 +9,9 @@ const {
 const path = require('path');
 const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
+const updater = require('utils/appUpdater');
+
+initAutoUpdate();
 
 const width = 375;
 const height = 385;
@@ -89,6 +92,10 @@ app.on('ready', () => {
       if (!window.webContents.isDevToolsOpened()) {
         window.hide();
       }
+    });
+
+    window.webContents.once('did-frame-finish-load', function() {
+      updater.initAutoUpdate();
     });
 
     window.webContents.on('will-navigate', (event, url) => {
