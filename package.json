@@ -1,9 +1,10 @@
 {
   "name": "unsplash-wallpapers",
   "productName": "Unsplash Wallpapers",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Unsplash cross-platform desktop application built with Electron and React",
   "scripts": {
+    "release": "package",
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
     "build-e2e": "cross-env E2E_BUILD=true yarn build",
@@ -37,7 +38,7 @@
   "main": "./app/main.prod.js",
   "build": {
     "productName": "Unsplash Wallpapers",
-    "appId": "org.soroushchehresa.UnsplashWallpapers",
+    "appId": "com.soroushchehresa.UnsplashWallpapers",
     "files": [
       "resources",
       "app/dist/",
@@ -72,8 +73,7 @@
         "rpm",
         "snap",
         "AppImage"
-      ],
-      "category": "Development"
+      ]
     },
     "directories": {
       "buildResources": "resources",
@@ -81,7 +81,7 @@
     },
     "publish": {
       "provider": "github",
-      "owner": "unsplash-wallpapers",
+      "owner": "soroushchehresa",
       "repo": "unsplash-wallpapers",
       "private": false
     }
@@ -228,8 +228,8 @@
     "dotenv-webpack": "^1.7.0",
     "electron-debug": "^2.0.0",
     "electron-json-storage": "^4.1.6",
-    "electron-log": "^2.2.17",
-    "electron-updater": "^4.0.0",
+    "electron-log": "^3.0.5",
+    "electron-updater": "^4.0.6",
     "fix-path": "^2.1.0",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",

@@ -9,7 +9,8 @@ const {
 const path = require('path');
 const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
-const updater = require('./utils/appUpdater');
+const { autoUpdater } = require('electron-updater');
+const log = require('electron-log');
 
 const width = 375;
 const height = 385;
@@ -17,6 +18,37 @@ const height = 385;
 if (process.platform === 'darwin') {
   app.dock.hide();
 }
+
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
+
+autoUpdater.on('checking-for-update', () => {
+  sendStatusToWindow('Checking for update...');
+});
+
+autoUpdater.on('update-available', () => {
+  sendStatusToWindow('Update available.');
+});
+
+autoUpdater.on('update-not-available', () => {
+  sendStatusToWindow('Update not available.');
+});
+
+autoUpdater.on('error', (err) => {
+  sendStatusToWindow('Error in auto-updater. ' + err);
+});
+
+autoUpdater.on('download-progress', (progressObj) => {
+  let log_message = 'Download speed: ' + progressObj.bytesPerSecond;
+  log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+  log_message = log_message + ' (' + progressObj.transferred + '/' + progressObj.total + ')';
+  sendStatusToWindow(log_message);
+});
+
+autoUpdater.on('update-downloaded', () => {
+  sendStatusToWindow('Update downloaded');
+});
 
 app.on('ready', () => {
   setTimeout(() => {
@@ -93,7 +125,7 @@ app.on('ready', () => {
     });
 
     window.webContents.once('did-frame-finish-load', function() {
-      updater.initAutoUpdate();
+      autoUpdater.checkForUpdatesAndNotify();
     });
 
     window.webContents.on('will-navigate', (event, url) => {
