@@ -47,6 +47,11 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 
 ## Let's run:
 
+#### Clone the project:
+```bash
+$ git clone https://github.com/soroushchehresa/unsplash-wallpapers.git unsplash-wallpapers
+```
+
 #### Starting Development:
 
 First, place your [Unsplash access key](https://unsplash.com/developers) in the `.env`:
@@ -66,9 +71,11 @@ $ npm i && npm run dev
 
 #### Packaging for Production:
 
-First, place following variables in the `.env`:
+First, change `package.json => build => publish => owner` to your GitHub username.
+
+Second, place following variables in the `.env`:
 * `UNSPLASH_ACCESS_KEY` - Your [Unsplash access key](https://unsplash.com/developers)
-* `GH_TOKEN` - Your Github token to publish the release
+* `GH_TOKEN` - Your GitHub token to publish the release
 * `CSC_LINK` - Path or link to your Apple Mac developer certificates (just for packaging on Mac)
 * `CSC_KEY_PASSWORD` - Your Apple Mac developer certificate password (just for packaging on Mac)
 
