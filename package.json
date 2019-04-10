@@ -1,7 +1,7 @@
 {
   "name": "unsplash-wallpapers",
   "productName": "Unsplash Wallpapers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Unsplash cross-platform desktop application built with Electron and React",
   "scripts": {
     "release": "package",
