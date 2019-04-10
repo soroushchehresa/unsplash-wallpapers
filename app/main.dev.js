@@ -11,8 +11,6 @@ const storage = require('electron-json-storage');
 const AutoLaunch = require('auto-launch');
 const updater = require('utils/appUpdater');
 
-initAutoUpdate();
-
 const width = 375;
 const height = 385;
 
