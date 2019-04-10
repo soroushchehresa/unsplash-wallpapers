@@ -52,6 +52,8 @@ class History extends PureComponent<Props, State> {
     storage.get('pictures', (error, pictures) => {
       if (pictures.list) {
         this.setState({ pictures: pictures.list, getPicturesLoading: false });
+      } else {
+        this.setState({ getPicturesLoading: false });
       }
     });
   }
