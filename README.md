@@ -5,7 +5,7 @@
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 
-This project is an unofficial cross-platform version of [Unsplash Wallpapers](https://unsplash.com/wallpaper#mac-app) official application for Mac with more features.
+This project is an unofficial cross-platform desktop application based on [Unsplash Wallpapers official application for Mac](https://unsplash.com/wallpaper#mac-app) with more features and better performance.
 
 
 ## Demo
@@ -32,15 +32,15 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 
 
 ## Features:
+* Load high-quality wallpapers based on Unsplash popular categories.
 * Automatic update capability (On The Fly)
 * Work on any popular operating systems like Mac, Windows, and Linux.
-* Get high quality wallpapers from [Unsplash](https://unsplash.com).
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
 * Run at startup system (optional).
 * Dark mode (optional or auto by Mojave appearance on Mac).
 * Download directly every wallpaper.
-* Link to photographer profile on [Unsplash website](https://unsplash.com).
+* Link to photographer profile on Unsplash website.
 
 
 ## Let's run:
