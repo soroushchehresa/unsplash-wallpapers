@@ -5,18 +5,11 @@ import storage from 'electron-json-storage';
 import os from 'os';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { ipcRenderer, remote } from 'electron';
+import updateHandler from 'app/utils/updateHandler';
 import Root from './containers/Root';
 import { configureStore, history } from './redux/store/configureStore';
 
-ipcRenderer.on('update-message', (event, message) => {
-  if (message === 'Update downloaded') {
-    if (confirm('Restart for update to the latest version')) {
-      remote.app.relaunch();
-      remote.app.exit(0);
-    }
-  }
-});
+updateHandler();
 
 storage.setDataPath(os.tmpdir());
 
