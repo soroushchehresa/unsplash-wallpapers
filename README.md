@@ -1,13 +1,11 @@
 <p align="center">
-  <img src="http://i.imgur.com/P61ORdC.png" width="150px" />
+  <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
 </p>
-
-<br />
 
 # Unsplash Wallpapers
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 
-This project is an unofficial cross-platform version of [Unsplash Wallpapers](https://unsplash.com/wallpaper#mac-app) official application for Mac with more features.
+This project is an unofficial cross-platform desktop application based on [Unsplash Wallpapers official application for Mac](https://unsplash.com/wallpaper#mac-app) with more features and better performance.
 
 
 ## Demo
@@ -32,21 +30,25 @@ This project is an unofficial cross-platform version of [Unsplash Wallpapers](ht
 * [Flow](https://github.com/facebook/flow)
 * [ESLint](https://github.com/eslint/eslint)
 
-And so on...
-
 
 ## Features:
+* Load high-quality wallpapers based on Unsplash popular categories.
+* Automatic update capability (On The Fly)
 * Work on any popular operating systems like Mac, Windows, and Linux.
-* Get high quality wallpapers from [Unsplash](https://unsplash.com).
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
 * Run at startup system (optional).
 * Dark mode (optional or auto by Mojave appearance on Mac).
 * Download directly every wallpaper.
-* Link to photographer profile on [Unsplash website](https://unsplash.com).
+* Link to photographer profile on Unsplash website.
 
 
 ## Let's run:
+
+#### Clone the project:
+```bash
+$ git clone https://github.com/soroushchehresa/unsplash-wallpapers.git unsplash-wallpapers
+```
 
 #### Starting Development:
 
@@ -57,21 +59,29 @@ UNSPLASH_ACCESS_KEY=your_access_key
 
 Then, run one of the following commands:
 ```bash
-yarn && yarn dev
-```
-or
-```bash
-npm i && npm run dev
+$ yarn && yarn dev
+
+# OR
+
+$ npm i && npm run dev
 ```
 
 
 #### Packaging for Production:
 
-Run one of the following commands:
+First, change `package.json => build => publish => owner` to your GitHub username.
+
+Second, place following variables in the `.env`:
+* `UNSPLASH_ACCESS_KEY` - Your [Unsplash access key](https://unsplash.com/developers)
+* `GH_TOKEN` - Your GitHub token to publish the release
+* `CSC_LINK` - Path or link to your Apple Mac developer certificates (just for packaging on Mac)
+* `CSC_KEY_PASSWORD` - Your Apple Mac developer certificate password (just for packaging on Mac)
+
+Then, run one of the following commands:
 ```bash
-yarn package
-```
-or
-```bash
-npm run package
+$ yarn && yarn package
+
+# OR
+
+$ npm i && npm run package
 ```
