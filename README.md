@@ -2,13 +2,12 @@
   <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
 </p>
 
-<br />
-
 # Support
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
 
+<br />
 <br />
 
 # Unsplash Wallpapers
