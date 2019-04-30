@@ -2,6 +2,24 @@
   <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
 </p>
 
+<div align="center">
+  <!-- Version -->
+  <a href="https://marktext.github.io/website">
+    <img src="https://badge.fury.io/gh/soroushchehresa%2Funsplash-wallpapers.svg" alt="website">
+  </a>
+  <!-- License -->
+  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/soroushchehresa/unsplash-wallpapers.svg" alt="LICENSE">
+  </a>
+  <!-- Downloads total -->
+  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases">
+    <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/total.svg" alt="total download">
+  </a>
+  <!-- Downloads latest release -->
+  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
+    <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
+</div>
+
 # Support
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
