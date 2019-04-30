@@ -25,7 +25,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) |
 
 
-## Demo
+## Demo:
 
 #### Mac:
 <img src="http://i.imgur.com/aGjfvmE.gif" width="500px" />
