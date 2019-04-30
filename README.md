@@ -42,7 +42,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 ## Features:
 * Load high-quality wallpapers based on Unsplash popular categories.
-* Automatic update capability (On The Fly)
+* Automatic update (cloud-hosted builds)
 * Work on any popular operating systems like Mac, Windows, and Linux.
 * Save history of set wallpapers.
 * Automatic set wallpapers daily or weekly (optional).
