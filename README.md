@@ -12,7 +12,7 @@
 # Unsplash Wallpapers
 
 
-<div align="center">
+<div>
   <!-- Version -->
   <a href="https://marktext.github.io/website">
     <img src="https://badge.fury.io/gh/soroushchehresa%2Funsplash-wallpapers.svg" alt="website">
@@ -31,6 +31,7 @@
   </a>
 </div>
   
+<br />
   
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 Works on macOS 10.12+, Windows 10+ and Linux.
