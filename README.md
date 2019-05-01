@@ -28,6 +28,7 @@
   <!-- Downloads latest release -->
   <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
+  </a>
 </div>
   
   
