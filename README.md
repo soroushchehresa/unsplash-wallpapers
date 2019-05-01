@@ -71,7 +71,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [electron-json-storage](https://github.com/electron-userland/electron-json-storage)
 * [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
-* [ESLint](https://github.com/eslint/eslint)
+* [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 <br />
 
