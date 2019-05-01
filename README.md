@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="http://i.imgur.com/cRTWaNW.png" width="100%" />
+  <img src="http://i.imgur.com/RLopFvn.png" width="100%" />
 </p>
+
+<br />
 
 <div align="center">
   <!-- Version -->
