@@ -2,6 +2,16 @@
   <img src="http://i.imgur.com/bHaex3g.png" width="100%" />
 </p>
 
+# Support
+<a href="https://www.patreon.com/soroushchehresa">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
+<br />
+
+# Unsplash Wallpapers
+
+
 <div align="center">
   <!-- Version -->
   <a href="https://marktext.github.io/website">
@@ -19,16 +29,8 @@
   <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
 </div>
-
-# Support
-<a href="https://www.patreon.com/soroushchehresa">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
-<br />
-<br />
-
-# Unsplash Wallpapers
+  
+  
 A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 Works on macOS 10.12+, Windows 10+ and Linux.
 
