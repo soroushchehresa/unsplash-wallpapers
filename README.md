@@ -12,7 +12,6 @@
 
 # Unsplash Wallpapers
 
-
 <div>
   <!-- Version -->
   <a href="https://marktext.github.io/website">
@@ -39,6 +38,8 @@ Works on macOS 10.12+, Windows 10+ and Linux.
 
 This project is an unofficial cross-platform desktop application based on [Unsplash Wallpapers official application for Mac](https://unsplash.com/wallpaper#mac-app) with more features and better performance.
 
+<br />
+
 ## Download and Install:
 
 ![platform](https://img.shields.io/static/v1.svg?label=Platform&message=Linux-64%20|%20macOS-64%20|%20Win-32%20|%20Win-64&style=for-the-badge)
@@ -47,6 +48,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) |
 
+<br />
 
 ## Demo:
 
@@ -55,6 +57,8 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 
 #### Other platforms demo: <a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows</a> | <a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux</a>
+
+<br />
 
 ## This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
@@ -69,6 +73,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [Flow](https://github.com/facebook/flow)
 * [ESLint](https://github.com/eslint/eslint)
 
+<br />
 
 ## Features:
 * Load high-quality wallpapers based on Unsplash popular categories.
@@ -81,6 +86,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * Download directly every wallpaper.
 * Link to photographer profile on Unsplash website.
 
+<br />
 
 ## Let's run:
 
