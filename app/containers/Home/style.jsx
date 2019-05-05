@@ -87,7 +87,7 @@ export default styled.div`
     justify-content: space-between;
     height: 40px;
     padding: 0 20px;
-    > .autor {
+    > .author {
       cursor: default;
       font-size: 12px;
       color: ${textsColor};
