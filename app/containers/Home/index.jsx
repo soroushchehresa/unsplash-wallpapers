@@ -125,7 +125,7 @@ class Home extends PureComponent<Props, State> {
           {setWallpaperLoading && <Loading color={activeTheme === 'Dark' ? '#ccc' : '#666'} size="14px" />}
         </button>
         <div className="bottomWrapper">
-          <a className="autor" href={photoData.getIn(['links', 'html'])}>
+          <a className="author" href={photoData.getIn(['links', 'html'])}>
             By
             {
               (photoData.size > 0)
