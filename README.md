@@ -64,6 +64,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
+* and so on...
 
 <br />
 
