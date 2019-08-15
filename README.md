@@ -111,7 +111,7 @@ First, change `package.json => build => publish => owner` to your GitHub usernam
 
 Second, place following variables in the `.env`:
 * `UNSPLASH_ACCESS_KEY` - Your [Unsplash access key](https://unsplash.com/developers)
-* `GH_TOKEN` - Your GitHub token to publish the release
+* `GH_TOKEN` - Your [GitHub token](https://github.com/settings/tokens/new) to publish the release
 * `CSC_LINK` - Path or link to your Apple Mac developer certificates (just for packaging on Mac)
 * `CSC_KEY_PASSWORD` - Your Apple Mac developer certificate password (just for packaging on Mac)
 
