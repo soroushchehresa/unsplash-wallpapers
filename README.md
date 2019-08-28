@@ -45,7 +45,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 ## Demo:
 
 #### Mac:
-<img src="http://i.imgur.com/aGjfvmE.gif" width="500px" />
+<img src="http://i.imgur.com/EORtx07.gif" width="500px" />
 
 
 #### Other platforms demo: <a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows</a> | <a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux</a>
