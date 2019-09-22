@@ -15,12 +15,15 @@ export default {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+            },
           },
-        },
+          'react-hot-loader/webpack',
+        ],
       },
     ],
   },
@@ -31,6 +34,7 @@ export default {
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
+      'react-dom': '@hot-loader/react-dom',
       app: path.resolve(__dirname, '../app'),
     },
   },
