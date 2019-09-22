@@ -7,6 +7,10 @@ export default createGlobalStyle`
   @import '../node_modules/font-awesome/css/font-awesome.min.css';
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|Roboto:400,700');
 
+  * {
+    user-select: none;
+  }
+
   body {
     background: var(--main-color);
     font-family: 'Open Sans', serif;
