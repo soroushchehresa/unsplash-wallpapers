@@ -220,6 +220,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",
+    "@hot-loader/react-dom": "^16.8.6",
     "auto-launch": "^5.0.5",
     "axios": "^0.18.0",
     "bluebird": "^3.5.3",
@@ -240,7 +241,7 @@
     "moment": "^2.24.0",
     "react": "^16.9.0",
     "react-dom": "^16.8.5",
-    "react-hot-loader": "^4.3.12",
+    "react-hot-loader": "^4.8.3",
     "react-redux": "^5.1.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
