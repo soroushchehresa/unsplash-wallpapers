@@ -1,7 +1,6 @@
 // @flow
 
-import React, { Component, Fragment } from 'react';
-import { autobind } from 'core-decorators';
+import React, { useEffect, Fragment } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -22,8 +21,7 @@ type Props = {
   location : Object,
 };
 
-@withRouter
-@connect(
+export default withRouter(connect(
   state => ({
     updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
     updateWallpaperDate: state.getIn(['Settings', 'updateWallpaperDate']),
@@ -33,17 +31,17 @@ type Props = {
   {
     getPhotoAction: getPhoto,
   },
-)
-@autobind
-class App extends Component<Props> {
-  componentDidMount() : void {
+)(({
+  children,
+  activeTheme,
+  location,
+  updateWallpaperSchedule,
+  updateWallpaperDate,
+  getPhotoAction,
+  activeCategory,
+} : Props) => {
+  useEffect(() => {
     const checkUpdateTime = () => {
-      const {
-        updateWallpaperSchedule,
-        updateWallpaperDate,
-        getPhotoAction,
-        activeCategory,
-      } = this.props;
       switch (updateWallpaperSchedule) {
         case 'Daily':
           if ((moment.duration(updateWallpaperDate)).asHours() >= 24) {
@@ -61,34 +59,28 @@ class App extends Component<Props> {
     };
     checkUpdateTime();
     setInterval(checkUpdateTime, 10000);
-  }
-
-  render() {
-    const { children, activeTheme, location } = this.props;
-    return (
-      <ThemeProvider theme={{ mode: activeTheme }}>
-        <Fragment>
-          <Navbar location={location} />
-          <div className="app-container">
-            <Route
-              render={() => (
-                <TransitionGroup>
-                  <CSSTransition
-                    key={location.pathname}
-                    classNames="fade"
-                    timeout={300}
-                  >
-                    {children}
-                  </CSSTransition>
-                </TransitionGroup>
-              )}
-            />
-            <GlobalStyle />
-          </div>
-        </Fragment>
-      </ThemeProvider>
-    );
-  }
-}
-
-export default App;
+  }, []);
+  return (
+    <ThemeProvider theme={{ mode: activeTheme }}>
+      <Fragment>
+        <Navbar location={location} />
+        <div className="app-container">
+          <Route
+            render={() => (
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.pathname}
+                  classNames="fade"
+                  timeout={300}
+                >
+                  {children}
+                </CSSTransition>
+              </TransitionGroup>
+            )}
+          />
+          <GlobalStyle />
+        </div>
+      </Fragment>
+    </ThemeProvider>
+  );
+}));
