@@ -25,7 +25,7 @@
   
 <br />
   
-A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
+A menubar application for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 Works on macOS 10.12+, Windows 10+ and Linux.
 
 This project is an unofficial cross-platform desktop application based on [Unsplash Wallpapers official application for Mac](https://unsplash.com/wallpaper#mac-app) with more features and better performance.
