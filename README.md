@@ -32,6 +32,15 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 <br />
 
+
+## Demo:
+
+Mac             |  Windows             |  Linux
+:--------------------------------------:|:------------------------------------------:|:------------------------------------------:
+<img src="http://i.imgur.com/EORtx07.gif" width="500px" />  |  <img src="http://i.imgur.com/DdC3FNw.gif" width="500px" />  |  <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" />
+
+<br />
+
 ## Download and Install:
 
 ![platform](https://img.shields.io/static/v1.svg?label=Platform&message=Linux-64%20|%20macOS-64%20|%20Win-32%20|%20Win-64&style=for-the-badge)
@@ -39,14 +48,6 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)                                                                                                  | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)                                                                                                          | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)                                                                                                                        |
 |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) |
-
-<br />
-
-## Demo:
-
-Mac             |  Windows             |  Linux
-:--------------------------------------:|:------------------------------------------:|:------------------------------------------:
-<img src="http://i.imgur.com/EORtx07.gif" width="500px" />  |  <img src="http://i.imgur.com/DdC3FNw.gif" width="500px" />  |  <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" />
 
 <br />
 
