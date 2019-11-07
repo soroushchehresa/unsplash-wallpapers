@@ -35,7 +35,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 ## Demo:
 
-Mac             |  Windows             |  Linux
+![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)
 :--------------------------------------:|:------------------------------------------:|:------------------------------------------:
 <img src="http://i.imgur.com/EORtx07.gif" width="500px" />  |  <img src="http://i.imgur.com/DdC3FNw.gif" width="500px" />  |  <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" />
 
