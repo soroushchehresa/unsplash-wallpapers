@@ -188,10 +188,7 @@ class Settings extends PureComponent<Props, State> {
         <button onClick={Settings.handleQuit} className="quit">
           Quit Unsplash Wallpapers
         </button>
-        <p className="version">
-          version:
-          {appPackage.version}
-        </p>
+        <p className="version">v{appPackage.version}</p>
       </StyledSettings>
     );
   }

@@ -25,32 +25,25 @@
   
 <br />
   
-A simple menubar app for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
+A menubar application for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 Works on macOS 10.12+, Windows 10+ and Linux.
 
 This project is an unofficial cross-platform desktop application based on [Unsplash Wallpapers official application for Mac](https://unsplash.com/wallpaper#mac-app) with more features and better performance.
 
 <br />
 
-## Download and Install:
+
+## Download the latest release:
 
 ![platform](https://img.shields.io/static/v1.svg?label=Platform&message=Linux-64%20|%20macOS-64%20|%20Win-32%20|%20Win-64&style=for-the-badge)
 
-| ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)                                                                                                  | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)                                                                                                          | ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)                                                                                                                        |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) |
+
+![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)
+:--------------------------------------:|:------------------------------------------:|:------------------------------------------:
+[![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) <br /><br /> <img src="http://i.imgur.com/EORtx07.gif" width="500px" />   | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) <br /><br /> <img src="http://i.imgur.com/ky4KhH9.gif" width="500px" />  |  [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) <br /><br /> <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" /> |
 
 <br />
 
-## Demo:
-
-#### Mac:
-<img src="http://i.imgur.com/EORtx07.gif" width="500px" />
-
-
-#### Other platforms demo: <a href="http://i.imgur.com/5FAB6d8.gif" target="_blank">Windows</a> | <a href="http://i.imgur.com/lBDtKrc.gif" target="_blank">Linux</a>
-
-<br />
 
 ## This project implemented by the following technologies:
 * [Electron](https://github.com/electron)
@@ -64,7 +57,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-* and so on...
+* etc.
 
 <br />
 
