@@ -15,6 +15,8 @@ const log = require('electron-log');
 const width = 375;
 const height = 385;
 
+app.allowRendererProcessReuse = true;
+
 if (process.platform === 'darwin') {
   app.dock.hide();
 }
@@ -83,6 +85,9 @@ app.on('ready', () => {
       skipTaskbar: true,
       fullscreenable: false,
       transparent: true,
+      webPreferences: {
+        nodeIntegration: true,
+      },
     });
 
     window.loadURL(`file://${__dirname}/app.html`);
