@@ -1,9 +1,8 @@
 // @flow
 
-import React, { PureComponent, Fragment } from 'react';
+import React, { Fragment, memo, useState, useEffect } from 'react';
 import type { SyntheticEvent } from 'react';
 import { remote } from 'electron';
-import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 import type { Map as MapType } from 'immutable';
 import storage from 'electron-json-storage';
@@ -28,50 +27,30 @@ type Props = {
   isChangeAutomaticActiveTheme : boolean,
 };
 
-type State = {
-  isRunAtStartup : boolean,
-};
+const Settings = memo(({
+  updateWallpaperSchedule,
+  activeTheme,
+  isChangeAutomaticActiveTheme,
+  setActiveThemeAction,
+  setAutomaticChangeActiveThemeAction,
+  setUpdateWallpaperScheduleAction,
+  setUpdateWallpaperTimeAction,
+} : Props) => {
+  const [isRunAtStartup, setIsRunAtStartup] = useState(false);
+  const updateMethods = ['Daily', 'Weekly', 'Manually'];
+  useEffect(() => {
+    storage.get('isRunAtStartup', (error, status) => {
+      setIsRunAtStartup(status);
+    });
+  }, []);
 
-@connect(
-  state => ({
-    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
-    activeTheme: state.getIn(['Settings', 'activeTheme']),
-    isChangeAutomaticActiveTheme: state.getIn(['Settings', 'isChangeAutomaticActiveTheme']),
-  }),
-  {
-    setUpdateWallpaperScheduleAction: setUpdateWallpaperSchedule,
-    setUpdateWallpaperTimeAction: setUpdateWallpaperTime,
-    setActiveThemeAction: setActiveTheme,
-    setAutomaticChangeActiveThemeAction: setAutomaticChangeActiveTheme,
-  },
-)
-@autobind
-class Settings extends PureComponent<Props, State> {
-  static handleQuit() {
+  const handleQuit = () => {
     remote.getCurrentWindow()
       .close();
-  }
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isRunAtStartup: false,
-    };
-    this.updateMethods = ['Daily', 'Weekly', 'Manually'];
-  }
-
-  componentDidMount() {
-    storage.get('isRunAtStartup', (error, status) => {
-      this.setState({
-        isRunAtStartup: status,
-      });
-    });
-  }
-
-  handleRunInStartup = ({ target: { checked } }) => {
-    this.setState({
-      isRunAtStartup: checked,
-    });
+  const handleRunInStartup = ({ target: { checked } }) => {
+    setIsRunAtStartup(checked);
     storage.set('isRunAtStartup', checked);
     const minecraftAutoLauncher = new AutoLaunch({
       name: 'Unsplash Wallpapers',
@@ -84,114 +63,119 @@ class Settings extends PureComponent<Props, State> {
     }
   };
 
-  handleChangeUpdateWallpaperScadule(e : SyntheticEvent<HTMLButtonElement>) {
-    const { setUpdateWallpaperScheduleAction, setUpdateWallpaperTimeAction } = this.props;
+  const handleChangeUpdateWallpaperScadule = (e : SyntheticEvent<HTMLButtonElement>) => {
     setUpdateWallpaperScheduleAction(e.target.value);
     setUpdateWallpaperTimeAction(moment()
       .format('DD.MM.YYYY HH:mm'));
-  }
+  };
 
-  handleChangeTheme(e : SyntheticEvent<HTMLInputElement>) {
-    const { setActiveThemeAction } = this.props;
+  const handleChangeTheme = (e : SyntheticEvent<HTMLInputElement>) => {
     setActiveThemeAction(e.target.value);
-  }
+  };
 
-  handleSetAutoChangeTheme(e : SyntheticEvent<HTMLInputElement>) {
-    const { setAutomaticChangeActiveThemeAction } = this.props;
+  const handleSetAutoChangeTheme = (e : SyntheticEvent<HTMLInputElement>) => {
     setAutomaticChangeActiveThemeAction(e.target.checked);
-  }
+  };
 
-  render() {
-    const { updateWallpaperSchedule, activeTheme, isChangeAutomaticActiveTheme } = this.props;
-    const { isRunAtStartup } = this.state;
-    return (
-      <StyledSettings>
-        <h3>Settings</h3>
-        <label
-          className="run-at-startup"
-          htmlFor="run-at-startup"
+  return (
+    <StyledSettings>
+      <h3>Settings</h3>
+      <label
+        className="run-at-startup"
+        htmlFor="run-at-startup"
+      >
+        Run at startup
+        <input
+          id="run-at-startup"
+          type="checkbox"
+          onChange={handleRunInStartup}
+          checked={isRunAtStartup}
+        />
+      </label>
+      {/* eslint-disable-next-line */}
+      <label
+        className="auto-update"
+        htmlFor="update-method"
+      >
+        Update
+        <select
+          id="update-method"
+          onChange={handleChangeUpdateWallpaperScadule}
+          defaultValue={updateWallpaperSchedule}
         >
-          Run at startup
-          <input
-            id="run-at-startup"
-            type="checkbox"
-            onChange={this.handleRunInStartup}
-            checked={isRunAtStartup}
-          />
-        </label>
-        {/* eslint-disable-next-line */}
-        <label
-          className="auto-update"
-          htmlFor="update-method"
-        >
-          Update
-          <select
-            id="update-method"
-            onChange={this.handleChangeUpdateWallpaperScadule}
-            defaultValue={updateWallpaperSchedule}
-          >
-            {
-              this.updateMethods.map((updateMethod : string) => (
-                <option key={updateMethod} value={updateMethod}>
-                  {updateMethod}
-                </option>
-              ))
-            }
-          </select>
-        </label>
-        <div className="choose-theme">
-          <p>
-            Theme:
-            {
-              (process.platform === 'darwin')
-              && (
-                <Fragment>
-                  <span>change auto by OS</span>
-                  <input
-                    className="changeAutoSetTheme"
-                    type="checkbox"
-                    onChange={this.handleSetAutoChangeTheme}
-                    checked={isChangeAutomaticActiveTheme}
-                  />
-                </Fragment>
-              )
-            }
-          </p>
           {
-            !isChangeAutomaticActiveTheme
+            updateMethods.map((updateMethod : string) => (
+              <option key={updateMethod} value={updateMethod}>
+                {updateMethod}
+              </option>
+            ))
+          }
+        </select>
+      </label>
+      <div className="choose-theme">
+        <p>
+          Theme:
+          {
+            (process.platform === 'darwin')
             && (
               <Fragment>
-                <label htmlFor="light">
-                  Light
-                  <input
-                    id="light"
-                    type="radio"
-                    onChange={this.handleChangeTheme}
-                    value="Light"
-                    checked={activeTheme === 'Light'}
-                  />
-                </label>
-                <label htmlFor="dark">
-                  Dark
-                  <input
-                    id="dark"
-                    type="radio"
-                    onChange={this.handleChangeTheme}
-                    value="Dark"
-                    checked={activeTheme === 'Dark'}
-                  />
-                </label>
+                <span>change auto by OS</span>
+                <input
+                  className="changeAutoSetTheme"
+                  type="checkbox"
+                  onChange={handleSetAutoChangeTheme}
+                  checked={isChangeAutomaticActiveTheme}
+                />
               </Fragment>
             )
           }
-        </div>
-        <button onClick={Settings.handleQuit} className="quit">
-          Quit Unsplash Wallpapers
-        </button>
-        <p className="version">v{appPackage.version}</p>
-      </StyledSettings>
-    );
-  }
-}
+        </p>
+        {
+          !isChangeAutomaticActiveTheme
+          && (
+            <Fragment>
+              <label htmlFor="light">
+                Light
+                <input
+                  id="light"
+                  type="radio"
+                  onChange={handleChangeTheme}
+                  value="Light"
+                  checked={activeTheme === 'Light'}
+                />
+              </label>
+              <label htmlFor="dark">
+                Dark
+                <input
+                  id="dark"
+                  type="radio"
+                  onChange={handleChangeTheme}
+                  value="Dark"
+                  checked={activeTheme === 'Dark'}
+                />
+              </label>
+            </Fragment>
+          )
+        }
+      </div>
+      <button onClick={handleQuit} className="quit">
+        Quit Unsplash Wallpapers
+      </button>
+      <p className="version">v{appPackage.version}</p>
+    </StyledSettings>
+  );
+});
 
-export default Settings;
+export default connect(
+  state => ({
+    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
+    activeTheme: state.getIn(['Settings', 'activeTheme']),
+    isChangeAutomaticActiveTheme: state.getIn(['Settings', 'isChangeAutomaticActiveTheme']),
+  }),
+  {
+    setUpdateWallpaperScheduleAction: setUpdateWallpaperSchedule,
+    setUpdateWallpaperTimeAction: setUpdateWallpaperTime,
+    setActiveThemeAction: setActiveTheme,
+    setAutomaticChangeActiveThemeAction: setAutomaticChangeActiveTheme,
+  },
+)(Settings);
