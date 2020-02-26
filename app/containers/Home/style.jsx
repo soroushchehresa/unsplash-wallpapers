@@ -59,9 +59,8 @@ export default styled.div`
         font-size: 20px;
       }
     }
-    > .location {
+    > .badge {
       position: absolute;
-      left: 5px;
       bottom: 5px;
       color: #fff;
       background: rgba(0,0,0,.6);
@@ -72,6 +71,12 @@ export default styled.div`
       > i {
         margin-right: 4px;
       }
+    }
+    > .location {
+      left: 5px;
+    }
+    > .likes {
+      right: 5px;
     }
   }
   > .setWallpaperButton {

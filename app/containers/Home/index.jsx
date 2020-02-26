@@ -83,8 +83,13 @@ const Home = ({
             <i className="fa fa-refresh" />
           )}
         </div>
-        <span className="location"><i className="fa fa-map-marker" />
-          {photoData.getIn(['location', 'country']) || 'Unknown'}
+        <span className="badge location">
+          <i className="fa fa-map-marker" />
+          {photoData.getIn(['location', 'country']) || 'Unknown'}{photoData.getIn(['location', 'city']) ? ` - ${photoData.getIn(['location', 'city'])}` : ''}
+        </span>
+        <span className="badge likes">
+          <i className="fa fa-heart" />
+          {photoData.getIn(['likes']) || '0'}
         </span>
       </div>
       <button
