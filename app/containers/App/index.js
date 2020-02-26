@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -21,17 +21,7 @@ type Props = {
   location : Object,
 };
 
-export default withRouter(connect(
-  state => ({
-    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
-    updateWallpaperDate: state.getIn(['Settings', 'updateWallpaperDate']),
-    activeCategory: state.getIn(['Categories', 'activeCategory']),
-    activeTheme: state.getIn(['Settings', 'activeTheme']),
-  }),
-  {
-    getPhotoAction: getPhoto,
-  },
-)(({
+const App = ({
   children,
   activeTheme,
   location,
@@ -83,4 +73,16 @@ export default withRouter(connect(
       </Fragment>
     </ThemeProvider>
   );
-}));
+};
+
+export default connect(
+  state => ({
+    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
+    updateWallpaperDate: state.getIn(['Settings', 'updateWallpaperDate']),
+    activeCategory: state.getIn(['Categories', 'activeCategory']),
+    activeTheme: state.getIn(['Settings', 'activeTheme']),
+  }),
+  {
+    getPhotoAction: getPhoto,
+  },
+)(withRouter(App));

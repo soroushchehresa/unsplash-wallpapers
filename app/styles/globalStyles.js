@@ -1,7 +1,7 @@
 // @flow
 
 import { createGlobalStyle } from 'styled-components';
-import {boxsBackgroundColor} from './theme';
+import { boxsBackgroundColor } from './theme';
 
 export default createGlobalStyle`
   @import '../node_modules/font-awesome/css/font-awesome.min.css';
@@ -53,5 +53,14 @@ export default createGlobalStyle`
   
   .app-container {
     background: ${boxsBackgroundColor};
+    height: calc(100vh - 50px);
+  }
+  
+  .lazy-loading-wrapper {
+    height: calc(100vh - 50px);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 `;

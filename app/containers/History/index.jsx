@@ -23,28 +23,25 @@ const History = memo(({ setPhotoAction, history } : Props) => {
   const [getPicturesLoading, setGetPicturesLoading] = useState(true);
 
   useEffect(() => {
-    getLocalPhotos();
-    wallpaper.get()
-      .then((path) => {
-        setCurrentWallpaper(path);
-      });
-  }, []);
-
-  const getLocalPhotos = () => {
     storage.get('pictures', (error, pictures) => {
-      if (pictures.list) {
+      if (pictures && pictures.list) {
         setPictures(pictures.list);
-        setGetPicturesLoading(false);
-      } else {
-        setGetPicturesLoading(false);
+        setTimeout(() => {
+          wallpaper.get()
+            .then((path) => {
+              setCurrentWallpaper(path);
+            });
+        }, 100);
       }
+      setGetPicturesLoading(false);
     });
-  };
+  }, []);
 
   const handleSetActivePhoto = (photoData : MapType) => {
     setPhotoAction(photoData);
     history.push('/');
   };
+
   return (
     <StyledHistory>
       {

@@ -1,20 +1,52 @@
 // @flow
 
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Loading from 'app/components/Loading';
 import App from './containers/App';
-import Home from './containers/Home';
-import History from './containers/History';
-import Settings from './containers/Settings';
-import Categories from './containers/Categories';
+
+const HomeComponent = lazy(() => import('./containers/Home'));
+const HistoryComponent = lazy(() => import('./containers/History'));
+const SettingsComponent = lazy(() => import('./containers/Settings'));
+const CategoriesComponent = lazy(() => import('./containers/Categories'));
+
+const LoadingComponent = () => (
+  <div className="lazy-loading-wrapper">
+    <Loading color="#bbb" size="22px" />
+  </div>
+);
+
+const LazyHomeComponent = () => (
+  <Suspense fallback={<LoadingComponent />}>
+    <HomeComponent />
+  </Suspense>
+);
+
+const LazyHistoryComponent = () => (
+  <Suspense fallback={<LoadingComponent />}>
+    <HistoryComponent />
+  </Suspense>
+);
+
+const LazySettingsComponent = () => (
+  <Suspense fallback={<LoadingComponent />}>
+    <SettingsComponent />
+  </Suspense>
+);
+
+const LazyCategoriesComponent = () => (
+  <Suspense fallback={<LoadingComponent />}>
+    <CategoriesComponent />
+  </Suspense>
+);
 
 export default () => (
   <App>
     <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/history" component={History} />
-      <Route path="/settings" component={Settings} />
-      <Route path="/categories" component={Categories} />
+      <Route path="/" component={LazyHomeComponent} exact />
+      <Route path="/history" component={LazyHistoryComponent} />
+      <Route path="/settings" component={LazySettingsComponent} />
+      <Route path="/categories" component={LazyCategoriesComponent} />
     </Switch>
   </App>
 );

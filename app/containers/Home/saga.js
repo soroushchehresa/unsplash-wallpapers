@@ -6,6 +6,7 @@ import {
   put,
   takeLatest,
   select,
+  delay,
 } from 'redux-saga/effects';
 import axios from 'axios';
 import storage from 'electron-json-storage';
@@ -28,6 +29,8 @@ import {
 
 function* getPhoto() {
   yield takeLatest(GET_PHOTO, function* cb(action) {
+    // This is for limit of Unsplash API request per second!
+    yield delay(800);
     const request = yield API.get(`photos/random?collections=${action.data.activeCategory}`);
     if (request && request.status === 200) {
       yield put({ type: GET_PHOTO_SUCCESS, data: request.data });
