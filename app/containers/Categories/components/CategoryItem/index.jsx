@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import StyledCategoryItem from './style';
 
 type Props = {
@@ -11,34 +11,31 @@ type Props = {
   active : boolean
 };
 
-export default class CategoryItem extends PureComponent<Props> {
-  render() {
-    const {
-      background,
-      icon,
-      title,
-      onClick,
-      active,
-    } = this.props;
-    return (
-      <StyledCategoryItem
-        background={background}
-        onClick={onClick}
-        active={active}
-      >
-        <img src={icon} alt={title} />
-        <h3>{title}</h3>
-        {
-          active
-          && (
-            <div className="activeWrapper">
-              <div className="circle">
-                <i className="active fa fa-check" />
-              </div>
+export default memo(({
+  background,
+  icon,
+  title,
+  onClick,
+  active,
+} : Props) => {
+  return (
+    <StyledCategoryItem
+      background={background}
+      onClick={onClick}
+      active={active}
+    >
+      <img src={icon} alt={title} />
+      <h3>{title}</h3>
+      {
+        active
+        && (
+          <div className="activeWrapper">
+            <div className="circle">
+              <i className="active fa fa-check" />
             </div>
-          )
-        }
-      </StyledCategoryItem>
-    );
-  }
-}
+          </div>
+        )
+      }
+    </StyledCategoryItem>
+  );
+});

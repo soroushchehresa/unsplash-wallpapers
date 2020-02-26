@@ -1,6 +1,6 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Loading from 'app/components/Loading';
 import CategoryItem from './components/CategoryItem';
@@ -12,63 +12,50 @@ type Props = {
   activeCategory : number,
 };
 
-type State = {
-  getCategoriesLoading : boolean,
-}
+const Categories = memo(({ activeCategory, setActiveCategoryAction } : Props) => {
+  const [getCategoriesLoading, setGetCategoriesLoading] = useState(true);
+  const [categories, setCategories] = useState(null);
 
-@connect(
+  useEffect(() => {
+    import('./assets/categories')
+      .then((module) => {
+        setGetCategoriesLoading(false);
+        setCategories(module.default.items);
+      });
+  }, []);
+
+  return (
+    <StyledCategories>
+      {
+        getCategoriesLoading &&
+        <div className="loading-wrapper">
+          <Loading size="20px" color="#bbb" />
+        </div>
+      }
+      <div className="categories-wrapper">
+        {
+          (categories && !getCategoriesLoading) &&
+          categories.map((categoryItem) => (
+            <CategoryItem
+              key={categoryItem.id}
+              title={categoryItem.title}
+              background={categoryItem.background}
+              icon={categoryItem.icon}
+              onClick={() => setActiveCategoryAction(categoryItem.id)} // eslint-disable-line
+              active={activeCategory === categoryItem.id}
+            />
+          ))
+        }
+      </div>
+    </StyledCategories>
+  );
+});
+
+export default connect(
   state => ({
     activeCategory: state.getIn(['Categories', 'activeCategory']),
   }),
   {
     setActiveCategoryAction: setActiveCategory,
   },
-)
-class Categories extends PureComponent<Props, State> {
-  constructor(props : Props) {
-    super(props);
-    this.state = {
-      getCategoriesLoading: true,
-      categories: null,
-    };
-  }
-
-  componentDidMount() {
-    import('./assets/categories')
-      .then((module) => {
-        this.setState({ categories: module.default.items, getCategoriesLoading: false });
-      });
-  }
-
-  render() {
-    const { activeCategory, setActiveCategoryAction } = this.props;
-    const { getCategoriesLoading, categories } = this.state;
-    return (
-      <StyledCategories>
-        {
-          getCategoriesLoading &&
-          <div className="loading-wrapper">
-            <Loading size="20px" color="#bbb" />
-          </div>
-        }
-        <div className="categories-wrapper">
-          {
-            (categories && !getCategoriesLoading) &&
-            categories.map((categoryItem) => (
-              <CategoryItem
-                key={categoryItem.id}
-                title={categoryItem.title}
-                background={categoryItem.background}
-                icon={categoryItem.icon}
-                onClick={() => setActiveCategoryAction(categoryItem.id)} // eslint-disable-line
-                active={activeCategory === categoryItem.id}
-              />
-            ))
-          }
-        </div>
-      </StyledCategories>
-    );
-  }
-}
-
-export default Categories;
+)(Categories);
