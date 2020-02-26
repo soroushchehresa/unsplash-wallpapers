@@ -119,7 +119,7 @@ const Settings = memo(({
             (process.platform === 'darwin')
             && (
               <Fragment>
-                <span>change auto by OS</span>
+                <span>Change auto by OS</span>
                 <input
                   className="changeAutoSetTheme"
                   type="checkbox"
@@ -161,7 +161,9 @@ const Settings = memo(({
       <button onClick={handleQuit} className="quit">
         Quit Unsplash Wallpapers
       </button>
-      <p className="version">v{appPackage.version}</p>
+      <a className="autor" href="https://github.com/soroushchehresa/unsplash-wallpapers">
+        Made with <i className="fa fa-heart" /> by Soroush Chehresa on GitHub <br /> v{appPackage.version}
+      </a>
     </StyledSettings>
   );
 });

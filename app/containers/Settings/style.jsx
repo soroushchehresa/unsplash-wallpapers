@@ -14,6 +14,16 @@ const quitButtonTextColor = theme('mode', {
   Dark: '#b4b3b7',
 });
 
+const autorTextColor = theme('mode', {
+  Light: '#888',
+  Dark: '#a5a5a5',
+});
+
+const autorHoverTextColor = theme('mode', {
+  Light: '#555',
+  Dark: '#ccc',
+});
+
 export default styled.div`
   background: ${boxsBackgroundColor};
   display: flex;
@@ -84,7 +94,7 @@ export default styled.div`
     }
   .quit {
     position: absolute;
-    bottom: 35px;
+    bottom: 50px;
     background: ${quitButtonColor};
     color: ${quitButtonTextColor}
     font-size: 12px;
@@ -92,13 +102,23 @@ export default styled.div`
     margin: auto;
     border-radius: 4px;
   }
-  .version {
+  .autor {
     position: absolute;
     bottom: 7px;
-    margin: auto;
+    width: 100%;
     text-align: center;
-    font-size: 11px;
-    color: #999;
+    margin: auto;
+    font-size: 10px;
+    color: ${autorTextColor};
     cursor: default;
+    text-decoration: none;
+    transition: all linear .1s;
+    > i {
+      margin: 0 1.5px;
+      font-size: 9px;
+    }
+    &:hover {
+      color: ${autorHoverTextColor};
+    }
   }
 `;
