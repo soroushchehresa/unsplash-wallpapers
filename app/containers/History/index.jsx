@@ -26,12 +26,10 @@ const History = memo(({ setPhotoAction, history } : Props) => {
     storage.get('pictures', (error, pictures) => {
       if (pictures && pictures.list) {
         setPictures(pictures.list);
-        setTimeout(() => {
-          wallpaper.get()
-            .then((path) => {
-              setCurrentWallpaper(path);
-            });
-        }, 100);
+        wallpaper.get()
+          .then((path) => {
+            setCurrentWallpaper(path);
+          });
       }
       setGetPicturesLoading(false);
     });

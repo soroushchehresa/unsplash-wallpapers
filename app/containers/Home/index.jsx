@@ -68,7 +68,7 @@ const Home = ({
 
   return (
     <StyledHome>
-      <button
+      <div
         className={`photoWrapper${getPhotoLoading || setWallpaperLoading ? ' disabled' : ''}`}
         style={{
           backgroundImage: `url(${photoData.getIn(['urls', 'small'])})`,
@@ -86,7 +86,7 @@ const Home = ({
         <span className="location"><i className="fa fa-map-marker" />
           {photoData.getIn(['location', 'country']) || 'Unknown'}
         </span>
-      </button>
+      </div>
       <button
         className="setWallpaperButton"
         disabled={getPhotoLoading || setWallpaperLoading}

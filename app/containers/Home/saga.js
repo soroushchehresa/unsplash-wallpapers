@@ -85,7 +85,7 @@ function* setWallpaper() {
       yield wallpaper.set(picturePath, { scale: 'auto' });
       yield put({ type: SET_WALLPAPER_SUCCESS });
       yield put(setUpdateWallpaperTime(moment()
-        .format('DD.MM.YYYY HH:mm')));
+        .format('MM/DD/YYYY HH:mm:ss')));
       if (!hasPicture) {
         storage.set('pictures', {
           list: [

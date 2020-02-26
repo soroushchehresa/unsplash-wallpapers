@@ -66,7 +66,7 @@ const Settings = memo(({
   const handleChangeUpdateWallpaperScadule = (e : SyntheticEvent<HTMLButtonElement>) => {
     setUpdateWallpaperScheduleAction(e.target.value);
     setUpdateWallpaperTimeAction(moment()
-      .format('DD.MM.YYYY HH:mm'));
+      .format('MM/DD/YYYY HH:mm:ss'));
   };
 
   const handleChangeTheme = (e : SyntheticEvent<HTMLInputElement>) => {

@@ -64,13 +64,13 @@ export default styled.div`
       left: 5px;
       bottom: 5px;
       color: #fff;
-      background: rgba(0,0,0,.5);
+      background: rgba(0,0,0,.6);
       opacity: .5;
       border-radius: 3px;
       padding: 3px 10px 4px;
-      font-size: 10px;
+      font-size: 9px;
       > i {
-        margin-right: 5px;
+        margin-right: 4px;
       }
     }
   }

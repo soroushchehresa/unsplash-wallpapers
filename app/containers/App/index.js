@@ -1,5 +1,6 @@
 // @flow
 
+import { debug } from 'electron-log';
 import React, { Fragment, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Route } from 'react-router';
@@ -32,14 +33,17 @@ const App = ({
 } : Props) => {
   useEffect(() => {
     const checkUpdateTime = () => {
+      const now = moment();
+      const last = moment(updateWallpaperDate);
+      const diffTime = now.diff(last, 'hours');
       switch (updateWallpaperSchedule) {
         case 'Daily':
-          if ((moment.duration(updateWallpaperDate)).asHours() >= 24) {
+          if (diffTime >= 24) {
             getPhotoAction({ setAutomaticWallpaper: true, activeCategory });
           }
           break;
         case 'Weekly':
-          if ((moment.duration(updateWallpaperDate)).asHours() >= 168) {
+          if (diffTime >= 168) {
             getPhotoAction({ setAutomaticWallpaper: true, activeCategory });
           }
           break;
