@@ -30,7 +30,7 @@ import {
 function* getPhoto() {
   yield takeLatest(GET_PHOTO, function* cb(action) {
     // This is for limit of Unsplash API request per second!
-    yield delay(800);
+    yield delay(1000);
     const request = yield API.get(`photos/random?collections=${action.data.activeCategory}`);
     if (request && request.status === 200) {
       yield put({ type: GET_PHOTO_SUCCESS, data: request.data });

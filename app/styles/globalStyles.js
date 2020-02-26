@@ -54,6 +54,7 @@ export default createGlobalStyle`
   .app-container {
     background: ${boxsBackgroundColor};
     height: calc(100vh - 50px);
+    overflow: hidden;
   }
   
   .lazy-loading-wrapper {
