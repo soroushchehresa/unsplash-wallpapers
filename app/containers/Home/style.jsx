@@ -68,7 +68,7 @@ export default styled.div`
       opacity: .5;
       border-radius: 3px;
       padding: 3px 10px 4px;
-      font-size: 9px;
+      font-size: 10px;
       > i {
         margin-right: 4px;
       }
