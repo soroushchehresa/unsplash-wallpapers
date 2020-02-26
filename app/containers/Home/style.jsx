@@ -1,7 +1,7 @@
 // @flow
 
 import styled from 'styled-components';
-import { boxsBackgroundColor, textsColor } from 'app/styles/theme';
+import { boxsBackgroundColor } from 'app/styles/theme';
 import theme from 'styled-theming';
 
 const setWallpaperButtonColor = theme('mode', {
@@ -20,6 +20,11 @@ const setWallpaperButtonBorderColor = theme('mode', {
 });
 
 const downloadButtonTextColor = theme('mode', {
+  Light: '#666',
+  Dark: '#ccc',
+});
+
+const authorTextColor = theme('mode', {
   Light: '#666',
   Dark: '#ccc',
 });
@@ -115,12 +120,12 @@ export default styled.div`
     > .author {
       cursor: default;
       font-size: 12px;
-      color: ${textsColor};
+      color: ${authorTextColor};
       > span {
         font-weight: bold;
         margin-left: 3px;
         &.empty {
-          color: #cccccc;
+          color: #ccc;
         }
       }
     }
