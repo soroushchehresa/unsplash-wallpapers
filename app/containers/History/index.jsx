@@ -1,9 +1,8 @@
 // @flow
 
-import React, { PureComponent } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import storage from 'electron-json-storage';
 import { connect } from 'react-redux';
-import { autobind } from 'core-decorators';
 import type { history as historyType } from 'history';
 import type { Map as MapType } from 'immutable';
 import { withRouter } from 'react-router';
@@ -18,83 +17,65 @@ type Props = {
   setPhotoAction : () => void
 };
 
-type State = {
-  pictures : Array,
-  currentWallpaper : string,
-  getPicturesLoading : boolean,
-};
+const History = memo(({ setPhotoAction, history } : Props) => {
+  const [pictures, setPictures] = useState([]);
+  const [currentWallpaper, setCurrentWallpaper] = useState('');
+  const [getPicturesLoading, setGetPicturesLoading] = useState(true);
 
-@connect(
-  null,
-  { setPhotoAction: setPhoto },
-)
-@withRouter
-@autobind
-class History extends PureComponent<Props, State> {
-  constructor(props : Props) {
-    super(props);
-    this.state = {
-      pictures: [],
-      currentWallpaper: '',
-      getPicturesLoading: true,
-    };
-  }
-
-  componentDidMount() {
-    this.getLocalPhotos();
+  useEffect(() => {
+    getLocalPhotos();
     wallpaper.get()
       .then((path) => {
-        this.setState({ currentWallpaper: path });
+        setCurrentWallpaper(path);
       });
-  }
+  }, []);
 
-  getLocalPhotos() {
+  const getLocalPhotos = () => {
     storage.get('pictures', (error, pictures) => {
       if (pictures.list) {
-        this.setState({ pictures: pictures.list, getPicturesLoading: false });
+        setPictures(pictures.list);
+        setGetPicturesLoading(false);
       } else {
-        this.setState({ getPicturesLoading: false });
+        setGetPicturesLoading(false);
       }
     });
-  }
+  };
 
-  handleSetActivePhoto(photoData : MapType) {
-    const { setPhotoAction, history } = this.props;
+  const handleSetActivePhoto = (photoData : MapType) => {
     setPhotoAction(photoData);
     history.push('/');
-  }
+  };
+  return (
+    <StyledHistory>
+      {
+        getPicturesLoading &&
+        <div className="loading-wrapper">
+          <Loading color="#bbb" size="22px" />
+        </div>
+      }
+      {
+        (!getPicturesLoading && (pictures.length > 0))
+          ? (
+            <div className="pictures-wrapper">
+              {
+                pictures.map(picItem => (
+                  <PhotoItem
+                    key={picItem.id}
+                    imageSRC={picItem.urls.small}
+                    onClick={() => handleSetActivePhoto(picItem)}
+                    active={currentWallpaper === picItem.path}
+                  />
+                ))
+              }
+            </div>
+          )
+          : !getPicturesLoading && <p className="empty-history">You haven’t set any wallpaper yet</p>
+      }
+    </StyledHistory>
+  );
+});
 
-  render() {
-    const { pictures, currentWallpaper, getPicturesLoading } = this.state;
-    return (
-      <StyledHistory>
-        {
-          getPicturesLoading &&
-          <div className="loading-wrapper">
-            <Loading color="#bbb" size="22px" />
-          </div>
-        }
-        {
-          (!getPicturesLoading && (pictures.length > 0))
-            ? (
-              <div className="pictures-wrapper">
-                {
-                  pictures.map(picItem => (
-                    <PhotoItem
-                      key={picItem.id}
-                      imageSRC={picItem.urls.small}
-                      onClick={() => this.handleSetActivePhoto(picItem)}
-                      active={currentWallpaper === picItem.path}
-                    />
-                  ))
-                }
-              </div>
-            )
-            : !getPicturesLoading && <p className="empty-history">You haven’t set any wallpaper yet</p>
-        }
-      </StyledHistory>
-    );
-  }
-}
-
-export default History;
+export default connect(
+  null,
+  { setPhotoAction: setPhoto },
+)(withRouter(History));
