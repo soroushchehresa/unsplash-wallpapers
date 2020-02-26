@@ -83,7 +83,7 @@ const Home = ({
             <i className="fa fa-refresh" />
           )}
         </div>
-        <a onClick={e => e.stopPropagation()} className="badge location" href={photoData.getIn(['location', 'country']) ? `https://www.google.com/maps/@${photoData.getIn(['location', 'position', 'latitude'])},${photoData.getIn(['location', 'position', 'longitude'])},5z` : ''}>
+        <a onClick={e => e.stopPropagation()} className="badge location" href={photoData.getIn(['location', 'country']) ? `https://www.google.com/maps?q=${photoData.getIn(['location', 'position', 'latitude'])},${photoData.getIn(['location', 'position', 'longitude'])}` : ''}>
           <i className="fa fa-map-marker" />
           {photoData.getIn(['location', 'country']) || 'Unknown'}{photoData.getIn(['location', 'city']) ? ` - ${photoData.getIn(['location', 'city'])}` : ''}
         </a>
