@@ -68,12 +68,17 @@ export default styled.div`
       border-radius: 3px;
       padding: 3px 10px 4px;
       font-size: 10px;
+      transition: all linear .1s;
       > i {
         margin-right: 4px;
       }
     }
     > .location {
       left: 5px;
+      cursor: default;
+      &:hover {
+        opacity: .7;
+      }
     }
     > .likes {
       right: 5px;
