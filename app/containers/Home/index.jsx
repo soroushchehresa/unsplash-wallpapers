@@ -83,6 +83,9 @@ const Home = ({
             <i className="fa fa-refresh" />
           )}
         </div>
+        <span className="location"><i className="fa fa-map-marker" />
+          {photoData.getIn(['location', 'country']) || 'Unknown'}
+        </span>
       </button>
       <button
         className="setWallpaperButton"

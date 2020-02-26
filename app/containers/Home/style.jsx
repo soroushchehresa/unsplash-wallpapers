@@ -44,6 +44,7 @@ export default styled.div`
     background-repeat: no-repeat;
     background-position: center center;
     background-color: rgba(255, 255, 255, 0.4);
+    position: relative;
     > .buttonWrapper {
       display: flex;
       justify-content: center;
@@ -56,6 +57,20 @@ export default styled.div`
       > i {
         color: #fff;
         font-size: 20px;
+      }
+    }
+    > .location {
+      position: absolute;
+      left: 5px;
+      bottom: 5px;
+      color: #fff;
+      background: rgba(0,0,0,.5);
+      opacity: .5;
+      border-radius: 3px;
+      padding: 3px 10px 4px;
+      font-size: 10px;
+      > i {
+        margin-right: 5px;
       }
     }
   }
