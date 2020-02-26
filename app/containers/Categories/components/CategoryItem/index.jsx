@@ -17,25 +17,23 @@ export default memo(({
   title,
   onClick,
   active,
-} : Props) => {
-  return (
-    <StyledCategoryItem
-      background={background}
-      onClick={onClick}
-      active={active}
-    >
-      <img src={icon} alt={title} />
-      <h3>{title}</h3>
-      {
-        active
-        && (
-          <div className="activeWrapper">
-            <div className="circle">
-              <i className="active fa fa-check" />
-            </div>
+} : Props) => (
+  <StyledCategoryItem
+    background={background}
+    onClick={onClick}
+    active={active}
+  >
+    <img src={icon} alt={title} />
+    <h3>{title}</h3>
+    {
+      active
+      && (
+        <div className="activeWrapper">
+          <div className="circle">
+            <i className="active fa fa-check" />
           </div>
-        )
-      }
-    </StyledCategoryItem>
-  );
-});
+        </div>
+      )
+    }
+  </StyledCategoryItem>
+));
