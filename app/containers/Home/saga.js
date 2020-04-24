@@ -9,6 +9,7 @@ import {
   delay,
 } from 'redux-saga/effects';
 import axios from 'axios';
+import { remote } from 'electron';
 import storage from 'electron-json-storage';
 import wallpaper from 'wallpaper';
 import fs from 'fs';
@@ -29,7 +30,7 @@ import {
 
 function* getPhoto() {
   yield takeLatest(GET_PHOTO, function* cb(action) {
-    // This is for limit of Unsplash API request per second!
+    // This delay is for the limit of Unsplash API request per second!
     yield delay(1000);
     const request = yield API.get(`photos/random?collections=${action.data.activeCategory}`);
     if (request && request.status === 200) {
@@ -68,7 +69,7 @@ function* setWallpaper() {
       });
       if (!hasPicture) {
         let base64Image = yield axios
-          .get(photoData.getIn(['urls', 'full']), {
+          .get(`${photoData.getIn(['urls', 'raw'])}&w=${Math.round(screen.availWidth / 2)}&dpr=2`, {
             responseType: 'arraybuffer',
           });
         if (base64Image && (base64Image.status === 200)) {
