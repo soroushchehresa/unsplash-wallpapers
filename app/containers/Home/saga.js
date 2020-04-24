@@ -9,7 +9,6 @@ import {
   delay,
 } from 'redux-saga/effects';
 import axios from 'axios';
-import { remote } from 'electron';
 import storage from 'electron-json-storage';
 import wallpaper from 'wallpaper';
 import fs from 'fs';
