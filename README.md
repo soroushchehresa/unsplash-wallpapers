@@ -64,12 +64,12 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 ## Features:
 * Load high-quality wallpapers based on Unsplash popular categories.
 * Automatic update (cloud-hosted builds)
-* Work on any popular operating systems like Mac, Windows, and Linux.
-* Save history of set wallpapers.
-* Automatic set wallpapers daily or weekly (optional).
+* Work on any popular operating systems like Mac, Windows and Linux.
+* History of set wallpapers.
+* Automatic set wallpapers daily, weekly, or manual (optional).
 * Run at startup system (optional).
 * Dark mode (optional or auto by Mojave appearance on Mac).
-* Download directly every wallpaper.
+* Direct download ability for every picture.
 * Link to photographer profile on Unsplash website.
 
 <br />
