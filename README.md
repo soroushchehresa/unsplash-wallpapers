@@ -2,6 +2,12 @@
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
 
+## Not maintained
+### It was an experimental side project to me and I've not maintained this since 2019.
+
+<br />
+<br />
+
 # Unsplash Wallpapers
 
 <div>
@@ -22,7 +28,7 @@
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
   </a>
 </div>
-  
+
 <br />
   
 A menubar application for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
