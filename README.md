@@ -2,8 +2,7 @@
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
 
-## Not maintained
-### It was an experimental side project to me and I've not maintained this since 2019.
+## It was an experimental side project to me and I've not maintained that since 2019.
 
 <br />
 <br />
