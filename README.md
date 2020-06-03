@@ -33,6 +33,7 @@
 </div>
 
 <br />
+<br />
   
 A menubar application for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
 Works on macOS 10.12+, Windows 10+ and Linux.
