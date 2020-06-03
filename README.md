@@ -2,7 +2,7 @@
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
 
-<h4 align="center">It was an experimental side project to me and I've not maintained that since 2019.</h3>
+<h3 align="center">It was an experimental side project to me and I've not maintained that since 2019.</h3>
 
 <br />
 <br />
