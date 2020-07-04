@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center">⚠️ It was an experimental side project to me and I've not maintained that since 2019!</h3>
-<p align="center">✉️ If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>.</p>
+<p align="center">✉️ If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b></p>
 
 <br />
 <br />
