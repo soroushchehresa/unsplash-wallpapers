@@ -1,10 +1,6 @@
 <p align="center">
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
-
-<br />
-<br />
-
 <div align="center">
 
 # Unsplash Wallpapers
