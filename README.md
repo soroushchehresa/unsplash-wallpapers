@@ -2,10 +2,6 @@
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
 
-<h3 align="center">⚠️ It was an experimental side project to me and I've not maintained that since 2019!</h3>
-<p align="center">✉️ If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>.</p>
-
-<br />
 <br />
 <br />
 
@@ -135,3 +131,8 @@ $ npm i && npm run package
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
+
+<br />
+
+## ⚠️ It was an experimental side project to me and I've not maintained that since 2019!
+If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>
