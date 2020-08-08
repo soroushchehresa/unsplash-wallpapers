@@ -130,5 +130,5 @@ $ npm i && npm run package
 
 <br />
 
-## ⚠️ It was an experimental side project to me and I've not maintained that since 2019!
-If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>
+## ⚠️ Not maintained
+It was an experimental side project to me and I've not maintained that since 2019. If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>
