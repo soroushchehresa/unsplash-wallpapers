@@ -18,9 +18,11 @@
   <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases">
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/total.svg" alt="total download">
   </a>
-  <!-- Downloads latest release -->
   <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
+  </a>
+  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
+    <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.2.0/total.svg" alt="latest download">
   </a>
 </div>
 
@@ -44,7 +46,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/mac-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/windows-pass-sm.png)             |  ![](https://raw.githubusercontent.com/wiki/ryanoasis/nerd-fonts/screenshots/v1.0.x/linux-pass-sm.png)
 :--------------------------------------:|:------------------------------------------:|:------------------------------------------:
-[![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.1.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers-1.1.0.dmg) <br /><br /> <img src="http://i.imgur.com/EORtx07.gif" width="500px" />   | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.1.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.Setup.1.1.0.exe) <br /><br /> <img src="http://i.imgur.com/ky4KhH9.gif" width="500px" />  |  [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.1.1.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.1.0/Unsplash.Wallpapers.1.1.0.AppImage) <br /><br /> <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" /> |
+[![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.2.0.dmg.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.2.0/Unsplash.Wallpapers-1.2.0.dmg) <br /><br /> <img src="http://i.imgur.com/EORtx07.gif" width="500px" />   | [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers.Setup.1.2.0.exe.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.2.0/Unsplash.Wallpapers.Setup.1.2.0.exe) <br /><br /> <img src="http://i.imgur.com/ky4KhH9.gif" width="500px" />  |  [![latest version](https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/latest/Unsplash.Wallpapers-1.2.0.AppImage.svg)](https://github.com/soroushchehresa/unsplash-wallpapers/releases/download/v1.2.0/Unsplash.Wallpapers-1.2.0.AppImage) <br /><br /> <img src="http://i.imgur.com/lBDtKrc.gif" width="500px" /> |
 
 <br />
 
@@ -61,20 +63,20 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-* etc.
+* ...
 
 <br />
 
 ## Features:
 * Load high-quality wallpapers based on Unsplash popular categories.
-* Automatic update (cloud-hosted builds)
-* Work on any popular operating systems like Mac, Windows and Linux.
-* History of set wallpapers.
-* Automatic set wallpapers daily, weekly, or manual (optional).
-* Run at startup system (optional).
-* Dark mode (optional or auto by Mojave appearance on Mac).
-* Direct download ability for every picture.
-* Link to photographer profile on Unsplash website.
+* Cloud-hosted builds (Based on GitHub releases).
+* Work on all popular operating systems like macOS, Windows and Linux.
+* Wallpapers history list.
+* Automatic set wallpapers hourly, daily, weekly and manual (optional).
+* Run at startup system (Optional).
+* Dark mode (Optional or auto by OS).
+* Directly download ability for every wallpaper.
+* ...
 
 <br />
 
