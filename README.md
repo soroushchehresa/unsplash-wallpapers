@@ -93,7 +93,7 @@ Place Your [Unsplash access key](https://unsplash.com/developers) as `UNSPLASH_A
 
 #### 3. Start:
 
-Development:
+Development
 ```bash
 $ yarn && yarn dev
 
@@ -102,7 +102,7 @@ $ yarn && yarn dev
 $ npm i && npm run dev
 ```
 
-Production:
+Production
 ```bash
 $ yarn && yarn package-all
 
