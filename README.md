@@ -75,7 +75,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * Automatic set wallpapers hourly, daily, weekly and manual (optional).
 * Run at startup system (Optional).
 * Dark mode (Optional or auto by OS).
-* Directly download ability for every wallpaper.
+* Download directly ability for each wallpaper.
 * ...
 
 <br />
