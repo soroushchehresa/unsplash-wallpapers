@@ -1,6 +1,7 @@
 <p align="center">
   <img src="http://i.imgur.com/hmuAope.png" width="100%" />
 </p>
+<div align="center">
 
 # Unsplash Wallpapers
 
@@ -22,7 +23,10 @@
     <img src="https://img.shields.io/github/downloads/soroushchehresa/unsplash-wallpapers/v1.1.0/total.svg" alt="latest download">
   </a>
 </div>
-  
+
+</div>
+
+<br />
 <br />
   
 A menubar application for Mac, Windows and Linux that brings stunning wallpapers from Unsplash right to your desktop.
@@ -123,3 +127,9 @@ $ npm i && npm run package
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
+
+<br />
+<br />
+
+## ⚠️ Not maintained
+It was an experimental side project to me and I've not maintained that since 2019. If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>
