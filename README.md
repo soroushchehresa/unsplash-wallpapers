@@ -7,7 +7,7 @@
 
 <div>
   <!-- Version -->
-  <a href="https://marktext.github.io/website">
+  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
     <img src="https://badge.fury.io/gh/soroushchehresa%2Funsplash-wallpapers.svg" alt="website">
   </a>
   <!-- License -->
