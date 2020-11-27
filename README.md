@@ -80,19 +80,18 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 ## Let's run:
 
-#### Clone the project:
+#### 1. Clone the project:
 ```bash
 $ git clone https://github.com/soroushchehresa/unsplash-wallpapers.git unsplash-wallpapers
 ```
 
-#### Starting Development:
+#### 2. Unsplash access key
+Place Your [Unsplash access key](https://unsplash.com/developers) as `UNSPLASH_ACCESS_KEY` in `.env` file.
 
-First, rename `example.env` to `.env` and then place your [Unsplash access key](https://unsplash.com/developers) in the `.env`:
-```sh
-UNSPLASH_ACCESS_KEY=your_access_key
-```
 
-Then, run one of the following commands:
+#### 3. Start:
+
+Development:
 ```bash
 $ yarn && yarn dev
 
@@ -101,24 +100,13 @@ $ yarn && yarn dev
 $ npm i && npm run dev
 ```
 
-
-#### Packaging for Production:
-
-First, change `package.json => build => publish => owner` to your GitHub username.
-
-Second, rename `example.env` to `.env` and then place following variables in the `.env`:
-* `UNSPLASH_ACCESS_KEY` - Your [Unsplash access key](https://unsplash.com/developers)
-* `GH_TOKEN` - Your [GitHub token](https://github.com/settings/tokens/new) to publish the release
-* `CSC_LINK` - Path or link to your Apple Mac developer certificates (just for packaging on Mac)
-* `CSC_KEY_PASSWORD` - Your Apple Mac developer certificate password (just for packaging on Mac)
-
-Then, run one of the following commands:
+Production:
 ```bash
-$ yarn && yarn package
+$ yarn && yarn package-all
 
 # OR
 
-$ npm i && npm run package
+$ npm i && npm run package-all
 ```
 
 <br />
@@ -127,9 +115,3 @@ $ npm i && npm run package
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
-
-<br />
-<br />
-
-## ⚠️ Not maintained
-It was an experimental side project to me and I've not maintained that since 2019. If you are interested to be a maintainer you can send your request by <b>s1996ch@gmail.com</b>
