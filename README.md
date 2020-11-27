@@ -87,7 +87,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 $ git clone https://github.com/soroushchehresa/unsplash-wallpapers.git unsplash-wallpapers
 ```
 
-#### 2. Unsplash access key
+#### 2. Add Unsplash access key:
 Place Your [Unsplash access key](https://unsplash.com/developers) as `UNSPLASH_ACCESS_KEY` in `.env` file.
 
 
