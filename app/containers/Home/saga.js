@@ -17,7 +17,6 @@ import util from 'util';
 import path from 'path';
 import moment from 'moment';
 import API from 'app/utils/xhrWrapper';
-import { setUpdateWallpaperTime } from 'app/containers/Settings/redux';
 import {
   GET_PHOTO,
   GET_PHOTO_SUCCESS,
@@ -84,8 +83,7 @@ function* setWallpaper() {
       }
       yield wallpaper.set(picturePath, { scale: 'auto' });
       yield put({ type: SET_WALLPAPER_SUCCESS });
-      yield put(setUpdateWallpaperTime(moment()
-        .format('MM/DD/YYYY HH:mm:ss')));
+      storage.set('autoUpdateWallpaperLastUpdate', moment().format('MM/DD/YYYY HH:mm:ss'));
       if (!hasPicture) {
         storage.set('pictures', {
           list: [

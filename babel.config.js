@@ -14,11 +14,14 @@ module.exports = (api) => {
   return {
     presets: [
       [
-        require('@babel/preset-env'),
+        '@babel/preset-env',
         {
-          targets: { electron: require('electron/package.json').version },
           useBuiltIns: 'usage',
           corejs: 2,
+          targets: {
+            esmodules: true,
+            electron: require('electron/package.json').version
+          },
         },
       ],
       require('@babel/preset-flow'),

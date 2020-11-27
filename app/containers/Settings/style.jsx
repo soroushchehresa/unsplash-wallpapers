@@ -20,7 +20,7 @@ const authorTextColor = theme('mode', {
 });
 
 const authorHoverTextColor = theme('mode', {
-  Light: '#555',
+  Light: '#444',
   Dark: '#ccc',
 });
 
@@ -108,15 +108,18 @@ export default styled.div`
     width: 100%;
     text-align: center;
     margin: auto;
-    font-size: 11px;
+    font-size: 12px;
     color: ${authorTextColor};
     cursor: default;
     text-decoration: none;
     transition: all linear .1s;
     > i {
       margin: 0 1.5px;
+      &.fa-heart {
+        color: #ff2d5d;
+      }
       &.fa-github {
-      font-size: 12px;
+        color: #242a2e;
       }
     }
     &:hover {

@@ -1,4 +1,4 @@
-import { remote } from 'electron';
+import { remote, systemPreferences } from 'electron';
 import { setActiveTheme } from 'app/containers/Settings/redux';
 
 export default (store) => {

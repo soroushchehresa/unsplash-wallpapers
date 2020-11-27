@@ -100,6 +100,9 @@ app.on('ready', () => {
 
     window.webContents.once('did-frame-finish-load', function() {
       autoUpdater.checkForUpdatesAndNotify();
+      if (process.env.NODE_ENV === 'development') {
+        window.webContents.openDevTools();
+      }
     });
 
     window.webContents.on('will-navigate', (event, url) => {
@@ -134,3 +137,5 @@ storage.has('isRunAtStartup', (error, hasKey) => {
     minecraftAutoLauncher.enable();
   }
 });
+
+app.commandLine.appendSwitch('ignore-certificate-errors');

@@ -4,43 +4,35 @@ import React, { Fragment, memo, useState, useEffect } from 'react';
 import type { SyntheticEvent } from 'react';
 import { remote } from 'electron';
 import { connect } from 'react-redux';
-import type { Map as MapType } from 'immutable';
 import storage from 'electron-json-storage';
 import moment from 'moment';
 import AutoLaunch from 'auto-launch';
 import appPackage from '../../../package';
 import StyledSettings from './style';
-import {
-  setUpdateWallpaperSchedule,
-  setUpdateWallpaperTime,
-  setActiveTheme,
-  setAutomaticChangeActiveTheme,
-} from './redux';
+import { setActiveTheme, setAutomaticChangeActiveTheme } from './redux';
 
 type Props = {
-  setUpdateWallpaperScheduleAction : (data : string) => void,
-  setUpdateWallpaperTimeAction : (data : string) => void,
   setActiveThemeAction : (data : string) => void,
   setAutomaticChangeActiveThemeAction : (data : boolean) => void,
-  updateWallpaperSchedule : MapType,
   activeTheme : string,
   isChangeAutomaticActiveTheme : boolean,
 };
 
+const updateMethods = ['Hourly', 'Daily', 'Weekly', 'Manually'];
+
 const Settings = memo(({
-  updateWallpaperSchedule,
   activeTheme,
   isChangeAutomaticActiveTheme,
   setActiveThemeAction,
   setAutomaticChangeActiveThemeAction,
-  setUpdateWallpaperScheduleAction,
-  setUpdateWallpaperTimeAction,
 } : Props) => {
+  const [autoUpdateWallpaperSchedule, setAutoUpdateWallpaperSchedule] = useState(null);
   const [isRunAtStartup, setIsRunAtStartup] = useState(false);
-  const updateMethods = ['Daily', 'Weekly', 'Manually'];
+
   useEffect(() => {
-    storage.get('isRunAtStartup', (error, status) => {
-      setIsRunAtStartup(status);
+    storage.getMany(['isRunAtStartup', 'autoUpdateWallpaperSchedule'], (error, data) => {
+      setIsRunAtStartup(data.isRunAtStartup);
+      setAutoUpdateWallpaperSchedule(data.autoUpdateWallpaperSchedule || 'Manually');
     });
   }, []);
 
@@ -64,9 +56,8 @@ const Settings = memo(({
   };
 
   const handleChangeUpdateWallpaperScadule = (e : SyntheticEvent<HTMLButtonElement>) => {
-    setUpdateWallpaperScheduleAction(e.target.value);
-    setUpdateWallpaperTimeAction(moment()
-      .format('MM/DD/YYYY HH:mm:ss'));
+    storage.set('autoUpdateWallpaperSchedule', e.target.value);
+    storage.set('autoUpdateWallpaperLastUpdate', moment().format('MM/DD/YYYY HH:mm:ss'));
   };
 
   const handleChangeTheme = (e : SyntheticEvent<HTMLInputElement>) => {
@@ -98,19 +89,23 @@ const Settings = memo(({
         htmlFor="update-method"
       >
         Update
-        <select
-          id="update-method"
-          onChange={handleChangeUpdateWallpaperScadule}
-          defaultValue={updateWallpaperSchedule}
-        >
-          {
-            updateMethods.map((updateMethod : string) => (
-              <option key={updateMethod} value={updateMethod}>
-                {updateMethod}
-              </option>
-            ))
-          }
-        </select>
+        {
+          !!autoUpdateWallpaperSchedule && (
+            <select
+              id="update-method"
+              onChange={handleChangeUpdateWallpaperScadule}
+              defaultValue={autoUpdateWallpaperSchedule}
+            >
+              {
+                updateMethods.map((updateMethod : string) => (
+                  <option key={updateMethod} value={updateMethod}>
+                    {updateMethod}
+                  </option>
+                ))
+              }
+            </select>
+          )
+        }
       </label>
       <div className="choose-theme">
         <p>
@@ -162,7 +157,7 @@ const Settings = memo(({
         Quit Unsplash Wallpapers
       </button>
       <a className="author" href="https://github.com/soroushchehresa/unsplash-wallpapers">
-        Made with love by Soroush Chehresa on GitHub <br /> v{appPackage.version}
+        Made with <i className="fa fa-heart" /> on GitHub (v{appPackage.version})
       </a>
     </StyledSettings>
   );
@@ -170,13 +165,10 @@ const Settings = memo(({
 
 export default connect(
   state => ({
-    updateWallpaperSchedule: state.getIn(['Settings', 'updateWallpaperSchedule']),
     activeTheme: state.getIn(['Settings', 'activeTheme']),
     isChangeAutomaticActiveTheme: state.getIn(['Settings', 'isChangeAutomaticActiveTheme']),
   }),
   {
-    setUpdateWallpaperScheduleAction: setUpdateWallpaperSchedule,
-    setUpdateWallpaperTimeAction: setUpdateWallpaperTime,
     setActiveThemeAction: setActiveTheme,
     setAutomaticChangeActiveThemeAction: setAutomaticChangeActiveTheme,
   },
