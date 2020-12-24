@@ -88,7 +88,7 @@ $ git clone https://github.com/soroushchehresa/unsplash-wallpapers.git unsplash-
 ```
 
 #### 2. Add Unsplash access key:
-Place Your [Unsplash access key](https://unsplash.com/developers) as `UNSPLASH_ACCESS_KEY` in `.env` file.
+Place Your [Unsplash access key](https://unsplash.com/documentation#authorization) as `UNSPLASH_ACCESS_KEY` in `.env` file.
 
 
 #### 3. Start:
