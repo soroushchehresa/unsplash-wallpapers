@@ -6,10 +6,6 @@
 # Unsplash Wallpapers
 
 <div>
-  <!-- Version -->
-  <a href="https://github.com/soroushchehresa/unsplash-wallpapers/releases/latest">
-    <img src="https://badge.fury.io/gh/soroushchehresa%2Funsplash-wallpapers.svg" alt="website">
-  </a>
   <!-- License -->
   <a href="https://github.com/soroushchehresa/unsplash-wallpapers/blob/master/LICENSE">
     <img src="https://img.shields.io/github/license/soroushchehresa/unsplash-wallpapers.svg" alt="LICENSE">
