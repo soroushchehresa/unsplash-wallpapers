@@ -74,7 +74,6 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * Run at startup system (Optional).
 * Dark mode (Optional or auto by OS).
 * Download directly ability for each wallpaper.
-* ...
 
 <br />
 
