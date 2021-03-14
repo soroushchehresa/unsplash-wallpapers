@@ -38,7 +38,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 <br />
 
 
-## Download the latest release:
+## Installation
 
 ![platform](https://img.shields.io/static/v1.svg?label=Platform&message=Linux-64%20|%20macOS-64%20|%20Win-32%20|%20Win-64&style=for-the-badge)
 
@@ -50,23 +50,22 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 <br />
 
 
-## This project implemented by the following technologies:
+## Technologies
 * [Electron](https://github.com/electron)
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
+* [immutable-js](https://github.com/immutable-js/immutable-js)
 * [redux-saga](https://github.com/redux-saga/redux-saga)
 * [styled-components](https://github.com/styled-components/styled-components)
 * [Axios](https://github.com/axios/axios)
 * [Wallpaper](https://github.com/sindresorhus/wallpaper)
 * [electron-json-storage](https://github.com/electron-userland/electron-json-storage)
-* [immutable-js](https://github.com/immutable-js/immutable-js)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-* ...
 
 <br />
 
-## Features:
+## Features
 * Load high-quality wallpapers based on Unsplash popular categories.
 * Cloud-hosted builds (Based on GitHub releases).
 * Work on all popular operating systems like macOS, Windows and Linux.
@@ -79,7 +78,7 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 <br />
 
-## Let's run:
+## Let's run
 
 #### 1. Clone the project:
 ```bash
@@ -112,7 +111,7 @@ $ npm i && npm run package-all
 
 <br />
 
-## Support:
+## Support
 <a href="https://www.patreon.com/soroushchehresa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
