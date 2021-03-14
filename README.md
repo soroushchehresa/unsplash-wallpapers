@@ -49,6 +49,17 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 
 <br />
 
+## Features
+* Load high-quality wallpapers based on Unsplash popular categories.
+* Cloud-hosted builds (Based on GitHub releases).
+* Work on all popular operating systems like macOS, Windows and Linux.
+* Wallpapers history list.
+* Automatic set wallpapers hourly, daily, weekly and manual (optional).
+* Run at startup system (Optional).
+* Dark mode (Optional or auto by OS).
+* Download directly ability for each wallpaper.
+
+<br />
 
 ## Technologies
 * [Electron](https://github.com/electron)
@@ -62,18 +73,6 @@ This project is an unofficial cross-platform desktop application based on [Unspl
 * [electron-json-storage](https://github.com/electron-userland/electron-json-storage)
 * [Flow](https://github.com/facebook/flow)
 * [ESLint - Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
-
-<br />
-
-## Features
-* Load high-quality wallpapers based on Unsplash popular categories.
-* Cloud-hosted builds (Based on GitHub releases).
-* Work on all popular operating systems like macOS, Windows and Linux.
-* Wallpapers history list.
-* Automatic set wallpapers hourly, daily, weekly and manual (optional).
-* Run at startup system (Optional).
-* Dark mode (Optional or auto by OS).
-* Download directly ability for each wallpaper.
 
 <br />
 
