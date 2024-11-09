@@ -46,7 +46,7 @@ const Settings = memo(({
     storage.set('isRunAtStartup', checked);
     const minecraftAutoLauncher = new AutoLaunch({
       name: 'Unsplash Wallpapers',
-      path: '/Applications/Unsplash Wallpapers.app', // eslint-disable-line
+      path: '%LOCALAPPDATA%/Programs/unsplash-wallpapers/Unsplash Wallpapers.exe', // eslint-disable-line
     });
     if (checked) {
       minecraftAutoLauncher.enable();
